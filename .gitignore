@@ -1,0 +1,23 @@
+# Ignore all subfolders except the figures folder
+**/
+!/figures
+#!/minted-master
+
+# Ignore all auxillary files
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.spl
+*.synctex.gz
+*.tex.latexmain
+*.toc
+*.dvi
+*.swp
+info.yaml
+*.synctex(busy)
+*.blg
+*.upa
+*.upb
+*.keystrokes

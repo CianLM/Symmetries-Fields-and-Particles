@@ -1,0 +1,152 @@
+\lecture{1}{11/10/2024}{Introduction}
+
+\section{Introduction}
+
+Symmetries are hidden throughout undergraduate physics. Lagrangian mechanics relies on the principle of least action, where the action $S$ is given by
+\begin{align}
+    S = \int_{t_1}^{t_2} \dd{t} L \left( q\left( t \right), \dot{q}\left( t \right) ; t  \right) 
+.\end{align}
+
+Classical trajectories minimise $S$ which gives us the Euler Lagrange equation,
+\begin{align}
+    \pdv{L}{q} - \dv{t} \left( \pdv{L}{\dot{q}} \right) = 0
+.\end{align}
+
+\begin{theorem}[ (Noether's Theorem)]
+    Invariance of $L$ under some transformation implies an associated conserved quantity.
+\end{theorem}
+
+\begin{example}
+    Take a particle in a 3-dimensional potential which has Lagrangian
+    \begin{align}
+        L = \frac{1}{2}m \left( \dot{x}^2 + \dot{y}^2 + \dot{z}^2 \right) - U \left( x,y,z \right) 
+    .\end{align}
+
+    There are a few notable symmetries here
+    \begin{enumerate}
+        \item $L$ is independent of time $t$, i.e. under $t \mapsto t + \delta t$.
+            \begin{claim}
+                The Hamiltonian $H = T + U$ is conserved.
+            \end{claim}
+
+            In general $H\left( x_{i}, p_{i} \right) $ is a function of $x_{i} = (x,y,z)$ and the conjugate momenta $p_{i} = \pdv{L}{\dot{x}_{i}} = m \dot{x}_{i}$ and is written in terms of the Lagrangian through Legendre transform as
+            \begin{align}
+                H \left( x_{i}, p_{i}; t \right) = \sum_{i}^{} \dot{x}_{i} \pdv{L}{\dot{x}_{i}} - L
+            .\end{align}
+            Therefore, if $L$ does not depend on time one has
+            \begin{align}
+                \dv{H}{t} = 0 - \pdv{L}{t}  = 0
+            ,\end{align}
+            where we have used the Euler Lagrange equations to make the first term vanish.
+
+        \item If $L$ is invariant under $x \mapsto x + \delta x$,
+            \begin{align}
+                \pdv{L}{x} = 0 \overset{\text{EL}}{\implies} \pdv{L}{\dot{x}} = p_x \text{~is constant}
+            .\end{align}
+        \item If $L$ is invariant under rotations about the $z$ axis then the $z$-component of angular momentum $L_z = x p_y - y p_x$ is constant. 
+
+            Similarly, in cylindrical coordinates $x = \rho \cos \theta$, $y = \rho \sin \theta$ and the Lagrangian becomes
+            \begin{align}
+                L = \frac{1}{2} \left( m \dot{\rho}^2 + \rho^2 \dot{\theta} + \dot{z}^2 \right) - U \left( \rho, z \right) 
+            .\end{align}
+
+            Therefore, $\pdv{L}{\theta} = 0 \implies \pdv{L}{\dot{\theta}} = m \rho^2 \dot{\theta} = x p_y - y p_x = \text{constant}$.
+    \end{enumerate}
+\end{example}
+
+
+\subsection{Symmetry in Quantum Mechanics}
+
+Given a system whose states are elements of a Hilbert space $\mathcal{H}$. Here, symmetry implies there exists some invertible operator $U : \mathcal{H} \to \mathcal{H}$ which preserves inner products, up to an overall phase $e^{i\phi}$ (e.g. expectation values, transition amplitudes).
+
+\begin{definition}
+    Let $\ket{\Phi}, \ket{\Psi}$ be any normalised vectors in $\mathcal{H}$. Denote $\ket{U \Psi} = U \ket{\Psi}$. $U$ is a \textbf{symmetry transformation operator} if
+    \begin{align}
+        \left| \bra{U \Phi} \ket{U \Psi} \right|  = \left| \bra{\Phi} \ket{\Psi} \right| 
+    .\end{align}
+\end{definition}
+
+\begin{proposition}[(Wigner's theorem)]
+    Symmetry transformation operators are either
+    \begin{enumerate}[label=\alph*)]
+        \item linear and unitary, or
+        \item anti-linear and anti-unitary, meaning for $\alpha, \beta \in \C$,
+            \begin{align}
+                U \left( \alpha \ket{\Psi} + \beta \ket{\Phi} \right) = \alpha^{*} U \ket{\Psi} + \beta^{*} \ket{\Phi}
+            ,\end{align}
+            and
+            \begin{align}
+                \bra{U \Phi} \ket{U \Psi} = \bra{\Phi} \ket{\Psi}^{*}
+            ,\end{align}
+            respectively. 
+
+            Most symmetries fall into the former category, but a notable exception is time-reversal symmetry, falling into the latter.
+    \end{enumerate}
+    
+\end{proposition}
+
+Suppose we have a system with time independent Hamiltonian $H$. We can write down the time evolution of operators in the Schrödinger picture (where the states depend on time and the operators are static) as
+\begin{align}
+    \ket{\Psi \left( t \right)} = e^{-i H t} \ket{\Psi \left( 0 \right)}
+.\end{align}
+
+Let's look at applying a symmetry operator $U$ in each of the cases above.
+
+\begin{enumerate}[label=\alph*)]
+    \item
+        \begin{align}
+            \bra{U \Phi \left( t \right) } \ket{U \Psi \left( t \right) } &= \bra{\Psi \left( t \right) } \ket{\Phi \left( t \right) } \\
+            &= \bra{\Phi} e^{-i H t} \ket{\Phi \left( 0 \right) } (*)
+        .\end{align}
+        We should find the same result by transforming $\ket{\Psi \left( 0 \right) }$ before the evolution
+        \begin{align}
+            \ket{U \Psi \left( t \right) } = e^{-i H t} \ket{U \Psi \left( 0 \right) }
+        ,\end{align}
+        which implies
+        \begin{align}
+            \bra{U \Phi} \ket{U \Psi \left( t \right) } &= \bra{U \Phi} e^{-i H t} \ket{U \Psi \left( 0 \right) } \\
+            &= \bra{ \Phi} U^{\dag} e^{-i H t} U \ket{\psi \left( 0 \right) } 
+        .\end{align}
+
+        By comparing this to $(*)$ we find that
+        \begin{align}
+            U^{\dag} e^{-i H t} U = e^{-i H t}
+        .\end{align}
+        Therefore $U$ commutes with the Hamiltonian, $\left[ U, H \right] = 0$.
+\end{enumerate}
+
+\begin{examples}~
+    \begin{enumerate}[label=\arabic*)]
+        \item If $H$ commutes with $p$, $H$ cannot depend on $x$ as $\left[ x_{i}, p_{j} \right] = i \delta_{ij} \neq 0$. Therefore $H$ is invariant under translations $x \to x + a$. One can construct a unitary operator that generates translations with $U = \exp \left( i \vb{p} \cdot \vb{a} \right) $.
+        \item If $H$ is rotationally symmetric the angular momentum operator commutes with $H$.
+    \end{enumerate}
+\end{examples}
+
+\section{Lie Groups and algebras}
+
+\subsection{Lie Groups}
+
+\begin{definition}
+    A \textbf{group} is a set $G$ together with a binary operation $\circ$ such that the following properties hold
+    \begin{enumerate}[label=\roman*)]
+        \item Closure: $g_2 \circ g_1 \in G$, $\forall g_1, g_2 \in G$,
+        \item Associativity: $g_3 \circ \left( g_2 \circ g_1 \right) = \left( g_3 \circ g_2 \right)  \circ g_1$, $\forall g_1, g_2, g_3 \in G$,
+        \item Identity: $\exists e \in G$ such that $g \circ e = e \circ g = g$, $\forall g \in G$,
+        \item Inverse: $\forall g \in G$, $\exists g^{-1} \in G$ such that $g \circ g^{-1} = e = g^{-1} \circ g$.
+    \end{enumerate}
+\end{definition}
+
+The identity $e$ and inverse of $g$ are unique.
+
+\begin{definition}
+    A group $\left( G, \circ \right) $ is \textbf{commutative} (\textbf{abelian}) if
+    \begin{align}
+        g_1 \circ g_2 = g_2 \circ g_1
+    ,\end{align}
+    $\forall g_1, g_2 \in G$. Otherwise $G$ is \textbf{non-commutative} (\textbf{non-abelian}).
+\end{definition}
+
+
+
+
+

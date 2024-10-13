@@ -1,0 +1,386 @@
+% Some basic packages
+%\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage[hidelinks]{hyperref}
+%\usepackage{authblk}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+% lualatex setting
+\usepackage[activate={true,nocompatibility},final,tracking=true,factor=1100,stretch=10,shrink=10]{microtype}
+
+\usepackage{pdfcomment}
+% pdftex settings
+%\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+%\DeclareMicrotypeSetDefault[spacing]{basictext}
+%\microtypecontext{spacing=nonfrench}
+
+\usepackage{geometry}
+
+%\pdfminorversion=7
+
+% Don't indent paragraphs, leave some space between them
+\usepackage{parskip}
+
+% Hide page number when page is empty
+\usepackage{emptypage}
+%\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+
+% Other font I sometimes use.
+% \usepackage{cmbright}
+
+% Math stuff
+\usepackage{amsmath, amsfonts, mathtools, amsthm, amssymb}
+\usepackage{physics}
+% Fancy script capitals
+\usepackage{mathrsfs}
+\usepackage{cancel}
+% Bold math
+\usepackage{bm}
+
+
+\usepackage{centernot}
+\newcommand{\fbs}[1]{{\centernot{#1}}}
+
+% Some shortcuts
+\newcommand\N{\ensuremath{\mathbb{N}}}
+\newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\Z{\ensuremath{\mathbb{Z}}}
+\renewcommand\O{\ensuremath{\emptyset}}
+\newcommand\Q{\ensuremath{\mathbb{Q}}}
+\newcommand\C{\ensuremath{\mathbb{C}}}
+
+% Put x \to \infty below \lim
+\let\svlim\lim\def\lim{\svlim\limits}
+
+%Make implies and impliedby shorter
+\let\implies\Rightarrow
+\let\impliedby\Leftarrow
+\let\iff\Leftrightarrow
+\let\epsilon\varepsilon
+%\let\phi\varphi
+
+\newcommand\up{\uparrow}
+\newcommand\down{\downarrow}
+
+% Add \contra symbol to denote contradiction
+\usepackage{stmaryrd} % for \lightning
+\newcommand\contra{\scalebox{1.5}{$\lightning$}}
+
+
+% Command for short corrections
+% Usage: 1+1=\correct{3}{2}
+
+\definecolor{correct}{HTML}{009900}
+\newcommand\correct[2]{\ensuremath{\:}{\color{red}{#1}}\ensuremath{\to }{\color{correct}{#2}}\ensuremath{\:}}
+\newcommand\green[1]{{\color{correct}{#1}}}
+
+% horizontal rule
+\newcommand\hr{
+    \noindent\rule[0.5ex]{\linewidth}{0.5pt}
+}
+
+% hide parts
+\newcommand\hide[1]{}
+
+% si unitx
+\usepackage{siunitx}
+\sisetup{locale = UK}
+
+% Environments
+\makeatother
+% For box around Definition, Theorem, \ldots
+
+% tikz
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tikz-3dplot}
+
+\usetikzlibrary{arrows.meta,bending}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{decorations.pathmorphing,patterns}
+\usepgfplotslibrary{fillbetween}
+\usepackage{tensor}
+
+
+
+\usepackage{mdframed}
+\mdfsetup{skipabove=20pt,skipbelow=\topsep,leftmargin=\parindent}
+\theoremstyle{definition}
+
+
+\newtheorem*{notation}{Notation}
+\newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}
+\newtheorem*{problem}{Problem}
+\newtheorem*{example}{Example}
+\newtheorem*{examples}{Examples}
+
+\newtheorem*{observe}{Observe}
+\newtheorem*{property}{Property}
+\newtheorem*{intuition}{Intuition}
+\newtheorem*{prop}{Proposition}
+\newmdtheoremenv[nobreak=true]{law}{Law}
+
+\newtheorem{quiz}{Quiz}
+\newtheorem*{claim}{Claim}
+
+\newtheoremstyle{enumstyle}{0}{}{}{}{\bfseries}{:}{ }{\thmname{#1} \thmnumber{#2}\thmnote{#3}}
+\theoremstyle{enumstyle}
+
+\newmdtheoremenv[nobreak=true,skipabove=10pt,skipbelow=\topsep]{definition}{Definition}[section]
+\newmdtheoremenv[nobreak=true]{theorem}{Theorem}[section]
+\newmdtheoremenv[nobreak=true]{corollary}{Corollary}[section]
+\newmdtheoremenv[nobreak=true]{lemma}{Lemma}[section]
+\newmdtheoremenv[nobreak=true]{principle}{Principle}[section]
+\newmdtheoremenv[nobreak=true]{postulate}{Postulate}[section]
+
+\newtheorem{exercise}{Exercise}
+\newtheorem{proposition}{Proposition}[section]
+%\newtheorem{solution}{Solution}
+
+% Add more box environments here ^^
+% \usepackage{mdframed}
+% \mdfsetup{skipabove=1em,skipbelow=1em}
+% \theoremstyle{definition}
+% \newmdtheoremenv[nobreak=true]{definition}{Definition}
+% \newmdtheoremenv[nobreak=true]{theorem}{Theorem}
+
+% End example and intermezzo environments with a small diamond (just like proof
+% environments end with a small square)
+\usepackage{etoolbox}
+\AtEndEnvironment{vb}{\null\hfill$\diamond$}%
+\AtEndEnvironment{intermezzo}{\null\hfill$\diamond$}%
+% \AtEndEnvironment{opmerking}{\null\hfill$\diamond$}%
+
+% Fix some spacing
+% http://tex.stackexchange.com/questions/22119/how-can-i-change-the-spacing-before-theorems-with-amsthm
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=\parskip \thm@postskip=0pt
+}
+
+
+% Exercise 
+% Usage:
+% \oefening{5}
+% \suboefening{1}
+% \suboefening{2}
+% \suboefening{3}
+% gives
+% Oefening 5
+%   Oefening 5.1
+%   Oefening 5.2
+%   Oefening 5.3
+
+
+
+% \lecture starts a new lecture (les in dutch)
+%
+% Usage:
+% \lecture{1}{di 12 feb 2019 16:00}{Inleiding}
+%
+% This adds a section heading with the number / title of the lecture and a
+% margin paragraph with the date.
+
+% I use \dateparts here to hide the year (2019). This way, I can easily parse
+% the date of each lecture unambiguously while still having a human-friendly
+% short format printed to the pdf.
+
+\usepackage{xifthen}
+\def\testdateparts#1{\dateparts#1\relax}
+\def\dateparts#1 #2 #3 #4 #5\relax{
+    \marginpar{\small\textsf{\mbox{#1 #2 #3 #5}}}
+}
+
+\def\@lecture{}%
+\newcommand{\lecture}[3]{
+    \ifthenelse{\isempty{#3}}{%
+        \def\@lecture{Lecture }%
+    }{%
+        \def\@lecture{Lecture: #3}%
+    }%
+    %\section{\@lecture}
+
+    \marginpar{Lecture #1 \\\small\textsf{\mbox{#2}}}
+}
+
+
+
+% These are the fancy headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+
+
+
+
+
+
+% Todonotes and inline notes in fancy boxes
+\usepackage{todonotes}
+\usepackage[most]{tcolorbox}
+\usepackage{minted}
+% Make boxes breakable
+\tcbuselibrary{breakable}
+
+
+\newenvironment{verbetering}{\begin{tcolorbox}[
+    arc=0mm,
+    colback=white,
+    colframe=green!60!black,
+    title=Opmerking,
+    fonttitle=\sffamily,
+    breakable
+]}{\end{tcolorbox}}
+
+\newenvironment{noot}[1]{\begin{tcolorbox}[
+    arc=0mm,
+    colback=white,
+    colframe=white!60!black,
+    title=#1,
+    fonttitle=\sffamily,
+    breakable
+]}{\end{tcolorbox}}
+
+
+
+% Figure support as explained in my blog post.
+\usepackage{import}
+%\usepackage{xifthen} imported elsewhere
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+% Fix some stuff
+% %http://tex.stackexchange.com/questions/76273/multiple-pdfs-with-page-group-included-in-a-single-page-warning
+%\pdfsuppresswarningpagegroup=1
+
+
+
+\newcommand{\axiom}[2]{
+    \vb{\left( #1#2 \right)} 
+}
+
+\newcommand{\quiztrue}{
+    \textcolor{ForestGreen}{True.}
+}
+\newcommand{\quizfalse}{
+    \textcolor{red}{False.}
+}
+\newcommand{\too}{\longrightarrow}
+\newcommand{\mapstoo}{\longmapsto}
+
+\newcommand{\ihat}{\boldsymbol{\hat{\textbf{\i}}}}
+\newcommand{\jhat}{\boldsymbol{\hat{\textbf{\j}}}}
+\newcommand{\khat}{\boldsymbol{\hat{\textbf{k}}}}
+\newcommand{\rhat}{\boldsymbol{\hat{\textbf{r}}}}
+\newcommand{\thetahat}{\boldsymbol{\hat{\theta}}}
+
+
+
+%\declaretheoremstyle[
+%    headfont=\bfseries, 
+%    notefont=\scshape, notebraces={(}{)},
+%    bodyfont=\itshape,
+%    postheadspace=1em,
+%    % postheadhook={\textcolor{red}{\rule[.6ex]{\linewidth}{0.4pt}}\\},
+%    spacebelow=\topsep,
+%    % spaceabove=\topsep,
+%    mdframed={
+%            % linecolor=black!100, 
+%            linewidth=2pt,
+%            innerbottommargin=6pt, 
+%            skipabove=\topskip, 
+%            skipbelow=\topskip,
+%            topline=false,
+%            bottomline=false, 
+%            rightline=false
+%            }
+%]{proofl}
+
+
+\renewenvironment{proof}
+{ 
+    \vspace{6 pt}
+    \begin{mdframed}[
+        linewidth=1pt,
+        skipabove=\topskip,
+        skipbelow=0pt,
+        innertopmargin=0pt,
+        innerbottommargin=6pt,
+        bottomline=false,
+        topline=false,
+        rightline=false]%
+    \noindent \textit{\textbf{Proof.}}  
+}
+{%
+    \qed 
+\end{mdframed}
+    \vspace{6 pt}
+}
+
+
+\mdfdefinestyle{exampledefault}{%
+rightline=true,innerleftmargin=10,innerrightmargin=10,
+frametitlerule=true,frametitlerulecolor=black,
+frametitlebackgroundcolor=lime,
+frametitlerulewidth=2pt,
+shadow=true,shadowsize=4pt,
+}
+
+\newenvironment{solution}
+{ 
+    \vspace{6 pt}
+    \begin{mdframed}[
+        linewidth=1pt,
+        skipabove=\topskip,
+        skipbelow=0pt,
+        innertopmargin=0pt,
+        innerbottommargin=6pt,
+        bottomline=false,
+        topline=false,
+        rightline=false]%
+    \noindent \textbf{Solution.}
+}
+{%
+    %\qed 
+\end{mdframed}
+    \vspace{6 pt}
+}
+
+% PDF hyper-refs see: https://github.com/gillescastel/instant-reference
+%\usepackage[hidelinks]{hyperref} imported elsewhere
+%\usepackage{xifthen} elsewhere
+\usepackage{fontawesome}
+
+\newcommand\urlref[2]{%
+    \href{#1}{\raisebox{0.15ex}{\scriptsize \faLink}\:\textup{\textbf{#2}}}%
+}
+
+\newcommand\pdfref[3]{%
+    \href{ref://open-paper?id=#1&page=#2}{%
+    \textup{[\textbf{\ifthenelse{\isempty{#3}}{here}{#3}}]}}%
+}
+
+
+
+
+% always capitalize the label with option [capitalize]
+\usepackage[capitalize]{cleveref}
+\allowdisplaybreaks
+% My name
+\author{Cian Luke Martin}
