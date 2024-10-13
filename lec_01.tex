@@ -138,6 +138,25 @@ Let's look at applying a symmetry operator $U$ in each of the cases above.
 
 The identity $e$ and inverse of $g$ are unique.
 
+\begin{proof}
+    Assume there exists $e_1, e_2$ which are both identities. Then we have that
+    $e_1 \circ e_2 = e_1$ but also $e_1 \circ e_2 = e_2$ thus $e_1 = e_2$ and we have uniqueness. 
+
+    For inverses, suppose $g$ has two inverses $h$ and $j$. One has that
+    \begin{align}
+        g \circ h = e \text{~and~} g \circ j = e
+    .\end{align}
+    Left multiplying by $j$ and $h$ respectively we see that
+    \begin{align}
+       j \circ g \circ h = j \circ e \text{~and~} h \circ g \circ j = h \circ e
+    ,\end{align}
+    where simplifying (as we can by associativity) the left operation, we see
+    \begin{align}
+        e \circ h = j \text{~and~} e \circ j = h
+    ,\end{align}
+    both of which imply $h = j$ and thus we have uniqueness.
+\end{proof}
+
 \begin{definition}
     A group $\left( G, \circ \right) $ is \textbf{commutative} (\textbf{abelian}) if
     \begin{align}
