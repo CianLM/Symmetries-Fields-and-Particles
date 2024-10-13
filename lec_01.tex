@@ -95,20 +95,20 @@ Let's look at applying a symmetry operator $U$ in each of the cases above.
 \begin{enumerate}[label=\alph*)]
     \item
         \begin{align}
-            \bra{U \Phi \left( t \right) } \ket{U \Psi \left( t \right) } &= \bra{\Psi \left( t \right) } \ket{\Phi \left( t \right) } \\
-            &= \bra{\Phi} e^{-i H t} \ket{\Phi \left( 0 \right) } (*)
-        .\end{align}
+            \bra{U \Phi \left( t \right) } \ket{U \Psi \left( t \right) } &= \bra{\Phi \left( t \right) } \ket{\Psi \left( t \right) } \\
+                                                                          &= \bra{\Phi\left( t \right) } e^{-i H t} \ket{\Psi \left( 0 \right) }. \label{eq:ref_1}
+        \end{align}
         We should find the same result by transforming $\ket{\Psi \left( 0 \right) }$ before the evolution
         \begin{align}
             \ket{U \Psi \left( t \right) } = e^{-i H t} \ket{U \Psi \left( 0 \right) }
         ,\end{align}
         which implies
         \begin{align}
-            \bra{U \Phi} \ket{U \Psi \left( t \right) } &= \bra{U \Phi} e^{-i H t} \ket{U \Psi \left( 0 \right) } \\
-            &= \bra{ \Phi} U^{\dag} e^{-i H t} U \ket{\psi \left( 0 \right) } 
+            \bra{U \Phi\left( t \right) } \ket{U \Psi \left( t \right) } &= \bra{U \Phi \left( t \right) } e^{-i H t} \ket{U \Psi \left( 0 \right) } \\
+            &= \bra{\Phi\left( t \right) } U^{\dag} e^{-i H t} U \ket{\Psi \left( 0 \right) } 
         .\end{align}
 
-        By comparing this to $(*)$ we find that
+        By comparing this to \cref{eq:ref_1} we find that
         \begin{align}
             U^{\dag} e^{-i H t} U = e^{-i H t}
         .\end{align}
