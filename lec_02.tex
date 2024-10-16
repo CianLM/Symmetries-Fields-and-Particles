@@ -1,0 +1,136 @@
+\lecture{2}{15/10/2024}{Lie Group}
+
+\begin{definition}
+    A \textbf{manifold} is a space which looks like Euclidean space ($\R^{n}$) locally.
+    A \textbf{differentiable manifold} is one which satisfies certain smoothness conditions.
+\end{definition}
+
+\begin{definition} \label{eq:Lie_Group}
+    A \textbf{Lie group} consists of a differentiable manifold $G$ along with a binary operation $\bullet$ such that the group axioms hold and that the operations $\left( \bullet, \cdot^{-1} \right) $ are smooth operations.
+\end{definition}
+
+\subsection{Matrix Lie Groups}
+
+The general linear group $GL \left( , \mathbb{F} \right) $ is the group of invertible $n \times  n$ matrices over the field $\mathbb{F} = \R$ or $\C$. Namely,
+\begin{align}
+    GL \left( n, \mathbb{F} \right) &= \{M \in \text{Mat}_n \left( \mathbb{F} \right)  \mid  \det M \neq 0 \}
+.\end{align}
+
+The group operation is matrix multiplication and inverses are defined as $\det M \neq 0$.
+
+The dimension of $GL \left( n, \R \right) $ is $n^2$, and thus we have $n^2$ free parameters.
+
+For $GL \left( n, \C \right) $, the real dimension is $2n^2$ and the complex dimension is $n^2$.
+
+There are a number of important subgroups of $GL \left( n, \mathbb{F} \right)$.
+\begin{enumerate}[label=\arabic*.]
+    \item The \textit{special linear group}, denoted $SL \left( n, \mathbb{F} \right) = \{ M \in GL \left( n, \mathbb{F} \right)  \mid  \det M = 1\} $, where the constraint leaves us with a dimension of $n^2 - 1$.
+    \item The \textit{orthogonal group}, denoted $O \left( n \right) = \{ M \in GL \left( n, \R \right)  \mid  M^{T} M = I\} $. Notice that
+        \begin{align}
+            M^{T} M = I \implies \det M = \pm 1
+        .\end{align}
+    \item The \textit{special orthogonal group}, denoted $SO \left( n \right) = \{M \in O \left( n \right)  \mid  \det M = 1\} $
+    \item The \textit{pseudo-orthogonal group}, where we define an $\left( n + m \right) \times  \left( n + m \right) $ (metric) matrix by
+        \begin{align}
+            \eta \equiv \mqty( I_n & 0 \\ 0 & - I_m )
+        .\end{align}
+        This group is denoted
+        \begin{align}
+            O\left( n,m \right) = \{M \in GL \left( n + m, \R \right)  \mid M^{T} \eta M = \eta \} 
+        .\end{align}
+        Similarly, there is a \textit{special} subset of this group denoted $SO \left( n,m \right) \implies \det M = 1$.
+    \item The \textit{unitary} matrices, which are denoted
+        \begin{align}
+            U \left( n \right) = \{M \in GL \left( n, \C \right)  \mid  M^{T} M = I \} 
+        .\end{align}
+        As before, we also have $SU\left( n \right) $ which restricts to matrices with $\det M = 1$.
+    \item The \textit{pseudo-unitary} group, given by
+        \begin{align}
+            U \left( n,m \right) = \{M \in GL \left( n, \C \right)  \mid  M^{T} \eta M = \eta\}  
+        .\end{align}
+    \item The \textit{symplectic group}, for which we define a fixed, antisymmetric $2n \times 2n$ matrix, such as
+        \begin{align}
+            \Omega \equiv \mqty( 0 & I_n \\
+            -I_n & 0 )
+        .\end{align}
+        The symplectic group is then
+        \begin{align}
+            \text{Sp}\left( 2n, \R \right) = \{ M = GL \left( 2n, \R \right)  \mid  M^{T} \Omega M = \Omega \} 
+        .\end{align}
+        One can show that $M \in \text{Sp}\left( 2n, \R \right) $ satisfies $\det M = 1$.
+\end{enumerate}
+
+\begin{definition}
+    Given a $2n \times  2n$ antisymmetric matrix $A$, its \textbf{Pfaffian} is given by
+    \begin{align}
+        \text{Pf} A \equiv \frac{1}{2^{n}n!} \epsilon_{i_1 i_2 \cdots i_{2n}} A^{i_1 i_2} A^{i_3 i_4} \cdots A^{i_{2n-1} i_{2n}}
+    ,\end{align}
+    where $\epsilon_{i_1 i_2 \cdots i_n}$ is the totally antisymmetric symbol $\epsilon_{i_1 i_2 \cdots i_n} = -\epsilon_{i_2 i_1 \cdots i_n}$.
+\end{definition}
+
+\subsection{Group elements as transformations}
+
+We can define actions of group elements $g \in G$ on a set $X$. $X$ might be $G$ itself, but could also be a vector space (i.e. rotation matrices acting on vectors in $\R^3$).
+
+\begin{definition}
+    The \textbf{left action} of $G$ on $X$ is a map $L : G \times X \to X$ such that for $x \in X$
+    \begin{itemize}
+        \item $L \left( e,x \right) = x$, for $e$, the identity of $G$,
+    \item $L \left( g_2, L \left( g_1 x \right)  \right) = L \left( g_2 g_1, x \right) $, $\forall x \in X$, $\forall g_1, g_2 \in G$.
+    \end{itemize}
+
+\end{definition}
+
+The more usual notation is that $\forall g \in G$, we associate a map $g : X \to X$ such that $g \left( x \right) = g x$, however this is slightly less clear.
+
+\begin{definition}
+    The \textbf{right action} of $G$ on $X$ is defined by $g X \to X$ such that $g \left( x \right) = x g^{-1}$, $\forall x \in X$ and $g \in G$.
+\end{definition}
+
+The inverse preserves group composition. Namely,
+\begin{align}
+    g_2 \left( g_1 \left( x \right)  \right) = x \underbrace{g_1^{-1} g_2^{-1}}_{\left( g_2 g_1 \right)^{-1}} = \left( g_2 g_1 \right) \left( x \right) 
+.\end{align}
+
+\begin{definition}
+    \textbf{Conjugation} by $G$ on $X$ is the action defined by
+    \begin{align}
+        g \left( x \right) = g x g^{-1}
+    ,\end{align}
+    $\forall g \in G_1$, $x \in X$.
+\end{definition}
+
+Another definition worth making, even if it won't see immediate use is that of an \textit{orbit}.
+
+\begin{definition}
+    Given a group $G$ and set $X$, an \textbf{orbit} of an element $x \in X$ is the set of elements of $X$ which are in the image of an action of $G$ on $x$.
+\end{definition}
+
+\begin{example}
+    If the action is left, the orbit of $x \in X$ is written $Gx = \{g x  \mid  g \in G\} $.
+\end{example}
+
+It can be shown that the set of orbits under $G$ `partition' $X$ as we will see.
+
+\subsection{Orthogonal groups}
+
+The orthogonal group, $O\left( n \right) $ in particular, represent rotations and reflections on $\R^{n}$. This preserves inner products such that
+\begin{align}
+    \left<\vb{v}_2, \vb{v}_1 \right> = \vb{v}_2^{T} \vb{v}_1
+,\end{align}
+given $R \in O \left( n \right) $,
+\begin{align}
+    \left< R \vb{v}_2, R\vb{v}_1 \right> = \vb{v}_2^{T} \underbrace{\left( R^{T} R \right) }_{I} \vb{v}_1 = \left<\vb{v}_2 , \vb{v}_1 \right>
+.\end{align}
+This is similar for $U\left( n \right) $.
+
+Consider
+\begin{align}
+    So\left( 2 \right) = \left\{ R\left( \theta \right) = \mqty( \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta) \bigg| \theta \in \left( 0, 2\pi \right)  \right\}  
+.\end{align}
+As $\cos$ and $\sin$ are smooth functions, this is a differentiable manifold. One can also show that $R \left( \theta_2 \right) R \left( \theta_1 \right) = R \left( \theta_1 + \theta_2 \right) $.
+
+Similarly, $SU \left( 3 \right) $ can represent rotations of vectors in $\R^{3}$ where the axis of the rotation is given by a unit vector $\vb{n} \in S^2$ and we rotate by an angle $\theta$. Note that rotation by $\theta \in \left[ -\pi,0 \right] $ about $\vb{n}$ is equivalent to a rotation by $- \theta$ about $-\vb{n}$ so we confine to $\theta \in \left[ 0,\pi \right] $.
+
+Therefore we can depict the manifold of $SO \left( 3 \right) $ as a ball of radius $\pi$ in $\R^{3}$, where the direction is specified by $\vb{n}$ and the distance from the origin is specified by $\theta \in \left[ 0,\pi \right] $. Antipodal points are identified such that $\pi \vb{n} = - \pi \vb{n}$.
+
