@@ -1,0 +1,155 @@
+\lecture{3}{17/10/2024}{Lie Algebras}
+
+\section{Lie Algebras}
+% B2.20 - top floor pav b 
+
+\subsection{Pseudo orthogonal group}
+
+$SO\left( n,m \right) $ act on vectors in $\R^{n+m}$ and preserve the scalar product
+\begin{align}
+    v_2^{T} \eta v_1
+,\end{align}
+for $v_1, v_2 \in \R^{n+m}$. For example, $SO\left( 1,1 \right) $ parametrise Lorentz boosts in one dimension and can be written in terms of the \textit{rapidity} $\eta$ as
+\begin{align}
+    SO \left( 1,1 \right) = \left\{  \mqty( \cosh \eta & \sinh \eta \\ \sinh \eta & \cosh \eta) \bigg| \eta \in \R \right\} 
+.\end{align}
+
+As $\eta$ is unbounded, $SO \left( 1,1 \right) $ is clearly noncompact.
+
+\subsection{Parametrization of Lie Groups}
+
+At least in small neighbourhoods, we can assign coordinates on an $n$-dimensional manifold to be
+\begin{align}
+    x := \left( x^{1}, \cdots, x^{n} \right) \in \R^{n}
+.\end{align}
+
+This allows us to label elements $g \left( x \right) \in G$. Closure provides
+\begin{align}
+    g\left( y \right) g\left( x \right) = g\left( z \right) 
+.\end{align}
+
+Smoothness gives us that the components of $z$ are continuously differentiable functions of $x$ and $y$ such that for $i \in 1, \cdots, n$,
+\begin{align}
+    z^{i} = \phi^{i}\left( x,y \right) 
+.\end{align}
+
+We choose the coordinate origin such that $g\left( 0 \right) = e$. Identity gives us that
+\begin{align}
+    g\left( 0 \right) g\left( x \right) = g\left( x \right)  \implies \phi^{i}\left( x,0 \right) = x^{r} \text{~and~}\phi^{i}\left( 0,y \right) = y^{i}
+.\end{align}
+
+Similarly, for inverses, we have that there exists some $\widetilde{x}$ such that $g\left( \widetilde{x} \right) = g\left( x \right)^{-1}$ and thus
+\begin{align}
+    \phi^{i} \left( \widetilde{x},x \right) = 0 = \phi^{i} \left( x, \widetilde{x} \right) 
+.\end{align}
+
+Lastly, associativity gives us
+\begin{align}
+    g\left( z \right) \left( g\left( y \right) g\left( x \right)  \right) = \left( g\left( z \right) g\left( y \right)  \right) g\left( x \right) 
+    \implies \phi^{i} \left( \phi \left( x,y \right) ,z \right) = \phi^{i} \left( x,\phi \left( y,z \right)  \right) 
+.\end{align}
+
+This appears like a Leibniz rule/Jacobi identity as we will see.
+
+\subsection{Lie Algebras}
+
+A Lie group is homogeneous. Any neighbourhood `looks like' (or in a more formal sense, can be mapped to) any other neighbourhood.
+
+For example, for $\epsilon \in G$ close to $g_1$, $g_2 g^{-1} \epsilon$ is close to $g_2$. 
+
+Thus no neighbourhood in particular is special. The natural choice of the representative neighbourhood to study is the one centered at the identity of $G$. We will linearize near the identity of $G$.
+
+\begin{definition} \label{def:lie_algebra}
+    A Lie Algebra is a vector space $V$, which additionally has a vector product, the \textbf{Lie bracket}, $\left[ \cdot, \cdot \right] : V \times  V \to V$ satisfying the following properties for $X,Y,Z \in V$.
+    \begin{enumerate}[label=\arabic*)]
+        \item It is antisymmetric, $ \left[ X, Y \right] = - \left[ Y, X \right] $,
+        \item It satisfies the Jacobi identity, $\left[ X, \left[ Y, Z \right]  \right] + \left[ Y, \left[ X, Z \right]  \right] + \left[ Z, \left[ X, Y \right]  \right] = 0 $,
+        \item It is linear such that for $\alpha, \beta \in \mathbb{F}$, $\left[ X, \alpha Y + \beta Z \right] = \alpha\left[ X, Y \right] + \beta \left[ X, Z \right]$.
+    \end{enumerate}
+\end{definition}
+
+\begin{note}
+    Any vector space which has a vector product $\star : V \times V \to V$ can be made into a Lie Algebra with its Lie bracket given by
+    \begin{align}
+        \left[ X, Y \right] = X \star Y - Y \star X
+    .\end{align}
+\end{note}
+
+
+\begin{definition} \label{def:structure_constants}
+    Let's choose a basis for $V$, given by $\{T_a\} $ for $a = 1, \cdots, n = \dim V$. We call these basis vectors \textbf{generators} of the Lie algebra, and we write their Lie brackets as
+\begin{align}
+    \left[ T_a, T_b \right] = \tensor{f}{^{c}_{abc}} T_c
+,\end{align}
+where $\tensor{f}{^{c}_{ab}} \in \mathbb{F}$ are called \textbf{structure constants}. 
+\end{definition}
+
+Antisymmetry implies $\tensor{f}{^{c}_{ba}} = - \tensor{f}{^{c}_{ab}}$ and the Jacobi identity implies
+\begin{align}
+    \tensor{f}{^{e}_{ad}} \tensor{f}{^{d}_{bc}} + \tensor{f}{^{e}_{cd}} \tensor{f}{^{d}_{ab}} + \tensor{f}{^{e}_{bd}} \tensor{f}{^{d}_{ca}} = 0
+.\end{align}
+
+The general element of a Lie algebra can be written as a linear combination of $\{T_a\} $ as
+\begin{align}
+    X \in V \implies X = X^{a} T_a \text{~with~} x^{a} \in \mathbb{F}
+,\end{align}
+which gives us the bracket of any two elements in terms of structure constants with
+\begin{align}
+    \left[ X, Y \right] = X^{a} Y^{b} \tensor{f}{^{c}_{abc}} T_c
+.\end{align}
+
+
+\subsection{Lie Groups and their Lie Algebras}
+%{2.3}
+
+Take $ g\left( \theta \right) \in SO \left( 2 \right) $ to be
+\begin{align}
+    g\left( \theta \right) = \mqty( \cos \theta & - \sin \theta \\ \sin \theta & \cos \theta)
+,\end{align}
+where $e = I_2 = g\left( 0 \right) $. Points near the identity have $\theta \ll 1$ and thus Taylor expanding the components of $g\left( \theta \right) $ we see
+\begin{align}
+    g \left( \theta \right) &= I_2 + \theta \mqty ( 0 & -1 \\ 1 & 0 ) - \theta^2_2 I_2 + \mathcal{O}\left( \theta^3 \right) \\
+                            &= e + \underbrace{\theta \dv{g}{\theta} \bigg|_{g = 0}}_{\text{tangent vector}} + \dv[2]{g}{\theta} + \mathcal{O}\left( \theta^2 \right)
+,\end{align}
+where the linear term is tangent to the manifold. Here there is a one dimensional tangent space at $e$ given by
+\begin{align}
+    T_e \left( SO \left( 2 \right)  \right) = \left\{ \mqty( 0 & -a \\ a & 0 ) \bigg| a \in \R \right\} 
+.\end{align}
+
+This is the Lie algebra of $SO \left( 2 \right) $,
+\begin{align}
+    \mathfrak{so}\left( 2 \right) :=  L \left( SO \left( 2 \right)  \right) := T_e \left( SO \left( 2 \right)  \right) 
+.\end{align}
+It remains to show this.
+\begin{proof}
+    Notice that
+    \begin{align}
+        \mqty( 0 & -a \\ a & 0 ) \mqty( 0 & -b \\ b & 0) = \mqty( -ab & 0 \\ 0 & -ab) = -ab I
+    ,\end{align}
+    and thus for any two elements (matrices) of the Lie algebra, they commute (which is trivially antisymmetric and satisfying of Jacobi). Linearity similarly follows immediately by inspection.
+\end{proof}
+
+Similarly, one can show $\dim \left( SO \left( n \right)  \right) = \frac{1}{2} n \left( n - 1 \right) \equiv d $, so we have coordinates $x_1 \cdots, x_d$. Consider a single-parameter family of $SO\left( n \right) $ elements,
+\begin{align}
+    M\left( t \right) := M\left( \vb{x}\left( t \right)  \right) \in SO \left( n \right) 
+,\end{align}
+such that $M\left( 0 \right) = I_n$. Orthogonality ($M^{T} M = I$) implies
+\begin{align}
+    0 &= \dv{t} \left( M^{T}\left( t \right) M\left( t \right)  \right) \\
+    &= \dv{M^{T}}{t} + M^{T} \dv{M}{t}
+,\end{align}
+where looking at $t = 0$ we see
+\begin{align}
+    \dv{M^{T}}{t} = -\pdv{M}{t}
+,\end{align}
+which implies matrices in the tangent space of $SO \left( n \right) $ are antisymmetric.
+
+We have
+\begin{align}
+    \dv{M}{t} = \sum_{i}^{} \pdv{M}{x_{i}} \dv{x_{i}}{t} 
+.\end{align}
+
+
+
+
+
