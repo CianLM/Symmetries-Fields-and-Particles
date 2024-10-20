@@ -1,0 +1,139 @@
+\lecture{4}{19/10/2024}{}
+
+Observe that
+\begin{align}
+    T_e \left( \mathcal{O}\left( n \right)  \right) = T_e \left( SO \left( n \right)  \right) 
+,\end{align}
+as $\det I = 1$, so all curves passing through $I$ have $\det M = 1$.
+
+\subsection{Unitary Groups}
+
+
+
+Let $M\left( t \right) $ be a curve in $SU \left( n \right) $ with $ M \left( 0 \right) = I$. For small $t$, write $M \left( t \right) = I + t X + \mathcal{O}\left( t^2 \right) $, where $X = \dv{M}{t} \bigg|_{t=0}$. 
+
+Unitarity of $M$ provides that for all $t$,
+\begin{align}
+    I &= M^{\dag} M \\
+    U = I + t \left( X + X^{\dag} \right) + \mathcal{O}\left( t^2 \right) 
+,\end{align}
+which implies $X^{\dag} = -X$, namely, elements of the tangent space are \textit{anti-Hermitian}.
+
+\begin{claim}
+    $\tr X = 0$ for $X \in L \left( SU \left( n \right)  \right)$ or $M \in SU \left( n \right) $
+\end{claim}
+
+\begin{proof}
+    Look at
+    \begin{align}
+        M\left( t \right) = \mqty( 1 + t X_{11} & t X_{12} & \cdots & t X_{1n} \\
+        t X_{21} & t + t X_{22} & \cdots & tX_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        t X_{n1} & t X_{n2} & \cdots & 1 + t X_{n n} )
+    .\end{align}
+    Notice that
+    \begin{align}
+        1 = \det M = 1 + \underbrace{t \tr X}_{0} + \mathcal{O} \left( t^2 \right) 
+    ,\end{align}
+    where the underbraced term (and higher order ones) must vanish.
+\end{proof}
+
+For $U \left( n \right) $, $X$ can have non-zero trace.
+
+\subsection{Lie algebra of a matrix Lie group}
+
+Consider two curves $g_1 \left( x \left( t \right)  \right)$ and $g_2 \left( x \left( t \right)  \right)$ through the identity $e$ of some Lie group $G$. We define
+\begin{align}
+    X_1 := \dot{g}_1 \bigg|_{t=0}, &&  X_2 := \dot{g}_2 \bigg|_{t=0}
+.\end{align}
+
+One can define a product
+\begin{align}
+    g_3 \left( z\left( t \right)  \right) = g_2\left( y\left( t \right)  \right) g_1 \left( x \left( t \right)  \right) \in G
+,\end{align}
+satisfying
+\begin{align}
+    \dot{g}_3 \bigg|_{t=0} &= \left( \dot{g}_2 g_1 + g_2 \dot{g}_1 \right) \bigg|_{t=0}  \\
+    &= X_2 + X_1 \in T_e \left( G \right)
+,\end{align}
+another vector in the tangent space.
+
+The Lie bracket arises from the \textit{group commutator}.
+
+\begin{definition}
+    The \textbf{group commutator} of $g_1, g_2 \in G$, is
+    \begin{align}
+        \left[ g_1, g_2 \right]_{G} := g^{-1}_1 g_2^{-1} g_1 g_2 := h \in G
+    .\end{align}
+\end{definition}
+
+Returning to our two curves through the identity $e$, $g_i \left( t \right) $ for $i \in \{1,2\} $, we can expand
+\begin{align}
+    g_i \left( t \right) = e + t X_i + t^2 W_i + \mathcal{O}\left( t^3 \right) 
+.\end{align}
+
+We have that
+\begin{align}
+    g_1 \left( t \right) g_2 \left( t \right) = e + t \left( X_1 + X_2 \right) + t^2 \left( X_1 X_2 + W_1 + W_2 \right) + \mathcal{O}\left( t^3 \right) 
+,\end{align}
+and
+\begin{align}
+    g_2 \left( t \right) g_1 \left( t \right) = e + t \left( X_1 + X_2 \right) + t^2 \left( X_2 X_1 + W_1 + W_2 \right) + \mathcal{O}\left( t^3 \right) 
+.\end{align}
+
+If we then look at
+\begin{align}
+    h \left( t \right) = \left[ g_2 \left( t \right) g_1\left( t \right)  \right]^{-1} g_1\left( t \right) g_2\left( t \right) = e + t^2 \underbrace{\left( X_1 X_2 - X_2 X_1 \right)}_{\left[ X_1, X_2 \right] }  + \cdots
+,\end{align}
+and thus the group commutator induces the Lie bracket in the algebra. As $h \left( t \right) \in G$, the tangent to $h\left( t \right)$ at $e$ is $\left[ X_1, X_2 \right] \in L \left( G \right) $, and thus we have closure under the Lie bracket.
+
+\begin{itemize}
+    \item We write the tangent space to a matrix Lie group $G \overset{\text{subgroup}}{<} GL \left( n, \mathbb{F} \right) $ at a general element $p$ as $T_{p} \left( G \right) $. Let $g \left( t \right) $ be a curve in the manifold through $p$ with $g \left( t_0 \right) = p$, and thus
+        \begin{align}
+            g \left( t + \epsilon \right) = g\left( t_0 \right) + \dot{\epsilon}\left( t_0 \right) + \mathcal{O}\left( \epsilon^2 \right) 
+        .\end{align}
+        As both $g \left( t_0 \right), g\left( t_0 + \epsilon \right) \in G$, there exists $h_p \left( \epsilon \right) \in G $ such that
+        \begin{align}
+            g \left( t_0 + \epsilon \right) = g \left( t_0 \right) h_p \left( \epsilon \right) 
+        ,\end{align}
+        and as $\epsilon \to 0$, $h_p \left( \epsilon \right) \to e$. For small $\epsilon$,
+        \begin{align}
+            h_p \left( \epsilon \right) = e + \epsilon X_p + \mathcal{O}\left( \epsilon^2 \right) 
+        ,\end{align}
+        for some $X_p \in L \left( G \right) = T_e \left( G \right)  $. Neglecting $\mathcal{O}\left( \epsilon^2 \right) $,
+        \begin{align}
+            e + \epsilon X_p = h_p \left( \epsilon \right) &= g^{-1}\left( t_0 \right) g\left( t_0 + \epsilon \right)  \\
+            &= g^{-1} \left( t_0 \right) \left[ g \left( t_0 \right) + \epsilon \dot{g}\left( t_0 \right)  \right]   \\
+            &= e + \epsilon \underbrace{g^{-1}\left( t_0 \right) \dot{g}\left( t_0 \right)}_{X_p}
+        .\end{align}
+
+\end{itemize}
+
+\begin{claim}
+    Conversely, for any $X \in L \left( G \right) $, there exists a unique curve $g \left( t \right) $ with $g^{-1} \left( t \right) \dot{g}\left( t \right) = X$ and $g \left( 0 \right) = g_0$.
+\end{claim}
+\begin{proof}
+    This is a consequence of existence and uniqueness of solutions of ODEs. The solution of this ODE is
+    \begin{align}
+        g \left( t \right) = g_0 \exp \left( tX \right) 
+    ,\end{align}
+    where
+    \begin{align}
+        \exp t X := \sum_{k=0}^{\infty} \frac{\left( t X \right)^{k}}{k!} 
+    .\end{align}
+\end{proof}
+
+\subsection{One parameter subgroups}
+
+Given an $X \in L \left( G \right) $ , the curve
+\begin{align}
+    g_X \left( t \right) = \exp t X
+,\end{align}
+forms an \textit{abelian} subgroup of $G$, \textit{generated} by $X$.
+
+Notice that $g_X \left( t \right) $ is isomorphic to the group of real numbers under addition $\left( \R, + \right) $ if only $g_X \left( 0 \right) = e$. If there exist other $t_0 \neq 0$ such that $g_X\left( t_0 \right) = 0 $, then we have periodic structure and then $g_X \left( t \right) $ is isomorphic to the circle $S^{1}$.
+
+
+
+
+
