@@ -1,0 +1,133 @@
+\lecture{5}{22/10/2024}{Lie Groups from Lie Algebras}
+
+\newcommand{\id}{\text{id}}
+
+\subsection{Lie Groups from Lie Algebras}
+
+\begin{definition}
+    Given a Lie algebra $L\left( G \right)$ of a Lie group $G$, we can define the \textbf{exponential map}:
+    \begin{align}
+        \exp : L \left( G \right) \to G
+    ,\end{align}
+    which for matrix Lie groups, is
+    \begin{align}
+        X \mapsto \exp X = \sum_{k=0}^{\infty}  \frac{X^{k}}{k!}
+    .\end{align}
+\end{definition}
+
+Locally, the map is bijective (one to one). For the proof see Hall Section 2.7.
+Globally, the map is generally, not.
+
+\begin{example}
+    For example, $U \left( 1 \right) = \{e^{i \theta}  \mid  \theta \in [ 0,2\pi ) \} $ and we have
+    \begin{align}
+        L \left( U \left( 1 \right)  \right) = \{i x  \mid  x \in \R\}
+    ,\end{align}
+    where clearly $\exp \left( ix \right) $ is not one to one globally since $e^{2\pi ni} = 1$, $\forall n \in \Z$.
+\end{example}
+
+\begin{example}
+    $G = O \left( n \right) $. Let $X \in L \left( O \left( n \right)  \right) \subset \text{Skew}_n\left( \R \right) $. Let $M = \exp t X$, and observe that as $X$ is antisymmetric, $M^{T} = \left[ \exp X \right]^{T} = \exp \left( -tX \right) $. Therefore,
+    \begin{align}
+        M M^{T} = I = M^{T} M
+    ,\end{align}
+    and thus we recover $M \in O \left( n \right) $.
+\end{example}
+
+\begin{note}
+    $\tr X = 0$. Let $\lambda_1, \cdots, \lambda_n$ be eigenvalues of $X$, and observe that
+    \begin{align}
+        \det M &= \det \left( \exp t X \right)  \\
+        &= \exp \left( \tr t X \right)  \\
+        &= \exp \left( 0 \right)  \\
+        &= 1
+    .\end{align}
+    and thus $M  \in SO \left( n \right)$. Thus elements of $O \left( n \right) $ with determinant $-1$ are not in the image of the exponential map.
+\end{note}
+
+Therefore, $O \left( n \right) $ is a disconnected manifold. One can think of $O\left( n \right) $ as two disconnected islands, one with $\det M = 1$ containing the identity called \textit{proper rotations}, and another containing elements with $\det M = -1$ called \textit{improper rotations} as they contain a reflection.
+
+% fig
+
+One can show that $A \in \text{Skew}_n \left( \R \right) $ implies $A \in L \left( SO \left( n \right)  \right) $ or $L \left( O \left( n \right)  \right) $.
+
+Define $\gamma \left( t \right) := \exp t A$ to be a curve of matrices on some manifold. By above, we see that
+\begin{align}
+    \left( \gamma \left( t \right)  \right)^{T} \left( \gamma \left( t \right)  \right) = I
+,\end{align}
+and thus $\det \gamma \left( t \right) = 1$ which implies $\gamma \left( t \right) \in SO \left( n \right) $. By construction, $A = \dot{\gamma}\left( t \right) \bigg|_{t=0}$ and thus is tangent to the curve at the identity of $SO \left( n \right) $ suggesting $A \in L \left( SO \left( n \right)  \right) $. Therefore
+\begin{align}
+   \dim SO \left( n \right) = \dim L \left( SO \left( n \right)  \right) = \dim \left( \text{Skew}_n \left( \R \right)  \right) = \frac{n \left( n- 1\right) }{2}
+.\end{align}
+
+
+\subsection{Group product from Lie bracket}
+
+Recall the Baker-Campbell-Haussdorff (BCH) formula, namely that for $X,Y \in L \left( G \right) $, we have
+\begin{align}
+    \exp \left( tX \right) \exp \left( tY \right) = \exp \left( tZ \right) 
+,\end{align}
+where
+\begin{align}
+    Z = X + Y + \frac{t}{2}\left[ X, Y \right] + \frac{t^2}{12} \left( \left[ X, \left[ X, Y \right]  \right]   + \left[ Y, \left[ X, Y \right]  \right] \right) + \mathcal{O}\left( t^3 \right) 
+.\end{align}
+
+One can show this order by order in $t$. As $L \left( G \right) $ is closed under the Lie bracket, $Z \in L \left( G \right) $ and thus $\exp t Z \in G$.
+
+\section{Representation Theory}
+
+Groups and their elements represent transformations under which a system or object is invariant. Representations of groups tell us how the action of the group transforms vectors in a vector space.
+
+We saw $GL \left( n, \mathbb{F} \right) $ as a group of invertible matrices. These matrices are equivalently linear maps (automorphisms) on the vector space $\mathbb{F}^{n}$ with
+\begin{align}
+    GL \left( n, \mathbb{F} \right) : \mathbb{F}^{n} \to \mathbb{F}^{n}
+.\end{align}
+
+We generalize this notation to act on any vector space $V$ such that
+\begin{align}
+    GL \left( V \right) : V \to V
+.\end{align}
+
+If $V$ is finite dimensional, we can choose a basis and recover the original definition.
+
+\subsection{Lie group representations}
+
+\begin{definition}
+    A \textbf{representation} $D$ of a group $G$ is a smooth group homomorphism
+    \begin{align}
+        D : G \to GL \left( V \right) 
+    ,\end{align}
+    from $G$ to the group of automorphisms on some vector space $V$ called the \textbf{representation space}, associated with $D$.
+\end{definition}
+
+That is, $\forall g \in G$, $D \left( g \right) : V \to V$ is an invertible, linear map such that for a vector $v \in V$,
+\begin{align}
+    v \mapsto D \left( g \right) v
+.\end{align}
+
+This map is linear such that
+\begin{align}
+    D \left( g \right) \left( \alpha v_1 + \beta v_2 \right) = \alpha D \left( g \right) v_1 + \beta D \left( g \right) v_2
+,\end{align}
+$\forall \alpha, \beta \in \mathbb{F}$, $v_1, v_2 \in V$. Further, the group homomorphism holds such that we have
+\begin{align}
+    D \left( g_2 g_1 \right) = D \left( g_2 \right) D \left( g_1 \right) 
+,\end{align}
+$\forall g_1, g_2 \in G$. This group homomorphism property implies that
+\begin{align}
+    D \left( e \right) = \id_{V}
+,\end{align}
+and by an identical argument,
+\begin{align}
+    D \left( g \right)^{-1} = D \left( g^{-1} \right) 
+.\end{align}
+
+\begin{definition}
+    The \textbf{dimension} of a representation $D$ is the dimension of the representation space $V$ on which it acts.
+\end{definition}
+
+If $V$ is finite dimensional, say $\dim V = N$, then $GL \left( V \right) $ is isomorphic to $GL \left( N, \mathbb{F} \right) $.
+
+
+
+
