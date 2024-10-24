@@ -1,0 +1,146 @@
+\lecture{6}{24/10/2024}{}
+
+\newcommand{\Ad}{\text{Ad}}
+
+\section{}
+
+\begin{definition}
+    The \textbf{kernel} of a map $D : G \to GL \left( V \right)$ consists of all elements of $G$ which map to the identity, $\id_V = I$.
+\end{definition}
+
+\begin{definition}
+    A representation $D$ is said to be \textbf{faithful} if $D \left( g \right) = \id_V$ only for $g = e$. Namely, if $\ker D = \{e\} $.
+\end{definition}
+
+Faithfulness implies that $D$ is injective, i.e. $D\left( g_1 \right) = D\left( g_2 \right) \implies g_1 = g_2$.
+\begin{proof}
+    Assume $D$ is faithful and that $D \left( g_1 \right) = D\left( g_2 \right) $. Then,
+    \begin{align}
+        D\left( g^{-1}_1 \right) D\left( g_1 \right) &= D\left( g_1^{-1} \right) D\left( g_2 \right) \\
+        D \left( g^{-1}_1 g_1 \right) &= D \left( g_1^{-1} g_2 \right)  \\
+        D \left( e \right) &= D \left( g_1^{-1} g_2 \right) \\
+        \id_V &= D \left( g_1^{-1} g_2 \right)
+    ,\end{align}
+    where as $D$ is faithful, $g_1^{-1} g_2 = e \implies g_1 = g_2$.
+\end{proof}
+
+\begin{examples} We look at $G = \left( \R, + \right) $.
+    \begin{enumerate}[label=\arabic*)]
+        \item For some fixed, $k \in \R$, $D \left( \alpha  \right)= e^{k\alpha} $, $\forall \alpha \in G$ is a one-dimensional representation. 
+
+            One can check that this is a representation, namely, that it respects the group multiplication through a homomorphism
+            \begin{align}
+                D \left( \alpha \right) D\left( \beta \right) = e^{k \alpha} e^{k \beta} = e^{k \left( \alpha + \beta \right) } = D \left( \alpha + \beta \right) 
+            .\end{align}
+            For $k \neq 0$, this is a faithful representation as $D\left( \alpha \right) = 1 \implies \alpha = 0$ and thus $\ker D = \{0 \equiv \id_G\} $.
+        \item For $k = 0$, $D \left( \alpha \right) = 1 \forall \alpha$, and thus $\ker D = G$. This is not faithful and is called the \textit{trivial representation}.
+        \item We can similarly define $D \left( \alpha \right) = e^{ik \alpha}$, for $k \in \R$. This is not faithful as $\ker D = \{\frac{2\pi n}{k}  \mid n \in \Z\} $. Here $V = \C$.
+        \item A two dimensional representation can also be defined with
+            \begin{align}
+                D \left( \alpha \right) = \mqty( \cos \alpha & - \sin \alpha \\ \sin \alpha & \cos \alpha )
+            ,\end{align}
+            where $V = \R^2$.
+        \item Lastly, one can define an infinite dimensional representation. Let
+            \begin{align}
+                V = \{\text{space of all real functions $f\left( x \right) $}\} 
+            ,\end{align}
+            and let
+            \begin{align}
+                D \left( \alpha \right) f\left( x \right) = f \left( x - \alpha \right) 
+            .\end{align}
+            We see that $D \left( \alpha \right) f = f,~ \forall f \in V \implies \alpha = 0$, and thus the representation is faithful.
+    \end{enumerate}
+\end{examples}
+
+\begin{definition}
+    The \textbf{trivial representation} $D_0$ is where 
+    \begin{align}
+        D_0 \left( g \right) = 1
+    ,\end{align}
+    $\forall g \in G$. This is not faithful as $\ker D = G$ and the dimension of $D_0$ is 1.
+\end{definition}
+
+Quantities which are invariant under group transformations, transform in the trivial representation. In physics, we call these \textbf{singlets}.
+
+\begin{note}
+    One can form a trivial representation of any dimension $M$ such that $D \left( g \right) = I_m$, $\forall g \in G$. This representation is \textit{reducible} (as we will define) and can be thought of as $m$ copies of the dimension one trivial representation.
+\end{note}
+
+\begin{definition}
+    If $G$ is a matrix Lie group, then the \textbf{fundamental} or \textbf{defining representation} $D_f$ is given by
+    \begin{align}
+        D_f \left( g \right) = g
+    ,\end{align}
+    $\forall g \in G$.
+\end{definition}
+
+Only $D_f \left( e \right) = e$ thus it is faithful. If $G \subset GL \left( n, \mathbb{F} \right) $, then $\dim D_f = n$.
+
+Let $G$ be a matrix Lie group and consider its Lie algebra as a vector space $V = L \left( G \right) $.
+
+\begin{definition}
+    The \textbf{adjoint representation} $D^{\text{adj}} \equiv \Ad$ is the map
+    \begin{align}
+        \Ad : G \to GL \left( L \left( G \right)  \right) 
+    ,\end{align}
+    such that $\forall g \in G$,
+    \begin{align}
+        \Ad_g : L\left( G \right) \to L \left( G \right) 
+    ,\end{align}
+    with
+    \begin{align}
+        \Ad_g X = g X g^{-1}
+    ,\end{align}
+    $\forall X \in L \left( G \right) $. This is action by conjugation.
+\end{definition}
+
+Let's check that this is a representation.
+
+    $\bullet$ \textit{Closure}: For $X \in L \left( G \right) $, there is a curve in $G$ such that
+    \begin{align}
+        g \left( t \right) = e + t X + \cdots
+    .\end{align}
+    For any $h \in G$, we have another curve
+    \begin{align}
+        \widetilde{g}\left( t \right) &= h g\left( t \right) h^{-1} \\
+        &= e + t\underbrace{h X h^{-1}}_{\in L \left( G \right) } + \cdots
+    .\end{align}
+    Therefore $\Ad_h X = h X h^{-1} \in L \left( G \right) $ and thus we have closure.
+
+    $\bullet$ \textit{Group homomorphism:} The group operation is preserved as 
+    \begin{align}
+        \left( \Ad_{g_2 g_1} \right)  X &= \left( g_2 g_1 \right) X \left( g_2 g_1 \right)^{-1} \\
+        &= g_2 \left( g_1 X g_1^{-1} \right) g_2^{-1} \\
+        &= \Ad_{g_2} \left( \Ad_{g_1}X \right)  \\
+        &= \left( \Ad_{g_2} \right) \left( \Ad_{g_1} \right) \left( X \right) 
+    .\end{align}
+
+    $\bullet$ \textit{The Lie bracket:} The Lie bracket is preserved as well as
+    \begin{align}
+        \Ad_g \left( \left[ X,Y \right]  \right) &= g \left[ X,Y \right] g^{-1} \\
+        &= \left[ g X g^{-1}, gYg^{-1} \right]  \\
+        &= \left[ \Ad_g X, \Ad_g Y \right]
+    .\end{align}
+
+\subsection{Lie algebra representations}
+
+\begin{definition}
+    A \textbf{representation}, $d$, of a Lie algebra $L \left( G \right) $ is a map from $L \left( G \right) $ to a set of linear maps with $\mathfrak{gl}\left( V \right) = L \left( GL \left( V \right)  \right)$, where the Lie bracket is preserved (instead of the group operation).
+\end{definition}
+
+That is, for each $X \in L \left( G \right) $, we have a map $d \left( X \right) : V \to V$, a linear map (not necessarily invertible) such that
+\begin{align}
+    v \mapsto d \left( X \right) v
+,\end{align}
+$\forall v \in V$.
+
+Linearity implies that for $X,Y \in L \left( G \right) $, we have $d \left( \alpha X + \beta Y \right) = \alpha d \left( X \right) + \beta d\left( Y \right) $. As we also want to preserve the bracket, we need
+\begin{align}
+    d \left( \left[ X, Y \right]  \right) = \left[ d\left( X \right) , d\left( Y \right)  \right] 
+,\end{align}
+$\forall X,Y \in L \left( G \right) $.
+
+\begin{definition}
+    The \textbf{dimension} of $d = \dim V$.
+\end{definition}
+

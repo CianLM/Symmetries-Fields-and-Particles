@@ -21,3 +21,5 @@ info.yaml
 *.upa
 *.upb
 *.keystrokes
+*.pdf
+!master.pdf
