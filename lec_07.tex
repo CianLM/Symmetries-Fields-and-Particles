@@ -1,0 +1,181 @@
+\lecture{7}{26/10/2024}{Irreducible representations}
+
+\newcommand{\ad}{\text{ad}}
+
+The Lie algebra also admits a trivial representation,
+\begin{align}
+    d_0 \left( X \right) = 0 \in V
+,\end{align}
+$\forall X \in L \left( G \right) $.
+
+The fundamental representation also follows identically and we have
+\begin{align}
+    d_f \left( X \right) = X \in V
+,\end{align}
+$\forall X \in L \left( G \right) $.
+
+Lastly we rewrite the adjoint representation. Recall that it can be thought of as the action of the Lie algebra on itself.
+
+\begin{definition}
+    The \textbf{adjoint representation} of a Lie algebra can be written
+    \begin{align}
+        \ad : L \left( G \right) \to \mathfrak{gl}\left( L\left( G \right)  \right) 
+    .\end{align}
+    Then, for $X \in L \left( G \right) $,
+    \begin{align}
+        \ad_X : L \left( G \right) \to L \left( G \right) 
+    ,\end{align}
+    such that
+    \begin{align}
+        \ad_X Y = \left[ X, Y \right] 
+    ,\end{align}
+    $\forall Y \in L \left( G \right) $.
+\end{definition}
+
+\subsection{From The Lie Group Reps to the Lie Algebra Reps}
+
+As before, consider tangent curves in $G$
+\begin{align}
+    g \left( t \right) = e + t X + \cdots
+.\end{align}
+
+We expand the corresponding elements of the representation $D$ of $G$ as
+\begin{align}
+    D \left( g \left( t \right)  \right) = \id_V + t d \left( X \right) + \cdots
+.\end{align}
+
+We use this expansion to define $d$ from $D$ and we can check that the Lie bracket is preserved. Namely,
+\begin{align}\label{eq:rep_expansion}
+    D \left( g_1^{-1} g_2^{-1} g_1 g_2 \right) = D\left( g_1 \right)^{-1} D \left( g_1 \right) D \left( g_2 \right) 
+,\end{align}
+where expanding the left hand side we see
+\begin{align}
+      D \left( g_1^{-1} g_2^{-1} g_1 g_2 \right) &= D\left( e + t^2 \left[ X_1, X_2 \right] + \cdots \right)  \\
+      &= \id_V + t^2 d \left( \left[ X_1, X_2 \right]  \right) 
+.\end{align}
+
+Expanding $g_i \left( t \right) = e + t X_i + \cdots$, we see that the right hand side of \cref{eq:rep_expansion} then becomes
+\begin{align}
+D\left( g_1 \right)^{-1} D \left( g_1 \right) D \left( g_2 \right)  = \id_V +  t^2 \left[ d \left( X_1 \right) , d\left( X_2 \right)  \right] 
+,\end{align}
+and thus equating the two sides, we arrive at
+\begin{align}
+    d \left( \left[ X_1, X_2 \right]  \right) = \left[ d \left( X_1 \right) , d\left( X_2 \right)  \right] 
+,\end{align}
+is a Lie algebra homomorphism. 
+
+
+\begin{example}
+    The adjoint representation $\ad_X$ can be obtained from $\Ad_g$. Namely, given $Y \in L \left( G \right) $, 
+    \begin{align}
+        \Ad_g Y &= g Y g^{-1} \\
+        &= \left( I + t X \right) Y \left( I - t X \right)  \\
+        &= Y + t \left[ X, Y \right]  \\
+        &= \left( I + t \ad_X  \right) Y
+    ,\end{align}
+    and thus $\ad_X Y = \left[ X, Y \right] $ as expected.
+\end{example}
+
+\subsection{Useful concepts}
+% 3.3
+
+\begin{definition}
+    Representations $D_1$ and $D_2$ of $G$ (or $d_1$ and $d_2$ of $L\left( G \right) $) are \textbf{equivalent} if there exists an invertible linear maps $R$, such that
+    \begin{align}
+        D_2 \left( g \right) &= R D_1 \left( g \right) R^{-1} 
+    ,\end{align}
+    $\forall g \in G$ (or $X \in L \left( G \right) $).
+\end{definition}
+
+\begin{definition}
+    A representation $d$ of $L \left( G \right) $ with representation space $V$ has an \textbf{invariant subspace} $W \subseteq V$ if $\forall  w \in W$ and $X \in L \left( G \right) $,
+    \begin{align}
+        d \left( X \right) w \in W
+    .\end{align}
+\end{definition}
+
+\begin{example}
+    If all $d\left( X \right)$ are all upper triangular matrices, $\mqty( A & B \\ 0 & C )$, then there is an invariant subspace
+    \begin{align}
+        W = \left\{\mqty( a \\ 0 )\right\} 
+    .\end{align}
+\end{example}
+
+\begin{definition}
+    An \textbf{irreducible representation} (``\textit{irrep}'') is a representation with no nontrivial invariant subspaces.
+
+    Otherwise, the representation is \textbf{reducible}.
+\end{definition}
+
+\begin{definition}
+    A \textbf{direct sum} of vector spaces $U$ and $V$ is written
+    \begin{align}
+        U \oplus W =  \left\{\left( u,w \right)  \mid u \in U, w \in W \right\} 
+    ,\end{align}
+    where $\left( u_1, w_1 \right)  + \left( u_2, w_2 \right) = \left( u_1 + u_2, w_1 + w_2 \right) $ and $\alpha \left( u, w \right) = \left( \alpha u, \alpha w \right) $. Note that
+    \begin{align}
+        \dim U \oplus W = \dim U + \dim W
+    .\end{align}
+\end{definition}
+
+\begin{definition}
+    A \textbf{totally reducible} representation $d$ of $L\left( G \right) $ (or $D \left( G \right) $) can be decomposed into irreducible pieces. Namely, it's representation spaces can be written as a direct sum of irreducible representation spaces,
+    \begin{align}
+        V = W_1 \oplus W_2 \oplus \cdots \oplus W_k
+    ,\end{align}
+    such that $d \left( X \right) w_i \in W_i$ for all $X \in L \left( G \right)$ and $w_i \in W_i$. Then, there exists some basis where $d \left( X \right) $ becomes block diagonal such that
+    \begin{align}
+        d \left( X \right) = \mqty( d_1 \left( X \right) & 0 & \cdots & 0 \\
+        0 & d_2 \left( X \right) & \ddots & \vdots \\
+        \vdots & \ddots & \ddots & 0 \\
+        0 & \cdots & 0 & d_k\left( X \right)  )
+    .\end{align}
+\end{definition}
+
+We often write $d = \widetilde{d}_1 \oplus \cdots \oplus \widetilde{d}_k$.
+
+\begin{definition}
+    An $N$-dimensional representation (for $N$ finite) $D$ is \textbf{unitary} if $D \left( g \right) = U \left( N \right) $, $\forall g \in G$.
+
+    Identically $d$ is unitary if $d \left( X \right) $ if $d \left( X \right) \in L \left( U \left( N \right)  \right) $, $\forall X \in L \left( G \right) $.
+\end{definition}
+
+If all $D \left( g \right) $ are real, then $D \left( g \right) \in O \left( N \right) $ then $D$ is said to be orthogonal. Most of these claims rely on $d$ being finite dimensional.
+
+
+\begin{theorem}[ (Maschke)]
+    A finite-dimensional unitary representation is either irreducible or totally reducible.
+\end{theorem}
+
+\begin{proof}(Sketch)
+    For each invariant subspace $W$, the orthogonal component $W_\perp$ is also invariant. This implies we can separate the representation space into
+    \begin{align}
+        V = W \oplus W_{\perp}
+    .\end{align}
+    Then similarly we can decompose $W$ and $W_\perp$ into any further invariant spaces if they exist (and repeat until there are no more invariant subspaces). If $V$ is finite dimensional then this process must terminate.
+\end{proof}
+
+\begin{note}
+    There are a few things of note after this definition storm. Maschke's theorem can be extended to 
+    \begin{itemize}
+        \item all finite representations of discrete groups
+        \item all finite representations of compact Lie groups 
+    \end{itemize}
+\end{note}
+
+\begin{example}
+    Take $V = \{\text{~all 2 $\pi$ periodic functions $f : \R \to \R$, $f \left( x + 2\pi \right)  = f \left( x \right) $}\} $. Take the representation to be
+    \begin{align}
+        \left( D \left( \alpha \right) f \right) \left( x = f\left( x - a \right)  \right) 
+    .\end{align}
+    Recall that this is not faithful. We have invariant subspaces given by
+    \begin{align}
+        W_n = \{f \left( x \right) = c_n e^{inx}  \mid n \in \Z\} 
+    ,\end{align}
+    which are one dimensional. One can then write
+    \begin{align}
+        V = \cdots \oplus W_{-2} \oplus W_{-1} \oplus W_0 \oplus \cdots
+    .\end{align}
+\end{example}
+
+
