@@ -1,0 +1,134 @@
+\lecture{9}{31/10/2024}{Double Covers}
+
+\begin{definition}
+    The center of a group is the set of all $x \in G$ which satisfy $x g = g x$, $\forall g \in G$.
+\end{definition}
+
+\begin{theorem}
+    The center $Z \left( G \right) \trianglelefteq G $  is a normal subgroup of $G$.
+\end{theorem}
+
+\begin{proof}
+    
+\end{proof}
+
+$SU \left( 2 \right) $ has centre $Z \left( SU \left( 2 \right)  \right) = \{I_2, -I_2\} \cong \Z_2 = \{1,-1\} $.
+
+We then look at cosets of the form $U Z \left( SU \left( 2 \right)  \right) $ for $U \in SU \left( 2 \right) $ and see
+\begin{align}
+    U Z \left( SU \left( 2 \right)  \right) = \{U, - U\} 
+.\end{align}
+
+The set of all such cosets forms the quotient group $SU \left( 2 \right)  / \Z_2$ whose manifold is $S^{3}$ with antipodes identified, or equivalently just the upper half of $S^{3}$ ($a_0 \geq 0$) with opposite points on the equator identified.
+
+% fig
+
+One can see that this is just a curved picture of the $SO \left( 3 \right) $ manifold, as we claim
+\begin{align}
+    SO \left( 3 \right) \cong SU \left( 2 \right) / \Z_2
+.\end{align}
+
+We desire an explicit map to show this isomorphism.
+
+One can define the map $\rho : SU\left( 2 \right) \to SO \left( 3 \right) $. For $A \in SU \left( 2 \right) $, $\rho \left( A \right) = R$ with components
+\begin{align}
+    R_{ij} = \frac{1}{2}\tr \left( \sigma_{i} A \sigma_j A^{\dag} \right) 
+,\end{align}
+for $i = 1,2,3$. This is a 2 to 1 map as both $A,-A \mapsto \rho \left( A \right) = \rho \left( -A \right) $. This is called a \textbf{double covering} of $SO \left( 3 \right) $.
+
+One also says that $SU \left( 2 \right) $ is the \textit{double cover} of $SO \left( 3 \right) $.
+
+\begin{proposition}
+    Every Lie algebra is the Lie algebra of exactly one \textbf{simply-connected} Lie group.
+\end{proposition}
+
+\begin{definition}
+    A manifold is \textbf{simply connected} if it is path connected and any closed loop can be smoothly contracted to a point.
+\end{definition}
+
+\subsection{Representations of $\mathfrak{su}\left( 2 \right) $}
+
+Observe that $T_a = -i \frac{\sigma_a}{2}$ are generators of the algebra. It is convenient to enlarge this real vector space to the field $\C$. Given a real vector space $V$,
+\begin{align}
+    V &:= \{ \lambda^{a} T_a   \mid \lambda^{a} \in \R\} = \text{span}_{\R} \{T_a\} 
+,\end{align}
+the \textit{complexification} of $V$ is
+\begin{align}
+    V_{\C} = \text{span}_{\C} \{T_a\} 
+.\end{align}
+
+For example, we have
+\begin{align}
+    \mathfrak{su}\left( n \right) = \{X \in \text{Mat}_{n}\left( \C \right)  \mid X^{\dag} = - X, \Tr X = 0 \} 
+,\end{align}
+becomes
+\begin{align}
+    \mathfrak{su}_{\C}\left( n \right) = \{X \in \text{Mat}_{n}\left( \C \right)  \mid  \tr X = 0\} \cong \mathfrak{sl}\left( n, \C \right) 
+.\end{align}
+
+Let $\mathfrak{g} = L \left( G \right) $ be a real Lie algebra and denote its complexification by $\mathfrak{g}_{\C} = L \left( G \right)_{\C}$. A representation $d$ of $L \left( G \right) $ can be extended to $L \left( G \right)_{\C}$ by imposing 
+\begin{align}
+    d\left( X + i Y \right) = d\left( X \right) + i d \left( Y \right) 
+,\end{align}
+where $X, Y \in L \left( G \right) $ and $X + i Y \in L \left( G \right)_{\C}$.
+
+Conversely, if we have a representation $d_{\C}$ of $L \left( G \right)_{\C}$ we can restrict it to the representation $d$ of $L \left( G \right) $ by writing
+\begin{align}
+    d \left( X \right) = d_{\C}\left( X \right) 
+,\end{align}
+for $X \in L \left( G \right) \subset L \left( G \right)_{\C}$.
+
+\begin{definition}
+    A \textbf{real form} of a complex Lie algebra $\mathfrak{h}$ is a real Lie algebra $\mathfrak{g}$ whose complexification is $\mathfrak{h}$, $\mathfrak{g}_{\C} = \mathfrak{h}$.
+\end{definition}
+
+In general a complex Lie algebra can have multiple non-isomorphic real forms.
+
+Now moving to $\mathfrak{su}\left( 2 \right) $, we see
+\begin{align}
+    \mathfrak{su}\left( 2 \right)_{\C} = \text{span}_{\C} \{\sigma_a  \mid  a = 1,2,3\} 
+.\end{align}
+
+There exists a more convenient basis (Cartan-Weyl basis), with
+\begin{align}
+    H &= \sigma_3 = \mqty( 1 & 0 \\ 0 & -1) \\
+    E_+ &= \frac{1}{2} \left( \sigma_1 + i \sigma_2 \right) = \mqty( 0 & 1 \\ 0 & 0) \\
+    E_0 &= \frac{1}{2} \left( \sigma_1 - i \sigma_2 \right) = \mqty( 0 & 0 \\ 1 & 0)
+.\end{align}
+
+Observe that we have
+\begin{align}
+    \left[ H, E_{\pm} \right] = \pm 2 E_{\pm}, && \left[ E_+, E_- \right] = H
+.\end{align}
+
+Recall that $\ad_X Y = \left[ X, Y \right] $ and thus
+\begin{align}
+    \left[ H, E_{\pm} \right] = \ad_{H} E_{\pm} = \pm 2 E_{\pm}
+.\end{align}
+
+We also have
+\begin{align}
+    \left[ H, H \right]  = \ad_H H = 0
+.\end{align}
+
+We see that $E_-, H$ and $E_+$ are eigenvectors of $\ad_H$ with eigenvalues of $-2, 0, 2$. These eigenvalues are called the \textbf{roots} of $\mathfrak{su}\left( 2 \right)$.
+
+Let $d$ be a finite dimensional irreducible representation (``irrep'') of $\mathfrak{su}\left( 2 \right) $ with representation space $V$. We write an eigenvector of $d \left( H \right) = v_\lambda$ where 
+\begin{align}
+    d\left( H \right) v_{\lambda} = \lambda v_\lambda
+.\end{align}
+
+\begin{definition}
+    The eigenvalues of $d \left( H \right) $ are called the \textbf{weights} of the representation $d$.
+\end{definition}
+
+\begin{note}
+    Roots are the weights of the adjoint representation.
+\end{note}
+
+The operators $d\left( E_{\pm} \right) $ are called \textbf{ladder} operators as
+\begin{align}
+    d \left( H \right) \left( d\left( E_{\pm} \right) v_{\lambda} \right) &= \left\{ d \left( E_{\pm}  \right) d\left( H \right) + \underbrace{\left[ d\left( H \right) , d\left( E_{\pm} \right)  \right]}_{d \left( \left[ H, E_{\pm} \right]  \right) }  \right\} v_{\lambda} \\
+    &= \left( \lambda \pm 2 \right) \left( d \left( E_{\pm} \right) v_{\lambda} \right) 
+,\end{align}
+and thus $d \left( E_{\pm} \right) v_{\lambda}$ is also an eigenvector of $d \left( H \right) $ with eigenvalue $\lambda \pm 2$, \textit{or}, $d \left( E_{\pm} \right) v_{\lambda} = 0$.

@@ -1,0 +1,152 @@
+\lecture{10}{02/11/2024}{Tensor Products}
+
+If $d$ is a finite ($\left( n \right)-$dimensional) representation, there must be a finite number of eigenvalues. We take $d$ to be irreducible here. There must be some $\Lambda$ such that
+\begin{align}
+    d \left( H \right) v_{\Lambda} = \Lambda v_{\Lambda} \text{~and~} d \left( E_+ \right)  v_{\Lambda} = 0
+.\end{align}
+
+Such a $\Lambda$ is called a \textbf{highest weight}.
+
+Applying $d \left( E_- \right) $, $n$ times, we see
+\begin{align}
+    v_{\Lambda - 2n} = \left( d \left( E_- \right)  \right)^{n} v_{\Lambda}
+.\end{align}
+
+This process must terminate for some integer $N$ as $d$ is finite dimensional. This implies that we have a basis of eigenvectors for this representation, $\{v_{\Lambda}, v_{\Lambda - 2}, \cdots, v_{\Lambda - 2 N}\} $. 
+
+We have that for $1 \leq n \leq N$,
+\begin{align}
+    d \left( H \right)  d\left( E_+ \right) v_{\Lambda - 2n} = \left( \Lambda - 2n + 2 \right) d \left( E_+ \right) v_{\Lambda - 2n}
+.\end{align}
+
+Seeking to show that this is the set of all possible eigenvectors, we check if $d \left( E_+ \right) v_{\Lambda - 2n} \propto V_{\Lambda-2n+2}$. Observe that
+\begin{align}
+    d \left( E_+ \right)  v_{\Lambda - 2n} &= d \left( E_{+} \right) d \left( E_- \right) v_{\Lambda - 2n + 2}  \\
+    &= \left( d \left( E_- \right) d\left( E_+ \right) + \underbrace{\left[ d \left( E_+ \right) , d\left( E_- \right)  \right]}_{d \left( H \right) } \right)  v_{\Lambda - 2n + 2} \\
+    &= d \left( E_- \right) d \left( E_+ \right) v_{\Lambda - 2n + 2} + \left( \Lambda - 2n + 2 \right) v_{\Lambda - 2n + 2} \label{eq:raised_generic_v}
+.\end{align}
+
+This is a recursion relation. Consider $n = 1$, for which we would have $ d\left( E_- \right) d \left( E_+ \right) v_{\Lambda} = d \left( E_- \right) \left( 0 \right) = 0$ and thus
+\begin{align}
+    d \left( E_+ \right) v_{\Lambda - 2} = 0 + \Lambda v_{\Lambda} \label{eq:second_highest_weight}
+.\end{align}
+
+For $n = 2$, observe that
+\begin{align}
+    d \left( E_+ \right) v_{\Lambda - 4} &= d\left( E_- \right) \underbrace{d\left( E_+ \right) v_{\Lambda-2}}_{\Lambda v_\Lambda} + \left( \Lambda - 2 \right) v_{\Lambda - 2} \\
+    &= \Lambda d \left( E_- \right) v_{\Lambda} + \left( \Lambda - 2 \right) v_{\Lambda - 2}  \ \\
+    &= \left( 2 \Lambda - 2 \right) v_{\Lambda - 2}
+.\end{align}
+
+In general, we have
+\begin{align}
+    d \left( E_+ \right)  v_{\Lambda - 2n} &= r_n v_{\Lambda - 2n + 2}
+.\end{align}
+
+Plugging this into \cref{eq:raised_generic_v}, we find
+\begin{align}
+    r_n = r_{n-1} + \Lambda  - 2n + 2
+,\end{align}
+with $r_1 = \Lambda$ from \cref{eq:second_highest_weight}. This has solution
+\begin{align}
+    r_n = \left( \Lambda + 1 - n \right) n
+.\end{align}
+
+As established, a finite number of eigenvalues implies that for $n = N$, $d \left( E_- \right) v_{\Lambda - 2N} = 0 $. This implies that
+\begin{align}
+    r_{N+1} &\overset{!}{=} 0 = \left[ \left( \Lambda + 1 \right)  - \left( N + 1 \right) \left( N + 1 \right) \right]  = \left( \Lambda - N \right) \left( N + 1 \right) = 0 \\
+    \implies \Lambda &= N
+.\end{align}
+
+\begin{note}
+    From this we can infer that the highest weights $\Lambda$ have to be non-negative integers $N$. We will use these highest weights to classify/label the irreducible representations.
+
+    Namely, the finite-dimensional irreducible representations of $L \left( SU \left( 2 \right)  \right) = \mathfrak{su}\left( 2 \right) $ are labelled by $\Lambda \in \Z_{\geq 0}$, $d_{\Lambda}$ with weights
+    \begin{align}
+        S_\Lambda = \{-\Lambda, - \Lambda+2, \cdots, \Lambda - 2, \Lambda\} 
+    .\end{align}
+    $S_{\Lambda}$ is called the \textbf{weight set} of $d_{\Lambda}$. The weights are non-degenerate and thus $\dim d_{\Lambda} = \Lambda + 1$.
+\end{note}
+
+\begin{itemize}
+    \item $d_0$ is the trivial representation with $\dim d_0 = 1$
+    \item $d_1$ is the fundamental/defining representation with $\dim d_1 = 2$.
+        \item $d_2$ is the adjoint representation and has $\dim d_2 = 3$.
+\end{itemize}
+
+This discussion appears in quantum mechanics when discussing angular momentum. In that context, the angular momentum operators $\vb{J} = \left( J_1 , J_2 , J_3 \right) $ have eigenstates
+\begin{align}
+    \vb{J} \cdot \vb{J} \ket{j,m} &= j \left( j + 1 \right) \ket{j m} \\
+    J_3 \ket{j,m} = m \ket{jm}
+,\end{align}
+with $2 j \in \Z_{\geq 0}$, $2m \in \Z$ with $-j \leq m \leq j$.
+
+Then we can translate between these domains with
+\begin{align}
+    d \left( H \right) &= 2 H_3 \\
+    \Lambda &= 2j \\
+    d \left( E_{\pm} \right) = J_1 \pm i J_2
+,\end{align}
+and the eigenvalues are $\lambda = 2m$.
+
+\subsection{Representations of $SU \left( 2 \right) $ and $SU \left( 3 \right) $}
+
+$SU \left( 2 \right) $ is simply connected (while $SO \left( 3 \right) $ is not), so a representation $d_{\Lambda}$ of $\mathfrak{su}\left( 2 \right)$ gives a representation $D_{\Lambda}$ of $SU\left( 2 \right) $ via the exponential map.
+
+For $SO \left( 3 \right) $ recall that $SO \left( 3 \right) \cong SU \left( 2 \right) / \Z_2$. Namely, an element in $SO \left( 3 \right) $ corresponds to a pair of elements in $SU \left( 2 \right) $. $\{-A,A\} $, $A \in SU \left( 2 \right) $. The representation has to respect this.
+
+$D_{\Lambda}$ is a representation of $SO \left( 3 \right) $ iff it respects the identification of $A$ with $-A$, namely,
+\begin{align}
+    D_{\Lambda} \left( -A \right) = D_{\Lambda} \left( A \right) 
+.\end{align}
+
+It is sufficient to check whether $D_{\Lambda}\left( -I \right) = D_{\Lambda}\left( I \right) $.
+
+For $H = \sigma_3$, we have $- I = \exp \left( i \pi H \right) \in SU \left( 2 \right) $ and thus
+\begin{align}
+    D_{\Lambda}\left( -I \right)  = \exp \left( i \pi d_{\Lambda \left( H \right) } \right) 
+.\end{align}
+
+As we established that $d_{\Lambda}\left( H \right) $ has eigenvalues $\lambda \in \{-\Lambda, - \Lambda + 2, \cdots, \Lambda - 2, \Lambda \}$, the eigenvalues of $D_{\Lambda}\left( -I \right) $ are
+\begin{align}
+    e^{i \pi \lambda} = \left( -1 \right)^{\lambda} = \left( -1 \right)^{\Lambda}
+,\end{align}
+as $\lambda$ all have the same parity as $\Lambda$. Therefore
+\begin{itemize}
+    \item for $\Lambda$ even, we get suitable irreducible representations of both $SU \left( 2 \right) $ and $SO \left( 3 \right) $,
+    \item for $\Lambda$ odd, they are suitable only for $SU \left( 2 \right) $. These are \textit{spinor representations}.
+\end{itemize}
+
+\subsection{Tensor products of $\mathfrak{su}\left( 2 \right) $ irreducible representations}
+
+Given an arbitrary tensor product of representations, we want to decompose it into the direct sum of irreducible representations. Take irreps $d_{\Lambda}$ and $d_{\Lambda'}$ with $\Lambda, \Lambda' \in \Z_{\geq 0}$ and the spaces $V_{\Lambda}$ and $V_{\Lambda}'$ (decomposed from $V_{\Lambda} \otimes V_{\Lambda'}$).
+
+For $X \in \mathfrak{su}\left( 2 \right) $,
+\begin{align}
+    \left( d_{\Lambda} \otimes d_{\Lambda'} \right) \left( X \right) \left( v \otimes v' \right) = \left( d_{\Lambda} \left( X \right) v \right)  \otimes v' + v \otimes \left( d_{\Lambda'}\left( X \right) v' \right) 
+,\end{align}
+where $\dim \left( d_{\Lambda} \otimes d_{\Lambda'} \right) = \left( \Lambda + 1 \right) \left( \Lambda' + 1 \right) $.
+
+Such a decomposition implies we can write
+\begin{align}
+    d_{\Lambda} \otimes d_{\Lambda'} = \bigoplus_{\Lambda'' \in \Z_{>0}} \mathscr{L}_{\Lambda, \Lambda'}^{\Lambda''} d_{\Lambda''}
+,\end{align}
+where $\mathscr{L}$ are called \textit{Littlewood-Richardson coefficients} (or multiplicities).
+
+We have bases for $V_{\Lambda}, V_{\Lambda'}$ given by $\{v_{\lambda}\} $ with $\lambda \in S_{\Lambda} = \{-\Lambda, \cdots, \Lambda \}$ and identically $\{v_{\lambda'}\} $ with $\lambda' \in S_{\Lambda'}$. The basis for $V_{\Lambda} \otimes V_{\Lambda'}$ is
+\begin{align}
+    \{v_{\lambda} \otimes v_{\lambda'}  \mid  \lambda \in S_{\Lambda},~ \lambda' \in S_{\Lambda'}\} 
+.\end{align}
+
+As a result, lets look at the action on the diagonal element $H$. We have
+\begin{align}
+    \left( d_{\Lambda} \otimes d_{\Lambda'} \right) \left( H \right) \left( v_{\lambda} \otimes v_{\lambda'} \right) &= \lambda v_{\lambda} \otimes v_{\lambda'} + v_{\lambda} \otimes \left( \lambda' v_{\lambda'} \right)   \\
+    &= \left( \lambda + \lambda' \right) v_{\lambda} \otimes v_{\lambda'}
+,\end{align}
+and thus the weights add. The weight set for the tensor product rep is then
+\begin{align}
+    S_{\Lambda, \Lambda'} = \{\lambda + \lambda'  \mid \lambda \in S_{\Lambda},~ \lambda' \in S_{\Lambda'}\} 
+,\end{align}
+noting the multiplicities.
+
+

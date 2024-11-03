@@ -1,0 +1,160 @@
+\lecture{8}{29/10/2024}{Types of Representations}
+
+$W_n$ is invariant as
+\begin{align}
+    a_n \cos n \left( x - \alpha \right) + b_n \sin n \left( x- \alpha \right) = a_n' \cos \left( n x \right) + b_n' \sin n x
+,\end{align}
+for some $a_n' , b_n' \in \R$. Recall that the Fourier decomposition of any $2\pi$ periodic function can be written
+\begin{align}
+    f\left( x \right) = a_0 + \sum_{n=1}^{\infty}  \left( a_n \cos n x + b_n \sin n x \right) 
+.\end{align}
+
+\begin{definition}
+    Let $V$ and $W$ be vector spaces. The \textbf{tensor product space} $V \otimes W$ is spanned by elements, \textbf{product vectors}, $v \otimes w$ with $v \in V$ and $w \in W$ satisfying
+    \begin{itemize}
+        \item linearity, such that $v \otimes \left( \lambda_1 w_1 + \lambda_2 w_2 \right) = \lambda_1 v\otimes w_1 + \lambda_2 v \otimes w_2$, and identically in the first component.
+        \item $\dim \left( V \otimes W \right)  = \left( \dim V \right)  \left( \dim W \right) $
+    \end{itemize}
+\end{definition}
+
+With a product state $\Phi = v \otimes w$, we write
+\begin{align}
+    \Phi_A = \Phi_{\alpha a} = v_{\alpha} w_a
+,\end{align}
+where $\alpha = 1, \cdots, \dim V$, $a = 1, \cdots, \dim W$ and $A = 1, \cdots, \dim V \otimes W$.
+
+Not all elements of $V \otimes W$ are product states (as they can be linear combinations).
+
+
+\begin{definition}
+    Let $D^{\left( 1 \right) }$ and $D^{\left( 2 \right) }$ be representations of a group $G$ with representation spaces $V$ and $W$. These satisfy
+    \begin{align}
+        D^{\left( 1 \right) }\left( g \right) : v_{\alpha} \mapsto D^{\left( 1 \right) }\left( g \right)_{\alpha \beta} v_\beta, ~v \in V, \\
+        D^{\left( 2 \right) }\left( g \right) : w_{a} \mapsto D^{\left( 2 \right) }\left( g \right)_{a b} w_b, ~w \in W
+    .\end{align}
+    The \textbf{tensor product representation} $D^{\left( 1 \right) } \otimes D^{\left( 2 \right) }$ is
+    \begin{align}
+        \left( D^{\left( 1 \right) } \otimes D^{\left( 2 \right) } \right) \left( g \right) \left( v \otimes w \right) = \left( D^{\left( 1 \right) }\left( g \right) v \right) \otimes \left( D^{\left( 2 \right) }\left( g \right) w \right) 
+    .\end{align}
+\end{definition}
+
+Let $g_t \in G$ be a curve in the Lie group $G$ with $g_0 = e$ and $\dot{g}_0 = X \in L \left( G \right) $. Then,
+\begin{align}
+    \dv{t} \left[ \left( D^{\left( 1 \right) }\otimes D^{\left( 2 \right) } \right) \left( g_t \right) \left( v \otimes w \right)  \right] = \left[ \dv{t} D^{\left( 1 \right) }\left( g_t \right) v \right]_{t=0} \otimes D^{\left( 2 \right) }\left( g_0 \right)w  + D^{\left( 1 \right) }\left( g_0 \right) v \otimes \left[ \dv{t} D \left( g_t \right) w \right]_{t=0} 
+.\end{align}
+
+Let $d^{\left( 1 \right) }$ and $d^{\left( 2 \right) }$ be Lie algebra representations corresponding to $D^{\left( 1 \right) }$ and $D^{\left( 2 \right) }$. Their tensor product is given by
+\begin{align}
+    \left( d^{\left( 1 \right) } \otimes d^{\left( 2 \right) } \right) \left( X \right) = d^{\left( 1 \right) }\left( X \right)  \otimes \id_W + \id_V \otimes d^{\left( 2 \right) }\left( X \right) 
+.\end{align}
+
+There is an important corollary to Maschke's theorem.
+
+\begin{corollary}
+    Representations of $d^{\left( 1 \right) }\otimes d^{\left( 2 \right) }$ can be, if finite, be written as the direct sum of irreducible representations of $L\left( G \right) $, $\widetilde{d}_i$ such that
+    \begin{align}
+        d^{\left( 1 \right) } \otimes d^{\left( 2 \right)} = \widetilde{d}_1 \oplus \cdots \oplus \widetilde{d}_k = \bigoplus_{i=1}^{k} \widetilde{d_i}
+    .\end{align}
+\end{corollary}
+
+The is the desired decomposition into irreducible representations.
+
+\subsection{Angular momentum: $SO \left( 3 \right) $ and $SU \left( 2 \right) $}
+
+$SO \left( 3 \right) $ describes rotations in 3 dimensions and appears when studying the quantization of angular momentum in quantum mechanics. When studying spin angular momentum, we find half integer quantum numbers which lead to $SU \left( 2 \right)$ representations.
+
+The Lie algebra of $SU \left( 2 \right) $ is given by
+\begin{align}
+    \mathfrak{su} \left( 2 \right) &= L \left( SU \left( 2 \right)  \right)  \\
+    &= \left\{ \text{~$2\times 2$ traceless, anti-hermitian matrices~} \right\}  \\
+    &= \left\{ X \in \text{Mat}_{2} \left( \C \right)  \mid  X^{\dag} = - X, \tr X = 0 \right\} 
+.\end{align}
+
+We can choose as a basis $t_{a} = -\frac{i}{2} \sigma_a$, where $a = 1,2,3$ and $\sigma_a$ are the Pauli matrices. Recall that
+\begin{align}
+    \sigma_a \sigma_b = I \delta_{ab} + i \epsilon_{abc} \sigma_c
+,\end{align}
+which implies
+\begin{align}
+    \left[ T_{a}, T_{b} \right] = \epsilon_{abc} T_c
+,\end{align}
+and thus the structure constants of $SU \left( 2 \right) $ are $\tensor{f}{^{c}_{ab}} = \epsilon_{abc}$.
+
+Similarly, for $SO \left( 3 \right) $, we see that
+\begin{align}
+    \mathfrak{so}\left( 3 \right) = L \left( SO \left( 3 \right)  \right) = \text{Skew}_3
+.\end{align}
+
+We have a basis of the form
+\begin{align}
+    \widetilde{T}_1 = \mqty( 0 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0 ), && \widetilde{T}_2 = \mqty( 0 & 0 & 1 \\ 0 & 0 & 0 \\ -1 & 0 & 0), && \widetilde{T}_3 = \mqty( 0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0)
+,\end{align}
+namely, such that
+\begin{align}
+    \left( \widetilde{T}_a \right)_{bc} = -\epsilon_{abc} \widetilde{T}_{c}
+,\end{align}
+and thus 
+\begin{align}
+    \left[ \widetilde{T}_{a}, \widetilde{T}_b \right] = \epsilon_{abc} \widetilde{T}_c
+,\end{align}
+and thus $SO \left( 3 \right) $ has the same structure constants as $SU \left( 2 \right) $.
+
+To show that these algebras are isomorphic, we would need an isomorphism
+\begin{align}
+    \phi : \mathfrak{g} \to \mathfrak{h}
+,\end{align}
+such that
+\begin{align}
+    \phi \left( \left[ X, Y \right]  \right) = \left[ \phi \left( X \right) , \phi \left( Y \right)  \right] 
+,\end{align}
+$\forall X,Y \in \mathfrak{g}$.
+
+While, $\mathfrak{su}\left( 2 \right) $ and $\mathfrak{so}\left( 3 \right) $ are (as their structure constants are the same, $SU \left( 2 \right) $ and $SO \left( 3 \right) $ are in fact not isomorphic, as we will see.
+
+When we discussed $SO \left( 3 \right) $ earlier, we were picturing it as a 3-ball of radius $\pi$ spanned by a unit vector $\vb{n}$ and an angle $0 \leq \theta \leq \pi$ with antipodes identified.
+
+For $SU \left( 2 \right) $, take $U \in SU \left( 2 \right) $ we can write it as
+\begin{align}
+    U = a_0 I + i \vb{a} \cdot \boldsymbol{\sigma}
+,\end{align}
+with $\left( a_0, \vb{a} \right) \in \R^{4}$ and $a_0^2 + \left| \vb{a} \right|^2 = 1$. Therefore $SU\left( 2 \right) $ as a manifold is a unit sphere in $\R^{4}$, $S^{3}$.
+
+\begin{definition}
+    Let $H$ be a subgroup of $G$. For any $g \in G$, we can form a \textbf{left coset} of $H$ as
+    \begin{align}
+        g H = \{g h  \mid h \in H\} 
+    ,\end{align}
+    and a right coset given by
+    \begin{align}
+        Hg = \{hg  \mid  h \in H\} 
+    .\end{align}
+\end{definition}
+
+\begin{definition}
+    If $H \overset{\text{subgroup}}{<} G$ is a \textbf{normal subgroup} of $G$, $H \triangleleft G$ if $g H = Hg$, $\forall g \in G$.
+\end{definition}
+
+\begin{definition}
+    Define a set $G / H$ to be
+    \begin{align}
+        G / H = \{g H  \mid g \in G\} 
+    .\end{align}
+    We define coset multiplication by
+    \begin{align}
+        \left( g_2H  \right) \left( g_1 H \right)  = \left( g_2 g_1 \right) H
+    .\end{align}
+\end{definition}
+
+\begin{theorem}
+    For $H \triangleleft G$, $G / H$ is a group under coset multiplication, with $H = e H$ as the identity element.
+\end{theorem}
+
+\begin{definition}
+    Such a group $G / H$ is called a \textbf{quotient group} or \textbf{factor group}.
+\end{definition}
+
+Next, we will show that
+\begin{align}
+    SO \left( 3 \right) \simeq SU \left( 2 \right) / \Z_2
+,\end{align}
+with $\Z_2 = \left( I_2, -I_2 \right) $.
