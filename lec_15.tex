@@ -1,0 +1,213 @@
+\lecture{15}{14/11/2024}{The Killing Form}
+
+\subsection{The Killing form}
+
+
+\begin{definition}
+    A \textbf{bilinear form} $B : V \times V \to \mathbb{F}$ is linear in both arguments, even for $\mathbb{F} = \mathbb{C}$ such that
+    \begin{align}
+        B \left( u, \alpha v + \beta w \right) &= \alpha B \left( u,v \right) + \beta B \left( u,w \right), \\
+        B \left( \alpha u + \beta v, w \right) &= \alpha B \left( u, w \right) + \beta B\left( v,w \right) 
+    .\end{align}
+\end{definition}
+
+A \emph{symmetric} bilinear form satisfies $B \left( u,v \right) = B\left( v,u \right) $.
+
+\begin{definition}
+    A bilinear form is \textbf{nondegenerate} if $\forall v \in V$, ($v \neq 0$), $\exists w \in V$ such that
+    \begin{align}
+        B \left( v,w \right) \neq 0
+    .\end{align}
+\end{definition}
+
+\begin{definition}
+    The \textbf{Killing form} of a Lie algebra $\mathfrak{g}$ is the symmetric bilinear form $\kappa : \mathfrak{g} \times  \mathfrak{g} \to \mathbb{F}$ such that
+    \begin{align}
+        \kappa \left( X,Y \right) := \frac{1}{\mathcal{N}} \Tr \left( \ad_X \circ \ad_Y \right) 
+    ,\end{align}
+    for $X,Y \in \mathfrak{g}$. $\mathcal{N}$ is a normalization that we take to be $\mathcal{N} = 1$ here.
+\end{definition}
+
+Notice a few properties of interest.
+\begin{itemize}
+    \item $\ad_X$ is linear and thus $\kappa$ is bilinear.
+    \item As the trace is cyclic, $\kappa$ is symmetric.
+    \item For us, usually $\mathbb{F} = \R$, $\kappa \left( X,Y \right)  \in \R$.
+\end{itemize}
+
+Let $\{T_a\} $ be a basis for $\mathfrak{g}$ and recall that
+\begin{align}
+    \ad_{T_a} T_b = \left[ T_a, T_b \right] = \tensor{f}{^{c}_{ab}} T_c
+.\end{align}
+
+Thus we have matrix element
+\begin{align}
+    \tensor{\left( \ad_{T_a} \right) }{^{c}_b} = \tensor{f}{^{c}_{ab}}
+.\end{align}
+For example, for $\mathfrak{su}\left( 2 \right) $, $\left[ T_a, T_b \right] = \epsilon_{abc} T_c$ gives
+\begin{align}
+    \left( \ad_{T_1} \right) = \mqty( 0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & -1 & 0 )
+,\end{align}
+and so on. For a generic element, we have
+\begin{align}
+    X = X^{a} T_a \implies \ad_X = X^{a} \ad_{T_a}
+.\end{align}
+
+The Killing form can then be written
+\begin{align}
+    \kappa \left( T_a, T_b \right)  &= \tr \left[ \tensor{\left( \ad_{T_a} \right) }{^{e}_d} \tensor{\left( \ad_{T_b} \right) }{^{d}_c} \right]  \\
+    &= \tensor{f}{^{c}_{ad}} \tensor{f}{^{d}_{bc}} \\
+    &= \kappa_{ab}
+.\end{align}
+
+For general $X,Y \in \mathfrak{g}$, we have
+\begin{align}
+    \kappa \left( X,Y \right) &= X^{a} Y^{b} \kappa \left( T_a, T_b \right)\\
+                              &= X^{a} Y^{b} \kappa_{ab}
+.\end{align}
+
+\subsection{Invariance of the Killing form}
+
+Let $\mathfrak{g} = L \left( G \right) $.
+
+\begin{claim}
+    For any $g \in G$, 
+    \begin{align}
+        \kappa \left( \Ad_g X, \Ad_g Y \right) = \kappa \left( X,Y \right) 
+    .\end{align}
+\end{claim}
+
+\begin{proof}
+    Recall that $\Ad_{g} X = g X g^{-1}$. The key step is to show that
+    \begin{align}
+        \Ad_{g X g^{-1}} = \Ad_{g} \circ \ad_{X} \circ \Ad_{g^{-1}}
+    .\end{align}
+\end{proof}
+
+Let $g = e + t Z + \mathcal{O}\left( t^2 \right) $. We then have
+\begin{align}
+    \kappa \left( \Ad_g X, \Ad_g Y \right) &= \kappa \left( X + t \ad_Z X, Y + t \ad_Z Y \right)  \\
+    =\kappa \left( X,Y \right) + t \left( \kappa \left( \ad_Z X, Y \right) + \kappa \left( X, \ad_Z Y \right)  \right) 
+.\end{align}
+
+Invariance implies the $t$ term vanishes giving
+\begin{align}
+    \kappa \left( \ad_Z X, Y \right)  &= -\kappa \left( X,\ad_Z Y \right) \\
+    \kappa \left( \left[ Z,X \right], Y  \right)  &= - \kappa \left( X, \left[ Z, Y \right]  \right)  \\
+    \kappa \left( \left[ X,Z \right], Y  \right)  &=  \kappa \left( X, \left[ Z, Y \right]  \right) 
+,\end{align}
+
+\begin{theorem}[ (Cartan)]
+    The Killing form of a Lie algebra $\mathfrak{g}$ is nondegenerate if and only if $\mathfrak{g}$ is semisimple:
+\end{theorem}
+
+\begin{proof}
+    We will one prove one direction (the forwards one). We proceed by contradiction.
+
+    Suppose that $\mathfrak{g}$ is not semisimple, then there exists a nontrivial abelian ideal $\mathfrak{a} \in \mathfrak{g}$. That is,
+    \begin{align}
+        \left[ X, A \right] \in \mathfrak{a}
+    ,\end{align}
+    $\forall A \in \mathfrak{a}$ and $X \in \mathfrak{g}$.
+
+    Take a basis for $\mathfrak{a}$ to be $\{T_i  \mid i = 1,~ \cdots, \dim \mathfrak{a}\} $ and extend to a basis for the rest of $\mathfrak{g}$ such that $\{T_a  \mid  \alpha = 1, \cdots, \dim \mathfrak{g} - \dim \mathfrak{a}\} $. Thus a basis for $\mathfrak{g}$ is
+    \begin{align}
+        \{T_B\} = \{T_i\} \cup \{T_\alpha\} 
+    .\end{align}
+    As $\mathfrak{a}$ is abelian, $\left[ T_i, T_j \right] = 0$ and thus $\tensor{f}{^{B}_{ij}} = 0 $.
+    
+    Further, as $\mathfrak{a}$ is an ideal, $\left[ T_{i}, T_\alpha \right] \in \mathfrak{a}$ and thus $\tensor{f}{^{\beta}_{i\alpha}} = 0$.
+
+    Together, these give us that $\tensor{f}{^{\beta}_{iB}} = \tensor{f}{^{\beta}_{Bi}} = 0$.
+    %  and thus only $\tensor{f}{^{j}_{i \alpha}}$ can be non-zero.
+    % wb ^j_{\alpha \beta} ?
+
+    Consider $\kappa \left( X,A \right) = \kappa_{Bi} X^{B} A^{i}$. As $\kappa_{Bi} = \tensor{f}{^{C}_{BD}} \tensor{f}{^{D}_{iC}}$, As $\{C\} = \{j\} \cup \{\alpha\} $,
+    \begin{align}
+        \kappa_{Bi} = \tensor{f}{^{\alpha}_{BD}} \tensor{f}{^{D}_{i\alpha}} + \tensor{f}{^{j}_{BD}} \underbrace{\tensor{f}{^{D}_{ij}}}_{0}
+    .\end{align}
+    Then letting $\{D\}  = \{j\}  \cup \{\beta\} $, this becomes
+    \begin{align}
+        \kappa_{Bi} &= \tensor{f}{^{\alpha}_{B\beta}} \underbrace{\tensor{f}{^{\beta}_{i\alpha}}}_{0} + \underbrace{\tensor{f}{^{\alpha}_{B j}}}_{0} \tensor{f}{^{j}_{i\alpha}} \\
+        &= 0 
+    ,\end{align}
+    and thus $\kappa$ is degenerate.
+    
+\end{proof}
+
+We divert for a moment with some definitions and facts.
+% read knapp
+
+\begin{proposition}
+    If $\kappa$ is nondegenerate, then it is invertible. We can find $\left( \kappa^{-1} \right) $ such that
+    \begin{align}
+        \kappa_{ab} \left( \kappa^{-1} \right)^{bc} = \delta_{a}^{c}
+    .\end{align}
+\end{proposition}
+
+\begin{proof}
+    Linear algebra, following from nondegeneracy of the Killing form.
+\end{proof}
+
+\begin{definition}
+    A Lie group is \textbf{semisimple} if its Lie algebra is semisimple. 
+\end{definition}
+
+\begin{note}
+    Some authors only use this term for connected Lie groups.
+\end{note}
+
+\begin{proposition}
+    If the Killing form of a real Lie algebra $\mathfrak{g}$ is negative definite, such that $\kappa \left( X,X \right) <0$, $\forall X \in g \mathfrak{g}$,
+    then $G$ is compact and $\mathfrak{g}$ is said to be of \textbf{compact type}.
+\end{proposition}
+
+\begin{proposition}
+    A compact group which is not semisimple has an algebra with \emph{negative, semidefinite} ($\kappa \left( X,X \right) \leq 0$) Killing form (but not negative definite).
+\end{proposition}
+
+\begin{note}
+    There are also noncompact groups which have negative semi definite Killing forms.
+\end{note} 
+
+\begin{proposition}
+    Every semisimple, complex Lie algebra $L \left( G \right)_{\C}$ has a real form with
+    \begin{align}
+        \kappa_{ab} = -\kappa_{ab}
+    ,\end{align}
+    $\kappa \in \R^{+}$.
+\end{proposition}
+
+By above, $G$ is compact and its real form is called a \textbf{compact real form}.
+
+\begin{definition}
+    Any basis for which $\kappa_{ab} \propto \delta_{ab}$, if it exists, is called an \textbf{adapted basis}.
+\end{definition}
+
+In an adapted basis, $\{T_a\}$,
+\begin{align}
+    \kappa \left( \left[ T_c, T_a \right] , T_b \right)  &= \tensor{f}{^{d}_{ca}} \kappa \left( T_d, T_b \right) \\
+    &= -\kappa \tensor{f}{^{b}_{ca}}  \\
+    &= \kappa \left( T_c, \left[ T_a, T_b \right]  \right) = \tensor{f}{^{d}_{ab}} \kappa \left( T_c , T_C \right)   \\
+    &= -\kappa \tensor{f}{^{c}_{ab}} 
+.\end{align}
+
+Thus invariance implies $\tensor{f}{^{b}_{ca}} = \tensor{f}{^{c}_{ab}} = -\tensor{f}{^{c}_{ba}}$, namely that $f$ in an adapted basis is now totally antisymmetric.
+
+\subsection{Casimir elements}
+
+\begin{definition}
+    A \textbf{Casimir element} is a polynomial function of elements of the Lie algebra which commutes with all elements of the Lie algebra.
+
+    Namely, the Casimir is an element of the \textit{universal enveloping algebra} of $\mathfrak{g}$. The UEA is the span of $\{I, \mathfrak{g}, \mathfrak{g} \otimes \mathfrak{g} , \cdots\} $ subject to the rule $X \otimes Y - Y \otimes X = \left[ X, Y \right] $.
+\end{definition}
+
+\begin{note}
+    $XY \equiv X \otimes Y$ is generally not in $\mathfrak{g}$ is generically not in $\mathfrak{g}$ but in the universal enveloping algebra. 
+
+    This gives us new identities such as
+    \begin{align}
+        \left[ X, YZ \right] = \left[ X, Y \right] Z + Y \left[ X, Z \right] 
+    .\end{align}
+\end{note}
+

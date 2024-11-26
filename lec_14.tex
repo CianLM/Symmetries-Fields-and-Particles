@@ -1,0 +1,131 @@
+\lecture{14}{12/11/2024}{Introduction to Simple algebras}
+
+Acting with an arbitrary Lorentz transformation $\Lambda$, we have that
+\begin{align}
+    U \left( \Lambda \right)  \ket{p,s} &= U \left( \Lambda \right) U \left( L \left( p \right)  \right) \ket{k,s} \\
+    &= U \left( \Lambda L \left( p \right)  \right) \ket{k,s} 
+.\end{align}
+
+Inserting the identity $I = U \left( L \left( \Lambda p \right) L^{-1} \left( \Lambda p \right)  \right) $,
+\begin{align}\label{eq:induce_reps}
+    U \left( \Lambda \right) \ket{p,s} = U \left( L \left( \Lambda p \right)  \right)  U \left( L^{-1} \left( \Lambda p \right) \Lambda L \left( p \right)  \right) 
+.\end{align}
+
+Recall that $L \left( p \right) k = p$ and $L \left( \Lambda p  \right) k = \Lambda p$ which has inverse $L^{-1} \left( \Lambda p  \right) \left( \Lambda p \right) = k$. 
+
+\begin{claim}
+    We claim
+    \begin{align}
+        W \left( \Lambda, p \right) = L^{-1} \left( \Lambda p  \right) \Lambda L \left( p \right) 
+    ,\end{align}
+    is an element of $O \left( 1,3 \right) $ which leaves $k$ invariant.
+\end{claim}
+
+\begin{proof}
+    Observe that 
+    \begin{align}
+        L^{-1} \left( \Lambda p \right) \Lambda \underbrace{L \left( p \right) k}_{p} = L^{-1} \left( \Lambda p \right) \left( \Lambda p  \right) = k
+    ,\end{align}
+    as desired.
+\end{proof}
+
+We sometimes use the shorthand $\tensor{W}{^{\mu}_\nu} k^{\nu} = k^{\mu}$. Such elements form a subgroup of $O \left( 1,3 \right) $ called \textbf{little groups}.
+
+We assume that we know the representations of the little group. We then use these to \textit{induce} a representation on the whole Poincare group.
+
+Say $D \left( W \right) $ is a representation such that 
+\begin{align}
+    U \left( W \right) = \ket{k,s} = \sum_{s'}^{} D_{s,s'} \left( W \right) \ket{k,s'} 
+.\end{align}
+
+We use \cref{eq:induce_reps} to induce a representation on the whole group with
+\begin{align}
+    U \left( \Lambda \right) \ket{p,s} &= U \left( L \left( \Lambda p \right)\right) U \left( W \left( \Lambda, p \right)  \right)  \ket{k,s} \\
+    &= \sum_{s'} D_{s,s'} \left( W \right) U \left( L \left( \Lambda p \right)  \right) \ket{k, s'}   \\
+    &= \sum_{s'} D_{s,s'} \left( W \right) \ket{\Lambda p ,s'} 
+.\end{align}
+
+There are $6$ possibilities for $k^{\mu}$, 4 of which do not correspond to single particle states.
+
+\begin{itemize}
+    \item For spacelike $4$-momenta, $p^2 < 0$ e.g. $k^{\mu} = \left( 0, \vb{k} \right) $.
+    \item For negative energy states $p^{0} < 0$, $k^2 = 0 \implies k^{\mu} = \left( -\left| \vb{k} \right| , \vb{k} \right)$ and $k^2 > 0 \implies k = \left( -k,0 \right) $.
+    \item The vacuum state has $p^{\mu} = k^{\mu} = 0$.
+\end{itemize}
+
+The two interesting cases are $p^2 \geq 0$ and $p^{0} > 0$.
+
+\begin{itemize}
+    \item For massive states, $p^2 = m^2 > 0$. Let $k^{\mu} = \left( m , 0, 0, 0 \right) $. This is a particle at rest. $k^{\mu}$ is invariant under 3 dimensional rotations, so the little group is $SO \left( 3 \right) $. The corresponding irreducible representations are those of $\mathfrak{su}\left( 2 \right) $. Such states are characterized by three numbers: $p^{\mu}, j$ and $j_3$.
+    \item For massless states, $p^2 = 0$. We rotate to a frame where $k^{\mu} = \left( \omega, 0, 0, \omega \right) $ for $\omega > 0$. 
+        \begin{claim}
+            The little group is $ISO \left( 2 \right) \cong SO \left( 2 \right) \ltimes T^2$, namely rotations and translations in a plane.
+        \end{claim}
+        \begin{proof}
+            Start with Lorentz generators $J_3$, $K_1$ and $K_2$ which leave $k^{\mu}$ invariant. Form the linear combination
+            \begin{align}
+                E_1 := K_1 - J_2 &&
+                E_2 := K_2 + J_1
+            ,\end{align}
+            then we have
+            \begin{align}
+                \left[ J_3, E_1 \right] = E_2,&& \left[ E_2, J_3 \right] = E_1, && \left[ E_1, E_2 \right] = 0
+            .\end{align}
+        \end{proof}
+\end{itemize}
+
+\section{Cartan's Classification of Lie Algebras}
+
+\subsection{Definitions}
+
+\begin{definition}
+    A \textbf{subalgebra} $\mathfrak{h}$ of an algebra $\mathfrak{g}$ is a vector subspace which is also an algebra itself with the same composition rule. For a Lie subalgebra, this is the Lie bracket.
+\end{definition}
+
+\begin{definition}
+    A subalgebra $\mathfrak{h}$ is called an \textbf{ideal} or \textit{invariant} subalgebra of a Lie algebra $\mathfrak{g}$ if
+    \begin{align}
+        \left[ X,Y  \right] \in \mathfrak{h}
+    ,\end{align}
+    for $X \in \mathfrak{g}$ and $Y \in \mathfrak{h} $.
+\end{definition}
+
+Every algebra has two trivial ideals, $\{0\} $ and $\mathfrak{g}$. The phrase non-trivial ideals excludes these.
+
+\begin{definition}
+    The \textbf{derived algebra} $\mathfrak{i}$ of a Lie algebra $\mathfrak{g}$ is
+    \begin{align}
+        \mathfrak{i} = \left[ \mathfrak{g}, \mathfrak{g} \right]  = \span \left\{ \left[ X, Y \right]  \mid  X,Y \in \mathfrak{g} \right\}
+    .\end{align}
+\end{definition}
+
+This is always an ideal of $\mathfrak{g}$.
+
+\begin{definition}
+    The \textbf{center} of $\mathfrak{g}$ is
+    \begin{align}
+        J = \left\{ X \in \mathfrak{g} | \left[ X, Y \right] = 0,~ \forall Y \in \mathfrak{g} \right\} 
+    .\end{align}
+\end{definition}
+
+This is also an ideal of $\mathfrak{g}$.
+
+
+\begin{definition}
+    A Lie algebra $\mathfrak{g}$ is \textbf{abelian} or \textit{commutative} if $\left[ X, Y \right] = 0$, $\forall X,Y \in \mathfrak{g}$.
+\end{definition}
+
+This is equivalent to $J = \mathfrak{g}$.
+
+\begin{definition}
+    A Lie algebra is \textbf{simple} if it is \textit{non-abelian} and has no nontrivial ideals.
+\end{definition}
+
+\begin{definition}
+    A Lie algebra is \textbf{semi-simple} if it is non-abelian and has no nontrivial \textit{abelian} ideals.
+\end{definition}
+
+\begin{proposition}
+    If $\mathfrak{g}$ is semi-simple, then it can be written as a direct sum of simple Lie algebras, $\mathfrak{g} = \mathfrak{g}_1 \oplus \cdots \oplus \mathfrak{g}_n$.
+\end{proposition}
+

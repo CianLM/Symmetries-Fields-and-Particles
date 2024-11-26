@@ -1,0 +1,116 @@
+\lecture{16}{16/11/2024}{The Cartan subalgebra}
+
+%Recall that
+%\begin{align}
+%    \text{semisimple} \Longleftrightarrow \kappa \text{~nondegenerate~}
+%.\end{align}
+% among other things
+
+In what follows, let $\mathfrak{g}$ be the real Lie algebra of a simple, compact group and use an adapted basis such that the Killing form is $\kappa = - \delta_{ab}$. This can come about from normalizing the generators $\{T_a\}$. 
+
+The universal quadratic Casimir element in the universal enveloping algebra of $\mathfrak{g}$
+\begin{align}
+    C := T_b T_{b}
+,\end{align}
+where there is implicit summation over $b$ and we do not raise the index as there is no notion of covariance here.
+
+One can check this with
+\begin{align}
+    \left[ T_a, C \right] = \left[ T_a, T_b T_{b} \right] = T_b \left[ T_a, T_{b} \right] + \left[ T_a, T_b \right] T_{b} = f_{abc} T_b T_c + f_{abc} T_c T_b = 0
+.\end{align}
+Therefore, $\left[ X, C \right] = 0$, $\forall X \in \mathfrak{g}$.
+
+Some algebras have higher order (polynomial) Casimirs.
+
+Consider the quadratic Casimir in a representation, $d$, of $\mathfrak{g} = L \left( G \right) $,
+\begin{align}
+    C_d = d\left( T_a \right) d \left( T_a \right) 
+.\end{align}
+
+As above,
+\begin{align}
+    \left[ d\left( X \right) , C_d \right] = 0
+,\end{align}
+$\forall X \in \mathfrak{g}$.
+
+Let $D \left( g \right) = \exp d \left( X \right) $ be a representation of $G$ and $g \in G$.
+
+If $d$ and therefore $D$ are irreducible, by Schur's lemma,
+\begin{align}
+    C_d D \left( g \right) = D\left( g \right) C_d
+,\end{align}
+$\forall g \in G$, implies
+\begin{align}
+    C_d = c_d I
+,\end{align}
+where $c_d \in \R$ as our Lie algebra is real.
+
+\begin{example}
+    Take $SU \left( 2 \right) $ in adapted basis $T_{a} = -\frac{i}{2\sqrt{2} } \sigma_a$ such that $\kappa_{ab} = -\delta_{ab}$. Let $j = \frac{1}{2}$ (eq. $\Lambda = 1$). We then see
+    \begin{align}
+        C_{\frac{1}{2}} = -\frac{1}{8} \sigma_a \sigma_a = \frac{3}{8} I
+    ,\end{align}
+    and thus $c_{\frac{1}{2}} = -\frac{3}{8}$. This is the quadratic Casimir of the fundamental representation of $\mathfrak{su}\left( 2 \right) $.
+\end{example}
+
+More generally, in $SU \left( 2 \right) $, with adapted basis $\{\frac{i}{\sqrt{2} }J_a\} $
+\begin{align}
+    C_j = \frac{1}{2} \left| \vb{J} \right|^2 = -\frac{1}{2} j \left( j + 1 \right)  I
+,\end{align}
+with eigenvalues of $\left| \vb{J} \right|^2$ on $\ket{jm}$.
+
+\subsection{Cartan-Weyl basis}
+
+Let $\mathfrak{g}$ be a Lie algebra. 
+
+\begin{definition}
+  Element $X \in \mathfrak{g}$ is \textbf{$\ad$-diagonalizable} if the map $\ad_X$ is diagonalizable.  
+\end{definition}
+
+\begin{definition}
+    A \textbf{maximal} (abelian) subalgebra $\mathfrak{h}$ is not contained in any larger, nontrivial (abelian) subalgebra.
+\end{definition}
+
+\begin{definition}
+    If $\mathfrak{g}$ is complex, semisimple Lie algebra, then a \textbf{Cartan subalgebra} $\mathfrak{h}$ of $\mathfrak{g}$ is a complex subspace such that 
+    \begin{itemize}
+        \item $\forall  H_1, H_2 \in \mathfrak{h}$,
+    \begin{align}
+        \left[ H_1, H_2 \right] = 0 \hfill \text{~(abelian)~}
+    ,\end{align}
+        \item $\forall X \in \mathfrak{g}$, if $\left[ H, X \right] = 0$, $\forall H \in \mathfrak{h}$, then $X \in \mathfrak{h}$ (maximal),
+        \item and $\forall H \in \mathfrak{h}$, $\ad_{H}$ is diagonalizable.
+    \end{itemize}
+
+    Namely, it is the \textbf{maximal abelian $\ad$-diagonalizable subalgebra}.
+\end{definition}
+
+\begin{proposition}
+    Every complex semisimple Lie algebra has a Cartan subalgebra.
+\end{proposition}
+
+\begin{example}
+    Take $\mathfrak{su}\left( 2 \right)_{\C}$. The $H$ of the Cartan-Weyl basis $\{H, E_+, E_-\} $ gives a 1-dimensional Cartan subalgebra $\mathfrak{h} = \text{span}{\C} \{H\} $. $H = \sigma_3$ is not unique. We could have chosen $\sigma_1$ or $\sigma_2$ and found the same result in a different basis. The dimension of the Cartan subalgebra would be the same regardless.
+\end{example}
+
+\begin{definition}
+    The \textbf{rank} of a Lie algebra is the dimension of its Cartan subalgebra.
+\end{definition}
+
+\begin{example}
+    $\text{rank}\left( \mathfrak{su}\left( 2 \right)  \right) = 1$.
+\end{example}
+
+\begin{example}
+    Consider $L \left( SU \left( n \right)  \right)_{\C} = \{X \in \text{Mat}_n \left( \C \right)  \mid \tr X = 0\}$.
+\end{example}
+
+For the Cartan subalgebra, one can choose its basis to be the diagonal (traceless) elements
+\begin{align}
+    \mqty( 1 & & & \\ & -1 & & \\ & & 0 &\\ & & &\ddots ) , \cdots, \mqty( \ddots & & & \\ & 0 & & \\ &  &1 & \\ & && -1 )
+.\end{align}
+\begin{align}
+    \left( H_i \right)_{\alpha \beta} = \delta_{\alpha i} \delta_{\beta i} - \delta_{\alpha , i + 1} \delta_{\beta , i + 1}
+.\end{align}
+
+Clearly, $\text{rank} \left( \mathfrak{su}\left( n \right)_{\C} \right) = n - 1$.

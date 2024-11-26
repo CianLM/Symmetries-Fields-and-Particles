@@ -1,0 +1,142 @@
+\lecture{17}{19/11/2024}{Four Lemmas}
+
+Notice that elements of the Cartan subalgebra are eigenvectors of the $\{\ad_H\} $ as $\left[ H, H' \right] = 0$ $\forall H, H' \in \mathfrak{h}$. The adjoint map is a representation and thus observe
+\begin{align}
+    \left[ \ad_H, \ad_{H'} \right] = 0
+.\end{align}
+
+All the $\ad$ maps commute which implies they are simultaneously diagonalizable. So all the $H \in \mathfrak{h}$ are simultaneously $\ad$-diagonalizable. By the spectral theorem, $\mathfrak{g}$ is spanned by the simultaneous eigenvectors of the $\{\ad_H\}$.
+
+Every element of $\mathfrak{h}$ is a zero eigenvector
+\begin{align}
+    \ad_H H' = \left[ H, H' \right] = 0
+.\end{align}
+
+Choose a basis for $\mathfrak{h}$ to be $\{H_{i} | i=1,\cdots,r=\text{rank}\left( \mathfrak{g} \right) \} $, where $\text{rank}\left( \mathfrak{g} \right) = \dim \mathfrak{h}$.
+
+As the Cartan subalgebra is maximal, no other eigenvectors of $\ad_H$ can have eigenvalue zero for all $H \in \mathfrak{h}$. Label the rest of the vectors by their eigenvalues: $\{\alpha_i  \mid i = 1 , \cdots, r \} $.
+
+For each $H$, in this basis,
+\begin{align}
+    \ad_{H_{i}} E_\alpha = \alpha_i E_\alpha
+.\end{align}
+
+We call $\alpha_i$ a component of a \textbf{root}. The collection of $\alpha_i$ across all $H_i$ in the basis set for a fixed $E_\alpha$ is called the \textbf{root}.
+
+\begin{definition}
+    The set of all nonzero roots, $\alpha$, of a Lie algebra, is called its root set.
+\end{definition}
+
+\begin{proposition}
+    The nonzero simultaneous eigenvectors of $\mathfrak{h}$ are nondegenerate.
+\end{proposition}
+
+\begin{proof}
+    Omitted. See Knapp Prop 2.2.1
+\end{proof}
+
+A general element of the CSA $H \in \mathfrak{h}$ is a linear combination of the $H_{i}$, $H = \rho^{i} H_{i}$ for $\rho^{i} \in \C$. Then
+\begin{align}
+    \ad_H E_\alpha = \left[ H, E_\alpha \right] = \rho^{i} \left[ H_i, E_\alpha \right] = \rho^{i} \alpha_i E_\alpha
+,\end{align}
+where one can define $\alpha \left( H \right) \equiv \rho^{i} \alpha_i$. This tells us that $\alpha_i$ are dual to $H$.
+
+\begin{definition}
+    Given a vector space $V$ over a field $\mathbb{F}$, the \textbf{dual vector space} $V^{*}$ is the vector space of linear functions $f : V \to \\mathbb{F}$.  In finite dimensions, $\dim V^{*} = \dim V$.
+\end{definition}
+
+Given a basis for $V$, $\{v_i\} $ we have a basis of $V^{*}$, $\{v_i^{*}\}$, such that
+\begin{align}
+    v_i^{*}\left( v_j \right) = \delta_{ij}
+.\end{align}
+
+\begin{claim}
+    The roots $\alpha$ are vectors in the space dual to $\mathfrak{h}$, denoted $\mathfrak{h}^{*}$.
+\end{claim}
+
+One can check
+\begin{align}
+    \alpha \left( H + H' \right) E_\alpha = \left[ H + H', E_{\alpha} \right] = \left[ H, E_\alpha \right] + \left[ H', E_\alpha \right] = \left( \alpha \left( H \right) + \alpha \left( H' \right)  \right) E_\alpha
+.\end{align}
+
+\begin{definition}
+    The \textbf{Cartan-Weyl basis} for $\mathfrak{g}$ is given by
+    \begin{align}
+        \{H_i  \mid i=1,\cdots, r\} \cup \{E_\alpha  \mid \alpha \in \Phi\} 
+    .\end{align}
+\end{definition}
+
+\begin{claim}
+    It is a basis.
+\end{claim}
+
+\begin{proof}
+    $\dim \mathfrak{h} = r$ and therefore the size of the root set must $\left| \Phi \right| = \dim \mathfrak{g} - \dim \mathfrak{h}$.
+\end{proof}
+
+As $\left| \phi \right| > r$ and $\dim \mathfrak{h}^{*} = \dim \mathfrak{h} = r$, not all $\alpha$ are linearly independent in $\mathfrak{h}^{*}$. Note that this does not make any statement about $E_\alpha$'s.
+
+Our next task is to use the Killing form $\kappa \left( X,Y \right) = \Tr \left( \ad_X \circ \ad_Y \right) $ and its nondegeneracy for semisimple Lie algebras to define an inner product on the roots in $\mathfrak{h}^{*}$.
+
+We now present four lemmas.
+
+\begin{lemma}
+    $\kappa \left( H, E_\alpha \right) = 0$, $\forall H \in \mathfrak{h}$ and $\forall \alpha \in \Phi$.
+\end{lemma}
+\begin{proof}
+    Given some $\alpha \in \Phi$, $\exists  H' \in \mathfrak{h}$ such that $\alpha \left( H' \right) \neq 0$. Then by bilinearity,
+    \begin{align}
+        \alpha \left( H' \right) \kappa \left( H, E_\alpha \right) &= \kappa \left( H \alpha \left( H' \right) E_\alpha \right)  \\
+        &= \kappa \left( H, \left[ H', E_\alpha \right]  \right)  \\
+        &= \kappa \left( \underbrace{\left[ H, H' \right]}_{0} , E_\alpha \right) 
+        = 0 
+    .\end{align}
+\end{proof}
+
+\begin{lemma}
+    $\kappa \left( E_\alpha, E_\beta \right) = 0$, $\forall \alpha , \beta$ given $\alpha + \beta \neq 0 $.
+\end{lemma}
+
+\begin{proof}
+    $\forall H \in \mathfrak{h}$,
+    \begin{align}
+        \left( \alpha \left( H \right) + \beta \left( H \right)  \right) \kappa \left( E_\alpha, E_\beta \right) &= \kappa \left( \left[ H, E_\alpha \right] , E_{\beta} \right) + \kappa \left( E_\alpha, \left[ H, E_\beta \right]  \right)   \\
+        &= -\kappa \left( \left[ E_\alpha, H \right] , E_{\beta} \right) + \kappa \left( E_\alpha, \left[ H, E_\beta \right]  \right) = 0
+    .\end{align}
+\end{proof}
+
+\begin{lemma}
+    If $\alpha \in \Phi$, then $-\alpha \in \Phi$ and $\kappa \left( E_\alpha, E_{-\alpha} \right) \neq 0$.
+\end{lemma}
+
+\begin{proof}
+    Using the two previous lemmas, $\kappa \left( E_\alpha, H \right) = 0$ and $\kappa \left( E_\alpha, E_\beta \right) = 0$ for $\beta \neq -\alpha$. As $\mathfrak{g}$ is semisimple, $\kappa$ is nondegenerate, and thus there must exist some $X \in \mathfrak{g}$ such that $\kappa \left( E_\alpha, X \right) \neq 0$. As we have excluded other elements this must be $X = E_{-\alpha}$.
+\end{proof}
+
+\begin{lemma}
+    $\forall H \in \mathfrak{h}$, there exists some $H' \in \mathfrak{h}$ such that $\kappa \left( H,H' \right) \neq 0$.
+\end{lemma}
+\begin{proof}
+    Suppose there exists $H \in \mathfrak{h}$ such that $\kappa \left( H, H' \right) = 0$, $\forall H' \in \mathfrak{h}$. Then $\kappa$ would be degenerate as $\kappa \left( H, E_\alpha \right) =0$, $\forall \alpha \in \Phi$.
+\end{proof}
+
+As a consequence of this last lemma, $\kappa$ can be inverted within $\mathfrak{h}$. Choose a basis $\{H_{i}\}$. As any $H, H' \in \mathfrak{h}$ can be written in terms of $H = \rho^{i} H_i$, $H' = \rho'^{j} H_j$, write
+\begin{align}
+    \kappa \left( H, H' \right) = \kappa \left( \rho^{i} H_i, \rho'^{j}J_j \right) = \kappa_{ij} \rho^{i} \rho'^{j}
+.\end{align}
+
+As this is nondegenerate, there exists some matrix $\kappa^{-1}$ such that
+\begin{align}
+    \left( \kappa^{-1} \right)^{ik} \kappa_{kj} = \delta^{i}_j
+.\end{align}
+
+Given any $\alpha, \beta \in \Phi$, define an inner product
+\begin{align}
+    \left( \alpha, \beta \right) = \left( \kappa^{-1} \right)^{ij} \alpha_i \beta_j
+.\end{align}
+
+Later, we will show that $\left( \alpha, \beta \right) \in \R$ and $\left( \alpha,\alpha \right) > 0$. This will allow us to build a geometry of roots.
+
+\begin{note}
+    If $\left( \kappa^{-1} \right)^{ij}$ is diagonal (amounting to a choice of basis), sometimes one writes $\left( \alpha, \beta \right) = \alpha \cdot \beta$.
+\end{note}

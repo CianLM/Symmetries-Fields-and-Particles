@@ -1,0 +1,155 @@
+\lecture{19}{23/11/2024}{Geometry of Roots}
+
+\begin{claim}
+    The roots in $\Phi$ span $\mathfrak{h}^{*}$. Recall $\left| \Phi \right| > \dim h^{*}$.
+\end{claim}
+\begin{proof}
+    Suppose that the roots do not span $\mathfrak{h}^{*}$. Then there exists some orthogonal subspace, i.e. $\exists \lambda \in \mathfrak{h}^{*}$ such that $\left( \lambda, \alpha \right) =  0$, $\forall \alpha \in \Phi$.
+
+    The corresponding vector in $\mathfrak{h}$ is
+    \begin{align}
+        H_\lambda \equiv \lambda^{i} H_i \in \mathfrak{h}
+    .\end{align}
+    As $\mathfrak{h}$ is the Cartan subalgebra, $\left[ H_{\lambda}, H \right] = 0$, $\forall H \in \mathfrak{h}$. We also know that $\left[ H_\lambda, E_\alpha \right] = \lambda^{i} \left[ H_i , E_\alpha \right] = \lambda^{i} \alpha_i E_\alpha = \left( \lambda, \alpha \right) E_\alpha = 0$, $\forall \alpha \in \Phi$.
+
+    So $H_\lambda$ commutes with all $x \in \mathfrak{g}$ and therefore $\text{span}_\C \{H_\lambda\} $ is a nontrivial abelian ideal which contradicts $\mathfrak{g}$ being semisimple. Thus the roots must span $\mathfrak{h}^{*}$.
+\end{proof}
+
+Choose a basis $\{ \alpha_{\left( i \right) } \in \Phi  \mid i = 1, \cdots, r\} $ where the parentheses indicate we are discussing a basis. We than write
+\begin{align}
+    \mathfrak{h}^{*} = \text{span}_\C \{\alpha_{\left( i \right) }\}
+.\end{align}
+
+We call these \textbf{simple roots}.
+
+Let $\mathfrak{h}^{*}_\R \subset \mathfrak{h}^{*}$ be the real vector space
+\begin{align}
+    \mathfrak{h}^{*}_\R = \text{span}_\R \{\alpha_{\left( i \right) }\} 
+,\end{align}
+for $i = 1, \cdots, r$.
+
+\begin{claim}
+    $\mathfrak{h}^{*}_\R$ contains all roots.
+\end{claim}
+
+\begin{proof}
+    Let $\beta \in \Phi$. We can find coefficients such that $\beta = \beta^{i}\alpha_{\left( i \right) }$.
+    Taking an inner product, we see
+    \begin{align}
+        \left( \beta, \alpha_{\left( j \right) } \right) = \beta^{i} \left( \alpha_{\left( i \right) }, \alpha_{\left( j \right) } \right) 
+    .\end{align}
+    As we established these inner products are real, and the equations above are non-degenerate, we must have real coefficients $\beta^{i} \in \R$. Thus $\beta \in \mathfrak{h}_{\R}^{*}$.
+\end{proof}
+
+\begin{claim}
+    $\forall \lambda \in \mathfrak{h}_\R^{*}$, $\left( \lambda, \lambda \right) \geq 0$, with $\left( \lambda, \lambda \right) = 0 \iff \lambda = 0$
+\end{claim}
+
+\begin{proof}
+    Recall
+    \begin{align}
+        \left( \lambda, \lambda \right) = \frac{1}{\mathcal{N}} \sum_{\gamma \in \Phi}^{} \left( \lambda, \gamma \right) \left( \gamma, \lambda \right)  = \frac{1}{\mathcal{N}} \sum_{\gamma \in \Phi}^{} \left( \lambda, \gamma \right)^2 \geq 0
+    .\end{align}
+    Further, $\left( \lambda , \lambda\right) = 0 \iff \left( \lambda, \gamma \right) = 0$, $\forall \gamma \in \Phi$, including $\{\alpha_{\left( i \right) }\}$. If the coefficients are zero for the basis set then we must have $\lambda = 0$.
+\end{proof}
+
+\begin{definition}
+    Define $\left| \alpha \right| = \sqrt{\left( \alpha , \alpha \right) } $ as the \textbf{length} or \textbf{norm} of a root $\alpha \in \Phi$.
+\end{definition}
+
+This also holds identically for any $\lambda \in \mathfrak{h}^{*}_\R$.
+
+For any $\alpha, \beta \in \Phi$, there is an \textbf{angle} $\theta$ such that
+\begin{align}
+    \left( \alpha, \beta \right) = \left| \alpha \right| \left| \beta \right| \cos \theta
+.\end{align}
+
+Then the quantization condition which gave us $\frac{2 \left( \alpha, \beta \right) }{\left( \alpha , \alpha \right) } \in \Z$ gives us that
+\begin{align}
+    \frac{2 \left( \alpha, \beta \right) }{\left( \alpha , \alpha \right) } = 2 \frac{\left| \beta \right| }{\left| \alpha \right| } \cos \theta \in \Z && \frac{2 \left( \alpha, \beta \right) }{\left( \beta, \beta \right) } = 2 \frac{\left| \alpha \right| }{\left| \beta \right| } \cos \theta \in \Z
+.\end{align}
+Multiplying these together, we see
+\begin{align}
+    4 \cos^2 \theta \in \Z
+,\end{align}
+and thus as $0 \leq \cos^2 \theta \leq 1$, this must be $0$, $1$, $2$ $3$, or $4$. Therefore with $\cos \theta = \pm \sqrt{n}/2$, for $n \in Z$, the angle is restricted to
+\begin{align}
+    \left| \theta \right| = \left\{ 0, \frac{\pi}{6}, \frac{\pi}{4}, \frac{\pi}{3}, \frac{\pi}{2}, 2 \frac{\pi}{3} 3 \frac{\pi}{4}, 5 \frac{\pi}{6} , \pi \right\} 
+.\end{align}
+
+\subsection{Simple roots}
+
+Recall that $\left| \Phi \right| > \dim \mathfrak{h}^{*}_\R = r$. We pick a hyperplane of dimension $r = 1$ to partition $\mathfrak{h}_\R^{*}$ in two. The hyperplane includes the origin and excludes any roots. 
+
+The roots are divided into two sets of equal number. Call one set positive roots and the other negative such that
+\begin{align}
+    \Phi = \Phi_+ \cup \Phi_-
+,\end{align}
+where $\alpha \in \Phi_+ \iff -\alpha \in \Phi_-$ and $\alpha , \beta \in \Phi_+ \implies \alpha + \beta \in \Phi_+$.
+
+\begin{definition}
+    A \textbf{simple root} is a positive root which cannot be written as a sum of other positive roots. The set of simple roots is denoted by $\Phi_S$.
+\end{definition}
+
+We will see that $\Phi_S$ forms a basis for $\mathfrak{h}^{*}_\R$.
+
+\begin{claim}
+    If $\alpha , \beta \in \Phi_S$ then $\alpha - \beta \notin \Phi$.
+\end{claim}
+\begin{proof}
+    We proceed by contradiction. Suppose $\alpha - \beta \in \Phi$. 
+    \begin{enumerate}[label=\alph*)]
+        \item If $\alpha - \beta \in \Phi_+$, then $\alpha = \left( \alpha - \beta \right) + \beta$ which implies $\alpha$ is not a simple root which is a contradiction.
+        \item If $\alpha -\beta \in \Phi_-$, then $\beta - \alpha \in \Phi_+$ and thus $\beta = \left( \beta - \alpha \right) + \alpha$ and thus $\beta$ is not a simple root.
+    \end{enumerate}
+\end{proof}
+
+Recall the $\alpha$-string through $\beta$
+\begin{align}
+    S_{\alpha, \beta} = \left\{ \beta + \rho \alpha  \mid \rho \in \Z, n_- \leq \rho \leq n_+ \right\} 
+,\end{align}
+with $n_+ + n_- = - \frac{2 \left( \alpha, \beta \right) }{\left( \alpha, \alpha \right) } \in Z$.
+
+\begin{definition}
+    The \textbf{length} of a root string is
+    \begin{align}
+        \ell_{\alpha, \beta} = n_{+} - n_- + 1
+    .\end{align}
+\end{definition}
+
+For $\alpha, \beta \in \Phi_S$, the $\alpha$-root string through $\beta$ has length $\ell_{\alpha, \beta} = n_+ + 1 = -\frac{2 \left( \alpha, \beta \right) }{\left( \alpha, \alpha \right) } + 1$.
+
+By the above claim, $n_- = 0$.
+
+\begin{claim}
+    $\left( \alpha, \beta \right) \leq 0$ for $\alpha , \beta \in \Phi_S$ and $\beta \neq \alpha$.
+\end{claim}
+\begin{proof}
+    This follows from $\ell_{\alpha, \beta} \geq 1$ and $\left( \alpha, \alpha \right)  > 0$.
+\end{proof}
+
+
+\begin{claim}
+    Any $\beta \in \Phi_+$ can be written as a linear combination of simple roots with integer coefficients.
+\end{claim}
+
+\begin{proof}
+    If $\beta \in \Phi_S$, we are done. If $\beta \notin \Phi_S$, then $\beta = \beta_1 + \beta_2$. If $\beta_1$ and $\beta_2$ are simple roots, we are done. Otherwise one iterates and thus terminates as $\dim \mathfrak{h}^{*}_\R = r$ is finite.
+\end{proof}
+
+\begin{claim}
+    All roots $\alpha \in \Phi$ can be written
+    \begin{align}
+        \alpha = \sum_{i}^{}  p_i \alpha_{\left( i \right) }
+    ,\end{align}
+    with $p_{i} \in \Z$ and $\alpha_{\left( i \right) } \in \Phi_{S}$.
+\end{claim}
+
+By the properties above, all $p_i$ have the same sign or are 0.
+
+\begin{claim}
+    The simple roots are linearly independent.
+\end{claim}
+
+
+

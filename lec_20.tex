@@ -1,0 +1,134 @@
+\lecture{20}{26/11/2024}{Chevelley basis}
+
+\begin{proof}
+    All $\lambda \in \mathfrak{h}^{*}_\R$ can be written as 
+    \begin{align}
+        \lambda = \sum_{i}^{} c_i \alpha_{\left( i \right) }
+    ,\end{align}
+    for $c_{i} \in \R$. Linear independence states that $\lambda = 0 \iff c_{i} = 0$, $\forall i$. Assume $\exists c_{i} \neq 0$. Let $J_{\pm} = \{i  \mid c_{i} \gtrless 0\} $ and define
+    \begin{align}
+        \lambda_{+} = \sum_{j \in J_+}^{}  c_{i} \alpha_{\left( i \right) }, && \lambda_- = -\sum_{j \in J_-}^{} c_j \alpha_{\left( j \right) } =  \sum_{j \in J_-}^{} b_j \alpha_{\left( j \right) }
+    ,\end{align}
+    with $b_j = - c_j > 0$. Then one can write
+    \begin{align}
+        \lambda = \lambda_+ - \lambda_- = \sum_{j \in J_+}^{}  c_i \alpha_{\left( i \right) } - \sum_{j \in J_-}^{}  b_{j} \alpha_{\left( j \right) }
+    .\end{align}
+    Then observe that the inner product
+    \begin{align}
+        \left( \lambda, \lambda \right) = \left( \lambda_+, \lambda_+ \right) + \left( \lambda_-, \lambda_- \right) - 2\left( \lambda_+, \lambda_- \right) > -2 \left( \lambda_+, \lambda_- \right) 
+    ,\end{align}
+    since at least one of $\left( \lambda_+, \lambda_+ \right)$ and $\left( \lambda_- , \lambda_- \right) $ are greater than 0. Further 
+    \begin{align}
+        \left( \lambda_+, \lambda_- \right) = \sum_{i \in J_+}^{}  \sum_{j \in J_-}^{}  c_i b_j \left( \alpha_{\left( i \right) }, \alpha_{\left( j \right) } \right) \leq 0
+    ,\end{align}
+    as $\left( \alpha_{\left( i \right) }, \alpha_{\left( j \right) } \right) \leq 0$ for distinct simple roots and $c_i b_j > 0$ by construction. Therefore $\left( \lambda, \lambda \right) > 0$ and thus the simple roots are linearly independent.
+\end{proof}
+
+There are $r = \dim \mathfrak{h}^{*}_\R$ simple roots, $\left| \Phi_S \right| = r$, as they minimally (i.e. linearly independently) span $\mathfrak{h}^{*}_\R$.
+
+\subsection{Classification}
+
+As the simple roots form a basis for $\mathfrak{h}^{*}_\R$ we want extend this to write a basis for $\mathfrak{g}$ using them as well. This is called a \textbf{Chevelley basis}.
+
+\begin{definition}
+    Define the $r \times  r$ \textbf{Cartan matrix} $A$ such that
+    \begin{align}
+        A_{ji} = \frac{2 \left( \alpha_{\left( j \right) }, \alpha_{\left( i \right) } \right) }{\left( \alpha_{\left( i \right) }, \alpha_{\left( i \right) } \right) }
+    ,\end{align}
+    which is notably not symmetric. However, $A_{ji}$ are integers due to the quantization condition and in fact, $A_{ji} \in \Z_{\leq 0}$ for $i \neq j$. For $i = j$, $A_{ji} = 2$.
+\end{definition}
+
+We had commutation relations for $h_{\alpha}$ and $e_{\beta}$. For $\alpha_{\left( i \right) }, \alpha_{\left( j \right) } \in \Phi_S$, 
+\begin{align}
+    \left[ h_{\alpha_{\left( i \right) }}, h_{\alpha_{\left( j \right) }} \right]  &= 0 \\
+    \left[ h_{\alpha_{\left( i \right) }}, e_{\pm \alpha_{\left( j \right) }} \right] &= \pm A_{ji} e_{\pm \alpha_{\left( i \right)}  }, \\
+    \left[ e_{\alpha_{\left( i \right) }}, e_{\alpha_{\left( j \right) }} \right] &= \delta_{ij} h_{\alpha_{\left( i \right) }}
+.\end{align}
+
+One can then see the relation
+\begin{align}
+    \left[ e_{\alpha_{\left( i \right) }}, e_{\alpha_{\left( j \right) }} \right] = \ad_{e_{\alpha_{\left( i \right) }}} \left( e_{\alpha_{\left( j \right) }} \right) \propto e_{\alpha_{\left( i \right) } + e_{\alpha_{\left( j \right)}  }}
+,\end{align}
+as long as $\alpha_{\left( i \right) } + \alpha_{\left( j \right) } \in \Phi$. In this case, $\alpha_{\left( i \right) } + \alpha_{\left(j  \right) }$ is part of a root string which we can write as $n \alpha_{\left( i \right) } + \alpha_{\left( j \right)}$ and the string has length $\ell = 1 - A_{ji}$. For $\ell$ applications of $\ad$, as the string ends we have
+\begin{align}
+    \left( \ad e_{\alpha_{\left( i \right) }} \right)^{1 - A_{ji}} \left( e_{\alpha_{\left( j \right) }} \right)  = 0
+.\end{align}
+
+This is the \textbf{Serre relation}.
+
+The Cartan matrix is quite heavily constrained by the algebra. In fact, any finite dimensional, complex, Lie algebra is \textit{uniquely determined} by its Cartan matrix.
+
+As such, the entries are of particular interest and we can identify general properties:
+\begin{enumerate}[label=\roman*)]
+    \item $\forall i$ fixed, $A_{i i} = 2$ on the diagonal.
+    \item $A_{ji} = 0 \iff A_{ij} = 0$ by symmetry of the inner product.
+    \item $A_{ji} \in \Z_{\leq 0}$ $\forall i \neq j$ from $\left( \alpha_{\left( i \right) }, \alpha_{\left( j \right) } \right) \leq 0$.
+    \item $\det A > 0$.
+        \begin{proof}
+            Write $A = \kappa^{-1} D$ where $D^{j}_k = \frac{2}{\left( \alpha_{\left( j \right) }, \alpha_{\left( j \right) } \right) } \delta^{j}_k$ with no summation which implies $\det D > 0$. Recall $\left( \lambda, \lambda \right) = \lambda_i \left( \kappa^{-1} \right)^{ij} \lambda_j > 0$ and thus $\kappa^{-1}$ is positive definite and thus $\det A = \det \kappa^{-1} \det D > 0$ as desired.
+        \end{proof}
+\end{enumerate}
+
+\begin{proposition}
+    For simple Lie, algebras, $A$ is irreducible, i.e. cannot be made block triangular by a permutation transformation, where $P$ is a permutation matrix. Otherwise $\mathfrak{g}$ is semisimple.
+\end{proposition}
+
+\begin{claim}
+    $A_{ij} A_{ji} \in \{0,1,2,3,\} $ for $i \neq j$ without summation.
+\end{claim}
+
+\begin{proof}
+    Recall
+    \begin{align}
+        \left( \alpha_{\left( i \right) }, \alpha_{\left( j \right) } \right) = \left| \alpha_{\left( i \right) } \right| \left| \alpha_{\left( j \right) } \right| \cos \phi_{ij}
+    ,\end{align}
+    which implies
+    \begin{align}
+        A_{ij} A_{ji} = 4 \cos^2 \phi_{ij} \in \left[ 0,4 \right]  
+    .\end{align}
+    If $\phi = \{0, \pi, \cdots, n \pi\}$, then $\alpha_{\left( i \right) } = \pm \alpha_{\left( j \right) }$ which is not possible for simple roots and thus $A_{ij} A_{ji} \in \{0,1,2,3\}$.
+\end{proof}
+
+This implies for simple complex Lie algebras with rank $r = 2$ that one has
+\begin{align}
+    A = \mqty( 2 & -m \\ -n & 2)
+,\end{align}
+with $m,n \in \Z_{\geq 0}$ and $\det A = 4 - m n > 0$. This implies we have
+\begin{align}
+    \left( m,n \right) = \left\{ \left( 1,1 \right) , \left( 1,2 \right) , \left( 2,1 \right) , \left( 1,3 \right) , \left( 3,1 \right)  \right\} 
+.\end{align}
+\begin{note}
+    $\left( m,n \right) = \left( 0,0 \right) $ gives a diagonal matrix which is reducible and thus not semisimple.
+\end{note}
+
+Note that the Cartan matrix completely specifies and defines the simple Lie algebra (up to relabelling roots) and thus differences like $\left( 1,2 \right) $ and $\left( 2,1 \right) $ are trivial permutations that correspond to the same algebra.
+
+\subsection{Dynkin diagrams}
+
+\begin{definition}
+    Given a Cartan matrix $A$, its corresponding \textbf{Dynkin diagram} is defined through the procedure as follows:
+    \begin{enumerate}[label=\roman*)]
+        \item Draw a node for each simple root $\alpha_{\left( i \right) }$.
+        \item Join the nodes representing $\alpha_{\left( i \right) }$ and $\alpha_{\left( j \right) }$ with $\text{max}\left( \left| A_{ij} \right| , \left| A_{ji} \right|  \right) \in \{0, 1, 2, 3\} $ lines.
+        \item If the number of lines is greater than 1, add an arrow pointing from the longer root $\alpha_{\left( \ell \right) }$ to the shorter root, $\alpha_{\left( s \right) }$, namely, with $\left| \alpha_{\left( \ell \right) } \right| > \left| \alpha_{\left( s \right) } \right| $
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    For $r = 2$ with $\left( m,n \right) = \left( 1,1 \right) $ we have
+    \begin{align}
+        A = \mqty( 2 & -1 \\ -1 & 2 )
+    .\end{align}
+\end{example}
+
+
+This has Dynkin diagram \dynkin A2.
+
+If we take $\left( m,n \right) = \left( 2,1 \right) $ then
+\begin{align}
+    A = \mqty( 2 & -2 \\ -1 & 2)
+.\end{align}
+
+This has Dynkin diagram \dynkin B2 where the arrow is pointing towards $\alpha_{\left( 2 \right) }$ as $\alpha_{\left( 1 \right) }$ is larger (as we will show).
+
+

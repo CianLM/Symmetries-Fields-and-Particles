@@ -1,0 +1,139 @@
+\lecture{11}{05/11/2024}{Decomposition}
+
+The highest weight $\lambda + \lambda'$ has multiplicity one as there is only one way to form it, so $\mathscr{L}_{\Lambda, \Lambda'}^{\Lambda + \Lambda'} = 1$. Then,
+\begin{align}
+    d_{\Lambda} \otimes d_{\Lambda'} = d_{\Lambda + \Lambda'} \oplus \widetilde{d}_{\Lambda, \Lambda'}
+,\end{align}
+where $\widetilde{d}_{\Lambda, \Lambda'}$ is the remainder, which has a weight set such that
+\begin{align}
+    S_{\Lambda, \Lambda'} = S_{\Lambda + \Lambda' } \cup \widetilde{S}_{\Lambda,\Lambda'}
+.\end{align}
+
+The highest weight in $\widetilde{S}_{\Lambda, \Lambda'}$ is $\Lambda + \Lambda' - 2$ with multiplicity 1. Repeating this process above, we find
+\begin{align}
+    d_{\Lambda} \otimes d_{\Lambda'} = d_{\Lambda + \Lambda'} \oplus d_{\Lambda + \Lambda' - 2} \oplus \cdots \oplus d_{\left| \Lambda - \Lambda' \right| }
+.\end{align}
+
+\begin{example}
+    Take $\Lambda = \Lambda' = 1$, or in physics language, $j = j' = \frac{1}{2}$. We then have weight sets
+    \begin{align}
+        S_1 = \{-1,1\} 
+    ,\end{align}
+    and thus
+    \begin{align}
+        S_{1,1} = \{-2,0,0,2\} 
+    .\end{align}
+    The highest weight is $2$ and thus we see
+    \begin{align}
+        S_{1,1} &= \{-2,0,2\} \cup \{0\}\\
+        &= S_2 \cup S_0 \\
+        \implies d_1 \otimes d_2 &= d_2 \oplus d_0
+    ,\end{align}
+    which is also sometimes denoted
+    \begin{align}
+        \vb{2} \otimes \vb{2} = \vb{3} \oplus \vb{1}
+    ,\end{align}
+    where $\vb{n}$ denotes the space by its dimension. This gets more complicated when we have inequivalent representations of the same dimension.
+\end{example}
+
+This may be familiar if one has studied Clebsch-Gordon coefficients for the addition of angular momenta. Namely, given two irreducible representations of highest weights $\Lambda_1 = 2j_1$ and $\Lambda_2 = 2j_2$, the representation $\Lambda_3 = 2 J$ with $J \leq j_1 + j_2$, has eigenvectors given by
+\begin{align}
+    \ket{JM} = \sum_{\substack{m_1,m_2\\m_1 + m_2 = M}}  C_{m_1, m_2}^{J, j_1, j_2}\ket{j_1 m_2} \otimes \ket{j_2 m_2}
+,\end{align}
+where $C_{m_1, m_2}^{J, j_1, j_2}$ is a Clebsch-Gordon coefficient.
+
+\section{Relativistic Symmetries}
+
+\subsection{Lorentz group}
+
+Lorentz transformations leave the scalar product invariant such that
+\begin{align}
+    x^{\mu} \eta_{\mu\nu} x^{\nu} = x^{\sigma} \tensor{\Lambda}{^{\mu}_\sigma} \eta_{\mu \nu} \tensor{\Lambda}{^{\nu}_\rho} x^{\nu}
+,\end{align}
+which implies
+\begin{align}
+    \eta_{\rho \sigma} = \tensor{\Lambda}{^{\mu}_\sigma} \eta_{\mu \nu} \tensor{\Lambda}{^{\nu}_{\rho}}
+,\end{align}
+and thus $\Lambda \in O \left( 1,3 \right) $. One can count degrees of freedom and thus while $\eta$ contains 16 real degrees of freedom, invariance under $O \left( 1,3 \right) $ subtracts 10 leaving 6 degrees of freedom.
+
+The Lorentz group consists of four disjoint sets, depending on $\det \Lambda $ and $\tensor{\Lambda}{^{0}_0} > 0$. Observe that
+\begin{align}
+    \det \Lambda^{T} \eta \Lambda &= \det \eta \\
+    \det \Lambda^{T} \det \Lambda &= 1 \\
+    \implies \det \Lambda &= \pm 1
+.\end{align}
+
+Similarly, set $\rho = \sigma = 0$ in $\eta = \Lambda^{T} \eta \Lambda$, then
+\begin{align}
+    \tensor{\Lambda}{^{\mu}_0} \eta_{\mu \nu} \tensor{\Lambda}{^{\nu}_0} = \eta_{0 0} = 1 \\
+    \implies \left( \tensor{\Lambda}{^{0}_0} \right)^2 - \sum_{i}^{}  \left( \tensor{\Lambda}{^{1}_0} \right)^2 = 1
+,\end{align}
+and thus $\tensor{\Lambda}{^{0}_0} \geq 1$ or $\tensor{\Lambda}{^{0}_0} \leq -1$.
+
+The set with $\det \Lambda = 1$ and $\tensor{\Lambda}{^{0}_0} \geq 1$ contains the identity and forms a subgroup $SO \left( 1,3 \right)^{+}$ called the \textbf{proper} orthochronous Lorentz group. The disconnected parts of $O \left( 1,3 \right) $ can be obtained by composing elements of this subgroup with time reversal or parity transformations,
+\begin{align}
+    T = \mqty( -1 \\ & 1 \\ & & 1 \\ &  & & 1), && P = \mqty( 1 \\ & -1 \\ & & -1 \\ & & & -1 )
+.\end{align}
+
+The elements in $SO \left( 1,3 \right)^{+}$ can be further categorized.
+\begin{enumerate}
+    \item Rotations are of the form
+        \begin{align}
+            \left[ \tensor{\left( \Lambda_R \right)}{^{\mu}_{\nu}}  \right]  : \mqty( 1 & \vb{0}_{1\times 3} \\ \vb{0}_{3\times 1} & R )
+        ,\end{align}
+        with $R \in SO \left( 3 \right) $.
+    \item Boosts are of the form
+        \begin{align}
+            \left[ \tensor{\left( \Lambda_B \right) }{^{\mu}_\nu} \right] = \mqty( \cosh \psi & -\vb{n}^{T} \sinh \psi \\ - \vb{n} \sinh \psi & \vb{I} - \vb{n} \vb{n}^{T}) \left( \cosh \psi -1 \right) 
+        ,\end{align}
+        with $\vb{n}$ a unit vector and the rapidity $\psi \in \R$. The boost velocity is $\vb{v} = \vb{n} \tanh \psi$.
+\end{enumerate}
+
+Thus we have all six degrees of freedom accounted for.
+
+\begin{note}
+    $SO \left( 3 \right) $ is a subgroup of $SO \left( 1,3 \right)^{+}$ but boosts are not.
+\end{note}
+
+\begin{exercise}
+    Show that $SO\left( 1,3 \right)^{+} \cong SL\left( 2, \C \right) / \Z_2$.
+\end{exercise}
+
+\begin{proof}
+    
+\end{proof}
+
+Thus, $SL \left( 2, \C \right)$ is the double cover of $SO \left( 1,3 \right)^{+}$.
+
+\subsection{Lie algebra of the Lorentz group}
+
+Recall that $\mathfrak{sl}\left( 2,\C \right) \cong \mathfrak{su}\left( 2\right)_{\C}$. The plan is to write $\mathfrak{sl}\left( 2,\C \right) $ irreducible representations as $\mathfrak{su}\left( 2 \right) \oplus \mathfrak{su}\left( 2 \right) $ irreducible representations.
+
+We begin by expanding $\Lambda \in SO \left( 1,3 \right)^{+}$ near the identity about $\tensor{\Lambda}{^{\mu}_{\nu}} = \delta^{\mu}_\nu$ such that
+\begin{align}
+    \tensor{\Lambda}{^{\mu}_{\nu}}\left( t \right)  = \delta^{\mu}_\nu + t\tensor{\omega}{^{\mu}_\nu} + \mathcal{O}\left( t^2 \right) 
+.\end{align}
+Inserting this into $\eta = \Lambda^{T} \eta \Lambda$ implies
+\begin{align}
+    \eta_{\sigma \rho} \left( \delta^{\sigma}_{\mu} + t \tensor{\omega}{^{\sigma}_{\mu}} \right) \left( \delta^{\rho}_{\nu} + t \tensor{\omega}{^{\rho}_\nu} \right) = \eta_{\mu \nu} + \mathcal{O}\left( t^2 \right) \\
+    \eta_{\mu \nu} + t \left( \omega_{\mu \nu} + \omega_{\nu \mu} \right) = \eta_{\mu \nu} + \mathcal{O}\left( t^2 \right) 
+    \implies \omega_{\mu \nu} = - \omega_{\nu \mu}
+.\end{align}
+
+Thus we can construct a basis for $\mathfrak{so}\left( 1,3 \right)^{+}$ with
+\begin{align}
+    K_1 = \mqty( 0&1&0&0\\1&0&0&0\\0&0&0&0 \\0&0&0&0 ),~ K_2 = \mqty( 0 & 0 & 1 &0 \\ 0&0&0&0\\ 1 & 0 & 0 & 0\\0&0&0&0 ),~ K_3 = \mqty( 0&0&0& 1 \\0&0&0&0 \\0&0&0&0 \\ 1 & 0 & 0 & 0)
+,\end{align}
+and
+\begin{align}
+    J_1 = \mqty(0&0&0&0 \\0&0&0&0\\ 0&0&0&-1\\ 0&0&1&0),~ J_2 = \mqty( 0 & 0 & 0 & 0 \\ 0&0&0& 1 \\ 0&0&0&0\\ 0 & -1 & 0 & 0),~ J_3 = \mqty(0&0&0&0 \\ 0&0&-1&0\\ 0&1&0&0\\ 0&0&0&0)
+.\end{align}
+
+These have Lie brackets
+\begin{align}
+    \left[ J_{i}, J_{j} \right] = \epsilon_{ijk} J_{k} && \left[ J_{i}, K_{j} \right] = \epsilon_{ijk} K_k && \left[ K_{i}, K_{j} \right] = -\epsilon_{ijk} J_k
+.\end{align}
+
+\begin{note}
+    We could use $\widetilde{K}_k = - K_k$ and the commutation relations would be the same. The same is not true about the $J$ matrices.
+\end{note}

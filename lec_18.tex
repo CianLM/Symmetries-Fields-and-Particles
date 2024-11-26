@@ -1,0 +1,151 @@
+\lecture{18}{22/11/2024}{Root Set Commutations}
+
+Recall that we have $\left[ H_{i}, H_{j} \right] = 0$ and $\left[ H_{i}, E_\alpha \right] = \alpha_i E_\alpha$, however we still need $\left[ E_\alpha, E_\beta \right] $. Recall that for $\mathfrak{su}\left( 2 \right)_\C$, $\left[ E_+, E_- \right] = H$, for any $H \in \mathfrak{h}$, $\alpha$, $\beta \in \Phi$, we have
+\begin{align}
+    \ad_H \left[ E_\alpha, E_\beta \right] &= \left[ H, \left[ E_\alpha, E_\beta \right]  \right]  \\
+    &= - \left[ E_\beta, \left[ H, E_\alpha \right]  \right] - \left[ E_\alpha, \left[ E_\beta, H \right]  \right]  \\
+    &= -\alpha \left( H \right) \left[ E_\beta, E_\alpha \right] + \beta \left( H \right) \left[ E_\alpha, E_\beta \right]  \\
+    &= \left( \alpha \left( H \right) + \beta \left( H \right) \right) \left[ E_\alpha, E_\beta \right] 
+.\end{align}
+
+Thus if $\alpha - \beta \neq 0$, then either $\left[ E_\alpha, E_\beta \right] = 0$ or $\left[ E_\alpha, E_\beta \right] = N_{\alpha,\beta} E_{\alpha + \beta}$ for constant $N_{\alpha, \beta}$ as this is an eigenvector of $\ad_H$ with eigenvalue $\alpha + \beta$ and thus $\alpha + \beta \in \Phi$.
+
+If $\alpha + \beta = 0$, then $\ad_H \left[ E_\alpha, E_{-\alpha} \right] = 0$ which implies $\left[ E_\alpha, E_{-\alpha} \right] \in \mathfrak{h}$.
+\begin{proof}
+    Using the Killing form,
+    \begin{align}
+        \kappa \left( \left[ E_\alpha, E_{-\alpha} \right] , H \right) = \kappa \left( E_\alpha, \left[ E_{-\alpha}, H \right]  \right)  = \alpha \left( H \right) \kappa \left( E_{\alpha} , E_{-\alpha} \right) 
+    ,\end{align}
+    where $\kappa \left( E_{\alpha},E_{-\alpha} \right) $ is nonzero generically.
+\end{proof}
+
+Define a normalized element of $\mathfrak{h}$ to be
+\begin{align}
+    H_\alpha = \frac{\left[ E_\alpha, E_{-\alpha} \right] }{\kappa \left( E_\alpha, E_{-\alpha} \right) }
+,\end{align}
+such that we have $\kappa \left( H_\alpha, H \right) = \alpha \left( H \right) $.
+
+In components, $H_\alpha = \rho_\alpha^{i} H_i$ and $H = \rho^{i} H_i$. Then, $\kappa_{ij} \rho^{i}_{\alpha} \rho^{j} = \alpha_i \rho^{i}$, $\forall H \in \mathfrak{h}$. As this holds for all $\rho^{i}$, we have 
+\begin{align}
+    \rho_\alpha^{i} = \left( \kappa^{-1} \right)^{ij}\alpha_j && H_\alpha = \left( \kappa^{-1} \right)^{ij} \alpha_i H_j
+.\end{align}
+
+\begin{note}
+    \begin{align}
+        \left[ H_\alpha, E_\beta \right] = \left( \kappa^{-1} \right)^{ij} \alpha_j \left[ H_i, E_\beta \right] = \left( \kappa^{-1} \right)^{ij} \alpha_j \beta_i E_\beta = \left( \alpha, \beta \right) E_\beta
+    .\end{align}
+\end{note}
+
+We can choose a new normalization
+\begin{align}
+    e_\alpha = \frac{2}{\sqrt{\left( \alpha, \alpha \right) \kappa \left( E_\alpha, E_{-\alpha} \right) } } E_\alpha && h_\alpha = \frac{2}{\left( \alpha, \alpha \right) } H_\alpha
+.\end{align}
+
+Then,
+\begin{align}
+    \left[ h_\alpha, h_\beta \right] &=0 \\
+    \left[ h_\alpha, E_\beta \right]  &= \frac{2\left( \alpha, \beta \right) }{\left( \alpha, \alpha \right) } H_\alpha \\
+    \left[ e_\alpha, e_\beta \right] &= \begin{cases}
+        n_{\alpha, \beta} e_{\alpha + \beta}, & \alpha + \beta \in \Phi, \\
+        h_\alpha, & \alpha + \beta = 0,\\
+        0, & \text{~otherwise.}
+    \end{cases}
+\end{align}
+
+\begin{note}
+    For each $\alpha \in \Phi$, there is an $\mathfrak{sl}\left( 2, \C \right) \cong \mathfrak{su}\left( 2 \right)_{\C}$ subalgebra with basis $\{h_\alpha, e_\alpha, e_{-\alpha}\} $ and closed commutation relations $\left[ h_\alpha, e_{\pm \alpha} \right]  = \pm 2 e_{\pm \alpha}$ and $\left[ e_{\alpha}, e_{-\alpha} \right] = h_{\alpha}$. We denote these subalgebras as $\mathfrak{sl}\left( 2 \right)_{\alpha}$ or $\mathfrak{su}\left( 2 \right)_{\alpha}$
+\end{note}
+
+\subsection{Geometry of Roots}
+
+With commutation relations established, we would like to construct a geometry of the root space, namely defining lengths and angles within it. This requires some machinery which we will develop in the following order.
+
+\begin{enumerate}[label=\roman*)]
+    \item For $\alpha , \beta \in \Phi$, $\left( \alpha, \beta \right) \in \R$.
+    \item $\mathfrak{h}^{*}$ is spanned by the root set $\Phi$.
+    \item There is a real vector space $\mathfrak{h}^{*}_\R$ spanned by $\Phi$ and $\mathfrak{h}_\R^{*}$ contains all $\alpha \in \Phi$.
+    \item $\left( \alpha , \alpha \right) \geq 0$, so a length can be defined as $\left| \alpha \right| = \sqrt{\left( \alpha, \alpha \right) } $.
+    \item We can then determine angles between roots.
+\end{enumerate}
+
+We begin by defining a useful notion.
+
+\begin{definition}
+    Let $\alpha , \beta \in \Phi$. The \textbf{$\alpha$-root string} passing through $\beta$ is defined to be the set of roots $S_{\alpha, \beta} = \{\beta + \rho \alpha  \mid \rho \in \Z\} $.
+\end{definition}
+
+\begin{claim}
+    The allowed values for $\rho$ are $\rho = n_-,n_-+1, \cdots, n_+$ where these bounds satisfy
+    \begin{align}
+        \frac{2\left( \alpha,\beta \right) }{  \left( \alpha, \alpha \right)  } = \left( n_+ - n_- \right) \in \Z
+    .\end{align}
+\end{claim}
+
+\begin{proof}
+    The vector space spanned by $S_{\alpha , \beta}$ is
+    \begin{align}
+        V_{\alpha, \beta} = \text{span}_\C \{e_{\beta + \rho \alpha}  \mid \beta + \rho \alpha \in S_{\alpha, \beta}\} 
+    .\end{align}
+    The action of $\mathfrak{sl}\left( 2 \right)_\alpha$ on $V_{\alpha, \beta}$ is
+    \begin{align}
+        \ad_H e_{\beta + \rho \alpha} = \left[ h_{\alpha}, e_{\beta + \rho \alpha}  \right] = \frac{2 \left( \alpha, \beta + \rho \alpha \right) }{\left( \alpha , \alpha \right) } e_{\beta + \rho \alpha} = \left( \frac{2\left( \alpha , \beta \right) }{\left( \alpha , \alpha \right) } + 2 \rho \right) e_{\beta + \rho \alpha}
+    .\end{align}
+    Also 
+    \begin{align}
+        \left[ e_{\pm \alpha}, e_{\beta \pm \rho \alpha} \right] \propto \begin{cases}
+            e_{\beta + \left( \rho \pm 1 \right)\alpha }, & \text{~if $\beta + \left( \rho \pm 1 \right) \alpha \in \Phi$,} \\
+            0, & \text{~otherwise.}
+        \end{cases}
+    \end{align}
+    So $V_{\alpha, \beta}$ is closed under $\mathfrak{sl}\left( 2 \right)_{\alpha}$ and thus $V_{\alpha \beta}$ is a representation space for some representation of $\mathfrak{sl}\left( 2 \right)_{\alpha}$. 
+
+    The weight space for representations of $\mathfrak{su}\left( 2, \C \right) \cong \mathfrak{sl}\left( 2 \right)_{\C}$ are characterized by weight $\Lambda$ such that
+    \begin{align}
+        S_{\Lambda} = \left\{ \frac{2 \left( \alpha, \beta \right) }{\left( \alpha, \alpha \right) } + 2 \rho  \mid \beta + \rho \alpha \in \Phi, \rho \in \Z \right\}  = \{-\Lambda, \cdots, \Lambda - 2, \Lambda\} 
+    .\end{align}
+    For some integers $n_-$ and $n_+$ the extrema of this set are satisfied such that for minimal and maximal $\rho$ respectively,
+    \begin{align}
+        \frac{2 \left( \alpha, \beta \right) }{\left( \alpha , \alpha \right) } + 2 n_- = - \Lambda && \frac{2 \left( \alpha, \beta \right) }{\left( \alpha, \alpha \right) } + 2n_+ = \Lambda
+    .\end{align}
+    Adding these two equations we see
+    \begin{align}
+        \frac{2 \left( \alpha, \beta \right) }{\left( \alpha, \alpha \right) } = n_+ - n_- \in \Z
+    .\end{align}
+    Thus we have the desired result, sometimes referred to as a \textit{'quantization' condition}.
+\end{proof}
+
+\begin{claim}
+    For $\alpha, \beta \in \Phi$, we can write $\left( \alpha, \beta \right) = \frac{1}{\mathcal{N}} \sum_{\gamma \in \Phi}^{} \left( \alpha, \gamma \right) \left( \gamma, \beta \right) $. We set $\mathcal{N} = 1$ in this course.
+\end{claim}
+
+\begin{proof}
+    Recall $\left[ H_{i}, H_{j} \right] = 0$ and $\left[ H_{i}, E_{\gamma} \right] = \gamma_{i} E_{\gamma}$ where $\{\ad_{H_{i}}\} $ are diagonalizable with entries either 0 or $\{\gamma_{i}\} $. So 
+    \begin{align}
+        \kappa_{ij} = \kappa \left( H_{i}, H_{j} \right) = \frac{1}{\mathcal{N}} \tr \left( \ad_{H_{i}} \circ \ad_{H_{j}} \right) = \frac{1}{\mathcal{N}} \sum_{\gamma \in \Phi}^{} \gamma_{i} \gamma_{j}
+    .\end{align}
+    Define upper indices such that $\alpha^{i} = \left( \kappa^{-1} \right)^{ij}\alpha_j$ and $\beta^{j} = \left( \kappa^{-1} \right)^{jk} \beta_k$ then 
+    \begin{align}
+        \left( \alpha, \beta \right) &= \alpha_i \beta_j \left( \kappa^{-1} \right)^{ij}  \\
+        &= \alpha^{i} \beta^{j}\kappa_{ij} \\
+        &= \frac{1}{\mathcal{N}} \sum_{\gamma \in \Phi}^{} \left( \alpha, \gamma \right) \left( \gamma , \beta \right)
+    .\end{align}
+\end{proof}
+
+\begin{claim}
+    $\left( \alpha, \beta \right) \in \R$. 
+\end{claim}
+
+\begin{proof}
+    Divide the above by $\left( \alpha , \alpha \right) \left( \beta, \beta \right) / 4$ and see that
+    \begin{align}
+        \frac{2}{\left( \beta, \beta \right) } \underbrace{\frac{2 \left( \alpha, \beta \right) }{\left( \alpha, \alpha \right) }}_{\in \Z} = \frac{1}{\mathcal{N}} \sum_{\gamma \in \Phi}^{} \underbrace{\frac{2 \left( \alpha, \gamma \right) }{\left( \alpha , \alpha \right) }}_{\in \Z} \underbrace{\frac{2 \left( \gamma, \beta \right) }{\left( \beta, \beta \right) }}_{\in \Z}
+    .\end{align}
+
+    Either $\left( \alpha, \beta \right) = 0 \in \R$ or $\left( \beta, \beta  \right) \in \R \setminus \{0\} $ and $\left( \alpha, \beta \right) \in \R$.
+\end{proof}
+
+
+
+
+
+
