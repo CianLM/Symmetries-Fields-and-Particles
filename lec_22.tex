@@ -1,0 +1,166 @@
+\lecture{22}{30/11/2024}{Classification of representations}
+
+\section{Classification of representations}
+\subsection{Basics}
+
+Let $d$ be an $N$-dimensional representation of $\mathfrak{g}$ and let the Cartan-Weyl basis for $\mathfrak{g}$ be $\{H_i, E_\alpha\}$. Since $d$ is a representation,
+\begin{align}
+    \left[ D\left( H_i \right) , d\left( H_{j} \right)  \right] = d \left( \left[ H_i, H_j,  \right]  \right) = 0
+,\end{align}
+therefore the $d\left( H_i \right) $ are simultaneously diagonalizable.
+
+Therefore the representation space is spanned by the simultaneous eigenvectors of $\{d \left( H_i \right) \} $. Let $V_\lambda$ be the eigenspace
+\begin{align}
+    V_{\lambda} = \left\{ v  \mid d \left( H_i \right) v = \lambda_i v, \lambda = \left( \lambda^{1} , \cdots, \lambda^{r} \right) , \lambda_i \in \C \right\} 
+.\end{align}
+
+\begin{definition}
+    $\lambda$ is called a \textbf{weight} of representation $d$. The set $S_d$ of all weights of $d$ is called the \textbf{weight set} of $d$.
+\end{definition}
+
+The full representation space is the direct sum of the eigenspaces
+\begin{align}
+    V  = \bigoplus_{\lambda \in S_d} V_\lambda
+.\end{align}
+
+Let $v \in V_\lambda$.
+
+\begin{claim}
+    $d\left( E_\alpha \right)  v \in V_{\lambda + \alpha}$ if $\lambda + \alpha \in S_d$, else $d\left( E_\alpha \right) v = 0$.
+\end{claim}
+
+\begin{proof}
+    \begin{align}
+        d\left( H_i \right) \left( d\left( E_\alpha \right) v  \right) &= d\left( E_\alpha \right)  d\left( H_i \right) v + \left[ d\left( H_i \right) , D\left( E_\alpha \right)  \right]  v \\
+        &= \lambda d \left( E_\alpha \right) v + d \left( \left[ H_i, E_\alpha \right]  \right) v  \\
+        &= \lambda d\left( E_{\alpha}\right) v + d \left( \left[ H_i, E_\alpha \right]  \right) v \\
+        &= \left( \lambda + \alpha_i \right) d\left( E_\alpha \right)  v 
+    .\end{align}
+    Either $\lambda + \alpha \in S_d$ and $d \left( E_\alpha \right) \in V_{\lambda + \alpha}$, or $d \left( E_\alpha \right) v = 0$.
+\end{proof}
+
+Consider the action of the subalgebra $\mathfrak{sl}\left( 2 \right)_{\alpha}$ generators $\{d\left( h_\alpha \right) , d\left( e_\alpha \right) , d \left( e_{-\alpha} \right) \} $ on $V$. Recall that
+\begin{align}
+    h_\alpha = \frac{2}{\left( \alpha, \alpha \right) } H_\alpha,\quad \text{~where~}\quad
+    h_{\alpha} = \frac{2}{\left( \alpha, \alpha \right) } \left( \kappa^{-1} \right)^{ij} \alpha_i H_j
+.\end{align}
+
+Then
+\begin{align}
+    d\left( h_\alpha \right) v &= \frac{2}{\left( \alpha, \alpha \right)} \left( \kappa^{-1} \right)^{ij} \alpha_i \underbrace{d\left( H_j \right) v}_{\lambda_j v} \\
+    &= \frac{2 \left( \alpha, \lambda \right) }{\alpha, \alpha} v 
+.\end{align}
+
+Thus the weights of $\mathfrak{sl}\left( 2,\C \right) $ are integers. This is a ``\textit{quantization condition}'' for the weights as before. Remember that $\lambda \in \mathfrak{h}^{*}$.
+
+\subsection{Root and weight lattices}
+
+\begin{definition}
+    The \textbf{root lattice} $\mathcal{L}\left[ \mathfrak{g} \right] $ of a Lie algebra $\mathfrak{g}$ with simple roots $\alpha_{\left( i \right) }$ is
+    \begin{align}
+        \mathcal{L}[\mathfrak{g}] = \text{span}_{\Z} \{\alpha_{\left( i \right) }\} 
+    .\end{align}
+\end{definition}
+
+\begin{definition}
+    The simple \textbf{co-roots} are
+    \begin{align}
+        \alpha_{\left( i \right) } = \frac{2}{\left( \alpha_{\left( i \right) }, \alpha_{\left( i \right) } \right) } \alpha_{\left( i \right) }
+    .\end{align}
+    The \textbf{co-root} lattice is
+    \begin{align}
+        \check{\mathcal{L}} \left[ \mathfrak{g} \right] = \text{span}_{\Z} \{\check{\alpha}_{\left( i \right) }\} 
+    .\end{align}
+\end{definition}
+
+
+\begin{definition}
+    The \textbf{weight lattice} is dual to the coroot lattice. Namely,
+    \begin{align}
+        \mathcal{L}_W \left[ \mathfrak{g} \right] = \check{\mathcal{L}}^{*}\left[ \mathfrak{g} \right] = \left\{ \lambda \in \mathfrak{h}^{*}  \mid  \left( \lambda, \check{\alpha} \right) \in \Z \text{~for~} \check{\alpha} \in \check{\mathcal{L}} \left[ \mathfrak{g} \right] \right\} 
+    .\end{align}
+\end{definition}
+
+Writing $\check{\alpha} = n^{i} \check{\alpha}_{\left( i \right) }$ with $n^{i} \in \Z$, we see
+\begin{align}
+    \left( \lambda, \check{\alpha}_{\left( i \right) } \right) = \frac{2 \left( \lambda , \alpha_{\left( i \right) }\right) }{\left( \alpha_{\left( i \right) }, \alpha_{\left( i \right) } \right) } \in \Z
+.\end{align}
+
+For any representation $d$, the weight set $S_d$ is a subset of the weight lattice, $S_d \subset \mathcal{L}_W \left[ \mathfrak{g} \right] $.
+
+The co-roots form a basis for $\check{\mathcal{L}}\left[ \mathfrak{g} \right] $. We can also form a basis of $\mathcal{L}_W \left[ \mathfrak{g} \right] $ from $\{\omega_{\left( i \right) }\} $ such that 
+\begin{align}
+    \left( \check{\alpha}_{\left( i \right) }, \omega_{\left( j \right) } \right) = \delta_{ij}
+.\end{align}
+
+\begin{definition}
+    The $\{\omega_{\left( i \right) }\} $ are the \textbf{fundamental weights} of $\mathfrak{g}$.
+\end{definition}
+
+The simple roots span $\mathfrak{h}^{*}_\R$, so we can write
+\begin{align}
+    \omega_{\left( j \right) } = \sum_{k=1}^{r}  B_{jk} \alpha_{\left( k \right) }
+,\end{align}
+where $B_{jk} \in \R$. Then as
+\begin{align}
+    \delta_{ij} = \left( \check{\alpha}_{\left( i \right) }, \omega_{\left( j \right) } \right) &= \sum_{k=1}^{r}  B_{jk} \frac{2}{\left( \alpha_{\left( i \right) } , \alpha_{\left( i \right) } \right) } \left( \alpha_{\left( i \right) }, \alpha_{\left( k \right) } \right)  \\
+     &= \sum_{k=1}^{r}  B_{jk} A_{ki}
+.\end{align}
+Therefore we see that $B = A^{-1}$ is the inverse of the Cartan matrix. We can then write the simple roots as
+\begin{align}
+    \alpha_{\left( i \right) } = \sum_{j}^{}  A_{ij} \omega_{\left( j \right) }
+.\end{align}
+
+\begin{example}
+    Take $\mathfrak{g} = A_2 = L \left( SU \left( 3 \right)  \right)_{\C}$ with Cartan matrix $A = \mqty( 2 & -1 \\ -1 & 2 )$. The roots are of the same length $\left| \alpha_{\left( 1 \right) } \right| = \left| \alpha_{\left( 2 \right) } \right| $ and $\phi_{12} = \frac{2\pi}{3}$. Choose coordinates $H_1$ and $H_2$ such that $\alpha_{\left( 1 \right) } = \left( 1,0 \right) $ and $\alpha_{\left( 2 \right) } = \left( -\frac{1}{2}, \frac{\sqrt{3}}{2}  \right) $.
+
+    As $B = A^{-1} = \frac{1}{3} \mqty( 2 & 1 \\ 1 & 2)$, we have
+    \begin{align}
+        \omega_{\left( 1 \right) } = \frac{1}{2} \left( 1, \frac{1}{\sqrt{3} } \right)  && \omega_{\left( 2 \right) } = \left( 0, \frac{1}{\sqrt{3} } \right) 
+    .\end{align}
+    % fig
+\end{example}
+
+
+\begin{definition}
+    Any weight $\lambda \in S_d \subset\mathcal{L}_W \left[ \mathfrak{g} \right] $ so
+    \begin{align}
+        \lambda = \sum_{i}^{} \lambda^{i} \omega_{\left( i \right) }
+    ,\end{align}
+    with the set of $\lambda^{i} \in \Z$ called \textbf{Dynkin labels} of weight $\lambda$. We write $\lambda = \left[ \lambda^{1}, \lambda^{2}, \cdots, \lambda^{n} \right] $. A vector in $V_\lambda$ can be written as $\ket{\lambda^{1}, \lambda^{2}, \cdots, \lambda^{n}}$
+\end{definition}
+
+%Thinking about a specific representation
+\begin{definition}
+    Every finite dimensional representation $d$ of $\mathfrak{g}$ has at least one \textbf{highest weight} $\Lambda \in S_d$ such that
+    \begin{align}
+        d\left( E_\alpha \right) v = 0
+    ,\end{align}
+    for $\alpha \in \Phi_+$, $\forall v \in V_\Lambda$
+\end{definition}
+
+\begin{definition}
+    The \textbf{Dynkin labels of the representation} are the Dynkin labels of its highest weight(s). $\{\Lambda^{i}\} $ gives $\left[ \Lambda^{1}, \cdots, \Lambda^{r} \right] $.
+\end{definition}
+
+\begin{proposition}
+    If $d$ is irreducible, $\Lambda$ is unique.
+\end{proposition}
+
+\begin{proposition}
+    If $d$ is irreducible, then all $\Lambda^{i} \geq 0$.
+\end{proposition}
+
+Also, if $\Lambda$ is unique and all $\Lambda^{i} \geq 0$ implies $d$ is irreducible.
+
+%Thinking about all representations
+
+\begin{definition}
+    A weight $\lambda \in \mathcal{L}_{n};r[\mathfrak{g}]$ is called a \textbf{dominant weight} if $\lambda^{i} \geq 0$.
+\end{definition}
+
+\begin{proposition}[ (Highest Weight Theorem)]
+    For any dominant weight $\lambda$, there exists a \textit{unique}, irreducible finite dimensional representation $d_\lambda$, with highest weight $\lambda$.
+\end{proposition}
+
+

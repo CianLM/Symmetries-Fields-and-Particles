@@ -1,0 +1,166 @@
+\lecture{24}{05/12/2024}{}
+
+\section{Gauge Theories}
+
+\subsection{Electrodynamics}
+
+\subsection{Non-abelian gauge theories}
+
+Consider an $N$-component scalar field $\phi : \R^{1,3} \to V$ with $V = \R^{N}$ or $\C^{N}$. $V$ has an inner product
+\begin{align}
+    \mathcal{L}_{\phi} = \left( \partial_\mu \phi, \partial^{\mu} \phi \right) - W \left( \left( \phi, \phi \right)  \right) 
+.\end{align}
+
+Say $\mathcal{L}_p$ is invariant under a global group transformation $g \in G$, with
+\begin{align}
+    \phi \left( x \right) \to \Delta \left( g \right) \phi \left( x \right) 
+,\end{align}
+$\forall x \in \R^{1,3}$, where $\Delta$ is an $N$-dimensional representation of $G$ (usually an irreducible representation) such that
+\begin{align}
+    \left( \Delta \left( g \right) \phi, \Delta \left( g \right) \phi \right) = \left( \phi, \phi \right) 
+.\end{align}
+
+For $G$ compact and $N$ finite, one has unitary representations satisfying $\Delta \left( g \right)^{-1} = \Delta \left( g \right)^{\dag}$.
+
+We wish to gauge this theory, namely, we want to promote our invariance to be under \emph{local} transformations such that
+\begin{align}
+    \phi \left( x \right) \mapsto \Delta \left( g\left( x \right)  \right)  \phi \left( x \right) 
+,\end{align}
+for $g\left( x \right) \in G$. 
+
+One can also do small (i.e. infinitesimal) gauge transformations such that
+\begin{align}
+    \Delta \left( g \right) = \exp \epsilon d \left( X \right)  = I + \epsilon d \left( X \right) 
+,\end{align}
+where $d$ is a representation of $L \left( G \right) $ and $X \in L \left( G \right) $ gives
+\begin{align}
+    \phi \left( x \right) \mapsto \phi + \epsilon d\left( X \right) \phi = \phi + \delta_X \phi
+,\end{align}
+where $\delta_X \phi = \epsilon d\left( X \right) \phi$.
+
+\begin{note}
+    $\partial_\mu \phi$ will not transform as $\phi$. We then need to introduce the gauge field $A_\mu : \R^{1,3} \to L \left( G \right) $ and a gauge covariant derivative
+    \begin{align}
+        D_\mu := \partial_\mu + d \left( A_\mu \right) 
+    ,\end{align}
+    such that $D_\mu \phi$ transforms as $\phi$. Namely, we require
+    \begin{align}
+        D_\mu \phi \mapsto \Delta \left( g \right) D_{\mu}\phi
+    ,\end{align}
+    or equivalently,
+    \begin{align}
+        \delta_X \left( D_\mu \phi \right) = \epsilon d\left( X \right) D_\mu \phi
+    .\end{align}
+    In physics, we often drop the $\Delta \left( g \right) \to g$, $d\left( X \right) \to X$ and $d \left( A_\mu \right) \to A_\mu$ with the understanding that we need these objects to be in the appropriate representations to act on the objects to their right.
+\end{note}
+
+The natural question is how does $A_\mu$ transform? As
+\begin{align}
+    D_\mu \phi \mapsto \left( \partial_\mu + A_{\mu}' \right) g \phi &\overset{!}{=} g D_{\mu}\phi \\
+    g^{-1} \left( \partial_\mu + A_\mu'  \right) g \phi &= D_{\mu} \phi = \left( \partial_\mu + A_\mu \right) \phi \\
+    \left( \partial_\mu + g^{-1} \left( \partial_\mu g \right) + g^{-1} A'_{\mu} g \right) &= \left( \partial_\mu + A_\mu \right)  \phi
+.\end{align}
+Therefore we arrive at
+\begin{align}
+    A_{\mu}' = g A_{\mu} g^{-1} - \left( \partial_\mu g \right) g^{-1}
+.\end{align}
+
+Writing $g = e + \epsilon X$ implies that 
+\begin{align}
+    A'_\mu = A_\mu + \epsilon \left[ X, A_\mu \right] - \epsilon \partial_\mu X
+.\end{align}
+
+\begin{proof}
+    Sheet 4.
+\end{proof}
+
+\begin{definition}
+    We define the \textbf{field strength tensor} to be
+    \begin{align}
+        F_{\mu \nu} = \partial_\mu A_\nu - \partial_\nu A_\mu + \left[ A_\mu, A_\nu \right]  \in L \left( G \right) 
+    .\end{align}
+\end{definition}
+
+Observe that
+\begin{align}
+    \left[ D_\mu, D_{\nu} \right] \phi &= \left[ \partial_\mu + A_\mu, \partial_\nu + A_\nu \right] \phi \\
+    &= \partial_\mu \left( A_\nu \phi \right) + A_\mu \left( \partial_\nu \phi \right) - \partial_\nu \left( A_\mu \phi \right) - A_\nu \partial_\mu \phi + \left[ A_\mu, A_\nu \right] \phi \\
+    &= F_{\mu \nu} \phi 
+.\end{align}
+
+As $\phi \to g \phi$, and $D_\mu \phi \to g D_\mu \phi$, observe that we then have
+\begin{align}
+    F_{\mu \nu} \phi \to g F_{\mu \nu} \phi
+,\end{align}
+and thus
+\begin{align}
+    F_{\mu \nu} = g F_{\mu \nu} g^{-1}
+,\end{align}
+is a gauge covariant object.
+
+Infinitesimally, we have
+\begin{align}
+    F_{\mu \nu} \to g F_{\mu \nu} g^{-1} \implies \delta_X F_{\mu \nu} = \epsilon \left[ X, F_{\mu \nu} \right] 
+.\end{align}
+
+\begin{proof}
+    
+\end{proof}
+
+We want to construct a gauge invariant object that is also a Lorentz scalar. The familiar choice of $F_{\mu \nu} F^{\mu \nu}$ is a Lorentz scalar but is no longer gauge-invariant in a non-abelian gauge theory. Using the Killing form, we instead take what will form the \textbf{Yang Mills Lagrangian},
+\begin{align}
+    \mathcal{L}_{\text{YM}} = -\frac{1}{g_s^2} \sum_{\mu, \nu}^{} \kappa \left( F_{\mu \nu}, F^{\mu \nu} \right) 
+,\end{align}
+where $g_s$ is a coupling. By making a choice of adapted basis and normalization, one can arrive at
+\begin{align}
+    \mathcal{L}_{\text{YM}} = -\frac{1}{2g_s^2} \tr F_{\mu \nu} F^{\mu \nu}
+.\end{align}
+
+One can rescale the field $A_\mu$ to move the coupling constant. Namely, define $A_\mu ' = \frac{1}{g_s} A_\mu$ which gives
+\begin{align}
+    \mathcal{L}_\text{YM} = -\frac{1}{2} \tr F_{\mu \nu}' F'^{\mu \nu}
+,\end{align}
+where $F'_{\mu \nu} = \partial_\mu A_\nu - \partial_\nu A'_\mu + g_s \left[ A'_\mu, A'_\nu \right]$ and $D_\mu' = \partial_\mu + g_s A_\mu'$.
+
+\subsection{Feynman rules}
+
+
+From  the $\partial A \partial A$ terms we get a propagator 
+% gluon
+From the $g_s \left[ A, A \right] \partial A$ term we get a cubic interaction
+% cubic
+and from the $g_s^2 \left[ A, A \right]^2$ has a quartic interaction
+% quartic
+
+
+The Yang Mills Lagrangian is thus already interacting prior to the addition of matter. It described a self interacting particle.
+
+The gauge group of the standard model is $G = \overset{\text{color}}{SU \left( 3 \right)}_C \times  \overset{\text{electroweak}}{SU \left( 2 \right)_L \times  U \left( 1 \right)}_Y$. The electroweak force undergoes spontaneous symmetry breaking to leave the $U\left( 1 \right)_{\text{EM}}$. 
+
+Thus we have the algebra $\mathfrak{g} = \mathfrak{su}\left( 3 \right)_c \oplus \mathfrak{su}\left( 2 \right)_L \oplus U\left( 1 \right)_Y$.  $Y$ is called the \textit{weak hypercharge} and the electromagnetic charge $Q$ is related to it by
+\begin{align}
+    Q = \frac{Y}{2} + T_3
+,\end{align}
+where $T_3$ is the \textit{weak isospin} given by
+\begin{align}
+    T_3 = \begin{cases}
+        \pm \frac{1}{2}, & \text{doublets in $\mathfrak{su}\left( 2 \right)_L$}, \\
+        0, & \text{~singlet in $\mathfrak{su}\left( 2 \right)_L$.}
+    \end{cases}
+\end{align}
+
+The 8 gauge bosons in the adjoint representation of $\mathfrak{su}\left( 3 \right) $ are the 8 colour pairs of gluons. There are three in $\mathfrak{su}\left( 2 \right) $ given by $A^{\mu}_1$, $A^{\mu}_2$, $A^{\mu}_3$ and a $B^{\mu}$ from $\mathfrak{u}\left( 1 \right) $, the four of which give us $W^{\pm}, Z$ and $A^{\mu}_\gamma$, the photon.
+
+We will label particles/representations by their $\left( \mathfrak{su} \left( 3 \right) \text{~rep.}, \mathfrak{su}\left( 2 \right)_L \text{~rep.} \right)_Y$ and set $T_3 = -\frac{1}{3}$ here. We have
+\begin{itemize}
+    \item Scalar Higgs with $\left( \vb{1}, \vb{2} \right)_1$,
+\item Leptons with $\underbrace{\left( \vb{1}, \vb{2} \right)_{-1}}_{\text{left handed spinors}} \oplus \underbrace{\left( \vb{1}, \vb{1} \right)_{-2}}_{\text{left handed spinors}}$. Then one observes that as the weak force only couples to left handed particles, we have
+    \begin{align}
+        \mqty( v_e \\ e )_L , e_R
+    ,\end{align}
+    namely such that there are no right handed neutrinos.
+\item Quarks
+    \begin{align}
+        \underbrace{\left( \vb{3}, \vb{2} \right)_{\frac{1}{3}}}_{\text{L.H.} \tiny \mqty( u \\ d )_L} \oplus \underbrace{\left( \vb{3},\vb{1} \right)_{\frac{4}{3}} }_{u_R} \oplus \underbrace{\left( \vb{3}, \vb{1} \right)_{-\frac{2}{3}}}_{d_R}
+    .\end{align}
+\end{itemize}
