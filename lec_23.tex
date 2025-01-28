@@ -1,1 +1,121 @@
-\lecture{23}{05/12/2024}{}
+\lecture{23}{03/12/2024}{}
+
+Given an irreducible representation $d_\Lambda$ with highest weight $\Lambda$, we can find vectors in other eigenspaces of $d_\Lambda$ by applying lowering operators. Take $v_{\Lambda} \in V_\Lambda$, then we can find eigenvectors
+\begin{align}
+    v_\lambda = d_\Lambda \left( E_{-\alpha_{\left( 1 \right) }} \right) \cdots d\left( E_{-\alpha_{\left( i \right) }} \right) v_\Lambda
+.\end{align}
+
+\begin{lemma}[ (``No holes'' lemma)]
+    For any finite dimensional representation, $d$, of $\mathfrak{g}$, if we have a weight $\lambda = \sum_{}^{} \lambda^{i} w_{\left( i \right) } \in S_d$, then
+    \begin{align}
+        \lambda - m_{\left( i \right) } \alpha_{\left( i \right) } \in S_d
+    ,\end{align}
+    where $m_{\left( i \right) } = 0,1,\cdots,\lambda^{i}$.
+\end{lemma}
+
+This lemma gives us an algorithm for finding the weight set of an irreducible representation.
+
+\subsection{Representations of $\mathfrak{su}\left( 3 \right)_{\C}$}
+
+In Cartan's classification, we called this algebra $A_2$. We can chose as before a basis where $\alpha_{\left( 1 \right) } = \left( 1,0 \right) $ and $\alpha_{\left( 2 \right) } = \left( -\frac{1}{2}, \frac{\sqrt{3} }{2} \right) $ and fundamental weights $\omega_{\left( 1 \right) } = \frac{1}{2} \left( 1 , \frac{1}{\sqrt{3} } \right) $ and $\omega_{\left( 2 \right) } = \left( 0,\frac{1}{\sqrt{3}} \right) $.
+
+Recall that $A = \mqty( 2 & -1 \\ -1 & 2)$ and $\alpha_{\left( i \right) } = A_{ij} \omega_{j}$ which gives us
+\begin{align}
+    \alpha_{\left( 1 \right) } = \left[ 2,-1 \right]  && \alpha_{\left( 2 \right) } = \left[ -1,2 \right] 
+.\end{align}
+
+Investigating a few dominant weights of the form
+\begin{align}
+    \Lambda = \sum_{i=1}^{2} \Lambda^{i} \omega_{\left( i \right) } = \left[ \Lambda^{1},\Lambda^{2}  \right]  
+,\end{align}
+we label the irreducible representation by the Dynkin labels $d_{\left[ \Lambda^{1}, \Lambda^{2} \right] }$. We see that
+    \begin{itemize}
+        \item $d_{\left[ 0,0 \right] }$ is the trivial representation with $\Lambda= 0$.
+        \item $d_{\left[ 1,0 \right] }$, $\Lambda = \omega_{\left( 1 \right) }$ is the fundamental representation.
+            \begin{note}
+                Mathematicians refers to any representation whose highest weight is a fundamental weight as a fundamental representation. Physicists usually call one fundamental and give others other names (e.g. antifundamental rep.).
+            \end{note}
+            Since $\Lambda^{1} > 0 $ we have 
+            \begin{align}
+                \lambda &= \Lambda - \alpha_{\left( 1 \right) } \in S_d \\
+                &= \left[ 1,0 \right] - \left[ 2,-1 \right]  \\
+                &= \left[ -1,1 \right] = -\omega_{\left( 1 \right) } + \omega_{\left( 2 \right) }
+            .\end{align}
+            Since $\Lambda^2 > 0$, we subtract $\alpha_{\left( 2 \right) }$, giving
+            \begin{align}
+                \left[ -1,1 \right] - \left[ -1,2 \right] = \left[ 0,-1 \right] = - \omega_{\left( 2 \right) }
+            ,\end{align}
+            and we are done.
+            \begin{exercise}
+                Show that $d_{\left[ 0,1 \right] }$ contains weights $\left[ 0,1 \right] $, $\left[ 1,-1 \right] $ and $\left[ -1,0 \right] $.
+            \end{exercise}
+        \item Lastly, consider $d_{\left[ 1,1 \right] }$ and start with $\Lambda = \left[ 1,1 \right] $. The weight set is
+            \begin{align}
+                \{\alpha_{\left( 1 \right)} , \alpha_{\left( 2 \right) }, \alpha_{\left( 1 \right) } + \alpha_{\left( 2 \right) }, -\alpha_{\left( 1 \right) }, - \alpha_{\left( 2 \right) }, -\alpha_{\left( 1 \right) } - \alpha_{\left( 2 \right) },0,0\} 
+            .\end{align}
+            This is the adjoint representation.
+    \end{itemize}
+
+This procedure itself does not tell us about degeneracies or multiplicities. Here we know the dimension of the adjoint representation is $\dim \mathfrak{g} = 8$ and $r = 2$.
+
+\subsection{Decomposition of tensor products}
+
+Let $d_\Lambda$ and $d_{\Lambda'}$ be irreps of $\mathfrak{g}$ of some representation spaces $V^{\left( \Lambda \right) }$ and $V^{\left( \Lambda' \right) }$ given by
+\begin{align}
+    V^{\left( \Lambda \right) } = \oplus_{\lambda \in S_\Lambda} V_\lambda && V^{\left( \Lambda' \right) } = \oplus_{\lambda' \in S_{\Lambda'}} V_{\lambda'}
+.\end{align}
+
+If $v_\lambda \in V_\lambda$ and $v_{\lambda'} \in V_{\lambda'}$ then for $H \in \mathfrak{h}$,
+\begin{align}
+    \left( d_{\Lambda} \otimes d_{\Lambda'} \right) \left( H \right) \left( v_{\lambda} \otimes v_{\lambda'} \right)  &= d_{\Lambda}\left( H \right) v_{\lambda} \otimes v_{\lambda'} + v_{\lambda} \otimes d_{\Lambda'}\left( H \right) v_{\lambda'} \\
+    &= \left( \lambda + \lambda' \right) \left( H \right) \left( v_{\lambda} \otimes v_{\lambda'} \right) 
+,\end{align}
+where recall that $\alpha \left( H \right) = \alpha^{i} H_i = \left( \kappa^{-1} \right)^{ij} \alpha_j H_i$
+
+Vectors of the form $v_\lambda \otimes v_{\lambda'}$ span the tensor product space so
+\begin{align}
+    S_{\Lambda \otimes \Lambda'} \in \{\lambda + \lambda'  \mid \lambda \in S_\lambda, \lambda' \in S_{\lambda'}\} 
+,\end{align}
+with multiplicities accounted for.
+
+The decomposition procedure is as follows:
+\begin{enumerate}
+    \item In $S_{\Lambda \otimes \Lambda'}$, find a highest weight corresponding to some irreducible representation.
+    \item Subtract out the corresponding irreducible representations weights from $S_{\Lambda \otimes \Lambda'}$.
+    \item Repeat until done.
+\end{enumerate}
+
+\begin{example}
+    Consider $\mathfrak{su}\left( 3 \right)_{\C}$ and $d_{\left[ 1,0 \right] } \otimes d_{\left[ 1,0 \right] }$.
+
+    Recall that $S_{\left[ 1,0 \right] } = \{\left[ 1,0 \right] , \left[ -1,1 \right] , \left[ -,1 \right] \} $ and thus
+    \begin{align}
+        S_{\left[ 1,0 \right] \otimes \left[ 0,1 \right]} = \{\underbrace{\left[ 2,0 \right] , \left[ -2,2 \right] , \left[ 0,-2 \right]}_{\text{multiplicity 1}}, \underbrace{\left[ 0,1 \right] , \left[ 1,-1 \right] , \left[ -1,0 \right]}_{\text{multiplicity 2}}  \} 
+    .\end{align}
+    Here $\left[ 2,0 \right] $ is the dominant weight and thus factoring it out we see
+    \begin{align}
+        d_{\left[ 1,0 \right] }\otimes d_{\left[ 1,0 \right] } &= d_{\left[ 2,0 \right] } \oplus d_{\left[ 0,1 \right] } \\
+        \vb{3} \otimes \vb{3} &= \vb{6} \oplus \overline{\vb{3}} 
+    .\end{align}
+\end{example}
+
+\subsection{$SU\left( 3 \right)$ Flavours}
+
+$SU\left( 3 \right) $ is an approximate symmetry of the standard model where one identifies that the up, down and strange quarks are all light and $m_u \overset{\frac{1}{2}}{<} m_d \overset{\frac{1}{27}}{\ll} m_s \overset{\frac{1}{9}}{\ll} m_\text{proton}$.
+
+Therefore, we can think of these quarks as being symmetric in the limit where the masses are all light and equal $m_u = m_d = m_s$. Electromagnetism and the weak force break this further, but if we restrict ourselves to bound states where there are no decays via the weak force, then this is somewhat sensible. One can think of $u$, $d$ and $se$ as components of $q = \mqty( u \\ d \\ s)$ in \textit{flavour space}, the fundamental representation and similarly $\overline{q} = \mqty( \overline{u} \\ \overline{d} \\ \overline{s} )$ in the antifundamental representation.
+
+The bound states that we will detect in experiments are mesons $\left( \overline{q} q \right) $ which live in
+\begin{align}
+    \vb{3} \otimes \overline{\vb{3}} = \vb{1} \oplus \vb{8}
+,\end{align}
+and baryons $\left( q q q \right) $ which live in
+\begin{align}
+    \vb{3} \otimes \vb{3} \otimes \vb{3} = \vb{1} \oplus \vb{8} \oplus \vb{8} \oplus \vb{10}
+.\end{align}
+
+
+
+
+
+
